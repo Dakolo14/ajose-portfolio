@@ -1,103 +1,146 @@
+'use client';
+import Sidebar from "../components/Sidebar";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import BackToTop from "../components/BackToTop";
+import ProjectCard from "../components/ProjectCard";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
+  // For the update bar dismiss
+  const [showUpdate, setShowUpdate] = useState(true);
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+    <div className="flex min-h-screen bg-[#181818] text-[#ededed] font-sans">
+      <Sidebar />
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col min-h-screen ml-0 md:ml-[260px]">
+        <Header />
+        {/* Blue update bar */}
+        {showUpdate && (
+          <div className="relative bg-[#2563eb] text-sm text-white text-center py-3 flex items-center justify-center">
+            <span className="w-full">Discover my work.</span>
+            <button
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-white text-lg hover:bg-[#1e40af] rounded-full w-7 h-7 flex items-center justify-center"
+              aria-label="Dismiss update bar"
+              onClick={() => setShowUpdate(false)}
+            >
+              ×
+            </button>
+          </div>
+        )}
+        {/* Content */}
+        <main className="flex-1 px-4 sm:px-8 md:px-12 lg:px-18 py-12">
+          <div className="flex flex-start gap-4 mb-6">
+            <div className="hidden md:!block md:w-16 md:h-16 bg-[#232323] overflow-hidden">
+              {/* Profile image placeholder */}
+            </div>
+            <div>
+              <h1 className="text-2xl font-bold leading-tight mb-1">Product designer with focus on product thinking and craft.</h1>
+              <p className="text-[#bdbdbd] text-base mb-2">I design and prototype digital products & visual interfaces.<br/>Welcome to my small corner of web.</p>
+              <div className="text-sm font-semibold text-white">
+                Currently <span className="text-[#FF37A2]">@ Konga Group</span>, Prev. <span className="text-[#60a5fa]">@ Buzzy Media</span>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-[#bdbdbd] mt-1">
+                <span>San Francisco, CA</span>
+                <span>•</span>
+                <span>3:48 PM</span>
+              </div>
+            </div>
+          </div>
+          {/* Team/Experience section */}
+          <section className="mb-8">
+            <div className="flex flex-col divide-y divide-[#232323]">
+              <div className="flex items-center justify-between py-3">
+                <div className="flex items-center gap-2">
+                  <span className="bg-[#ED017F] text-white font-medium px-2 py-1 rounded text-xs">Konga Group</span>
+                  <span className="text-sm">Product Design</span>
+                </div>
+                <span className="text-xs text-[#bdbdbd]">2023 - Present</span>
+              </div>
+              <div className="flex items-center justify-between py-3">
+                <div className="flex items-center gap-2">
+                  <span className="bg-[#232323] text-white font-bold px-2 py-1 rounded text-xs">Buzzy Media</span>
+                  <span className="text-sm">Lead Product Designer</span>
+                </div>
+                <span className="text-xs text-[#bdbdbd]">2024 - 2025</span>
+              </div>
+              <div className="flex items-center justify-between py-3">
+                <div className="flex items-center gap-2">
+                  <span className="bg-[#232323] text-white font-bold px-2 py-1 rounded text-xs">McKinley Rice</span>
+                  <span className="text-sm">Product Designer & Developer</span>
+                </div>
+                <span className="text-xs text-[#bdbdbd]">2020–2021</span>
+              </div>
+            </div>
+          </section>
+          {/* Projects as cards */}
+          <div className="flex flex-col gap-10">
+            <ProjectCard
+                title="PayFly Ecosystem"
+                subtitle="Brand & UI/UX Design"
+                description="Designed seamless payment flows and dashboards for PayFly."
+                href="/work/interface/payfly-ecosystem"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+            <ProjectCard
+              title="Konga Group"
+              subtitle="Product Design"
+              description="Designed and developed a new product for Konga Group."
+              href="/work/interface/konga-group"
+            />
+            <ProjectCard
+              title="Buzzy Media"
+              subtitle="UI/UX Redesign"
+              description="Created brand identity and responsive website for Buzzy Media."
+              href="/work/interface/buzzy-media"
+            />
+            <ProjectCard
+              title="Verselift"
+              subtitle="Product Design"
+              description="Designed and developed for Verselift's SaaS platform."
+              href="/work/interface/verselift"
+            />
+            <ProjectCard
+              title="Bet-Inn"
+              subtitle="Brand & UI/UX Design, Interaction Specialist"
+              description="Crafted engaging betting experiences for Bet-Inn users."
+              href="/work/interface/bet-inn"
+            />
+          </div>
+        </main>
+        <div className="px-4 sm:px-8 md:px-12 lg:px-18"><Footer /></div>
+        <BackToTop />
+      </div>
+    </div>
+  );
+}
+
+function SidebarItem({ text, disabled = false, iconType }: { text: string; disabled?: boolean; iconType?: string }) {
+  let icon = null;
+  let iconSrc = null;
+  if (iconType === "at") {
+    icon = <span className="text-lg font-bold opacity-60 group-hover:opacity-100 group-hover:text-white">@</span>;
+  } else if (iconType === "linkedin") {
+    iconSrc = "/linkedin.svg";
+  } else if (iconType === "tiktok") {
+    iconSrc = "/tiktok.svg";
+  } else if (iconType === "x") {
+    iconSrc = "/x.svg";
+  } else if (iconType === "file") {
+    iconSrc = "/file.svg";
+  } else if (iconType === "project") {
+    iconSrc = "/briefcase.svg";
+  }
+  return (
+    <div
+      className={`flex items-center gap-2 py-1 px-2 rounded ${disabled ? "opacity-60 cursor-not-allowed" : "hover:bg-[#232323] cursor-pointer group"}`}
+    >
+      {iconSrc ? (
+        <Image src={iconSrc} alt={iconType || "icon"} width={16} height={16} className="opacity-40 group-hover:brightness-75 transition" />
+      ) : (
+        icon
+      )}
+      <span className="transition group-hover:text-white">{text}</span>
     </div>
   );
 }
