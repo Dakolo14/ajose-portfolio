@@ -13,19 +13,19 @@ export default function About() {
           <div>
             <h1 className="text-3xl font-bold text-white mb-4">Background</h1>
             <p className="text-[#ededed] mb-3">
-              Ever since I can remember, I've always been drawn to creating and sharing my creations with others. While I can't say for certain if I had a natural talent for it, I found immense joy in seeing people appreciate the things I made.
+              Ever since I can remember, I&apos;ve always been drawn to creating and sharing my creations with others. While I can&apos;t say for certain if I had a natural talent for it, I found immense joy in seeing people appreciate the things I made.
             </p>
             <p className="text-[#ededed] mb-3">
               When I first discovered UX design in 2017, it felt like a perfect blend of two worlds I was deeply interested in and naturally inclined towards: technology and art. The moment I realized the potential of this field, I dove in headfirst, never looking back.
             </p>
             <p className="text-[#ededed]">
-              Now, I'm designing products, hoping they can bring impact and value to the people around the world.
+              Now, I&apos;m designing products, hoping they can bring impact and value to the people around the world.
             </p>
           </div>
         </div>
         <div className="mb-12">
           <div className="text-[#bdbdbd] text-sm mb-8">Some extra facts</div>
-          <div className="mb-2 text-[#ededed]">Recently, I've been:</div>
+          <div className="mb-2 text-[#ededed]">Recently, I&apos;ve been:</div>
           <ul className="space-y-1">
             <li className="flex items-center gap-2"><span>🦄</span> <span className="font-semibold text-[#ededed]">Drinking 6+ espresso shots a day on average</span></li>
             <li className="flex items-center gap-2"><span>🥁</span> <span className="font-semibold text-[#ededed]">Drumming bossa nova beats</span></li>

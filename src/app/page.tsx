@@ -114,33 +114,3 @@ export default function Home() {
     </div>
   );
 }
-
-function SidebarItem({ text, disabled = false, iconType }: { text: string; disabled?: boolean; iconType?: string }) {
-  let icon = null;
-  let iconSrc = null;
-  if (iconType === "at") {
-    icon = <span className="text-lg font-bold opacity-60 group-hover:opacity-100 group-hover:text-white">@</span>;
-  } else if (iconType === "linkedin") {
-    iconSrc = "/linkedin.svg";
-  } else if (iconType === "tiktok") {
-    iconSrc = "/tiktok.svg";
-  } else if (iconType === "x") {
-    iconSrc = "/x.svg";
-  } else if (iconType === "file") {
-    iconSrc = "/file.svg";
-  } else if (iconType === "project") {
-    iconSrc = "/briefcase.svg";
-  }
-  return (
-    <div
-      className={`flex items-center gap-2 py-1 px-2 rounded ${disabled ? "opacity-60 cursor-not-allowed" : "hover:bg-[#232323] cursor-pointer group"}`}
-    >
-      {iconSrc ? (
-        <Image src={iconSrc} alt={iconType || "icon"} width={16} height={16} className="opacity-40 group-hover:brightness-75 transition" />
-      ) : (
-        icon
-      )}
-      <span className="transition group-hover:text-white">{text}</span>
-    </div>
-  );
-}
