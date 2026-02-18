@@ -85,7 +85,7 @@ function MobileBreadcrumbs() {
   return (
     <nav className="flex md:hidden items-center gap-2 text-xs font-medium px-4 pt-3 pb-2 border-b border-[#232323] bg-[#181818] sticky top-14 z-40">
       {crumbs.map((crumb, i) => {
-        const isSection = ["Interface", "Design Engineering"].includes(crumb.name);
+        const isSection = ["User Interface", "Engineering"].includes(crumb.name);
         return (
           <span key={crumb.href} className="flex items-center gap-2">
             {i > 0 && <span className="text-[#bdbdbd]">/</span>}
@@ -166,25 +166,24 @@ export default function MobileNav() {
         <nav className="flex-1 flex flex-col gap-2 text-sm mt-4 pb-6">
           <SidebarLink text="About" iconType={undefined} href="/about" onClick={() => setOpen(false)} />
           <SidebarLink text="Work" iconType={undefined} href="/work" onClick={() => setOpen(false)} />
-          <div className="mb-2 text-[#bdbdbd] pl-4 uppercase tracking-widest text-[10px] font-semibold mt-4">Interface</div>
-          <SidebarLink text="Bet-Inn" iconType="project" href="/work/interface/bet-inn" onClick={() => setOpen(false)} />
-          <SidebarLink text="Verselift" iconType="project" href="/work/interface/verselift" onClick={() => setOpen(false)} />
-          <SidebarLink text="Buzzy Media" iconType="project" href="/work/interface/buzzy-media" onClick={() => setOpen(false)} />
-          <SidebarLink text="PayFly Ecosystem" iconType="project" href="/work/interface/payfly-ecosystem" onClick={() => setOpen(false)} />
-          <SidebarLink text="Konga Group" iconType="project" href="/work/interface/konga-group" onClick={() => setOpen(false)} />
-          <div className="mb-2 text-[#bdbdbd] pl-4 uppercase tracking-widest text-[10px] font-semibold mt-4">Design Engineering</div>
-          <SidebarLink text="KYC Interactive Form" iconType="project" href="/work/design-engineering/kyc-interactive-form" onClick={() => setOpen(false)} />
-          <SidebarLink text="PrepStack" iconType="project" href="/work/design-engineering/prepstack" onClick={() => setOpen(false)} />
-          <SidebarLink text="Verselift" iconType="project" href="/work/design-engineering/verselift" onClick={() => setOpen(false)} />
-          <SidebarLink text="Konga Group" iconType="project" href="/work/design-engineering/konga-group" onClick={() => setOpen(false)} />
-          <div className="mb-2 text-[#bdbdbd] pl-4 uppercase tracking-widest text-[10px] font-semibold mt-4">Side Projects</div>
-          <SidebarLink text="Strilo" iconType="project" href="/work/strilo" disabled onClick={() => setOpen(false)} />
+          <div className="mb-2 text-[#bdbdbd] pl-4 uppercase tracking-widest text-[10px] font-semibold mt-4">User Interface</div>
+          <SidebarLink text="StatMind" iconType="project" href="/work/user-interface/statmind" onClick={() => setOpen(false)} />
+          <SidebarLink text="Konga WorkStation" iconType="project" href="/work/user-interface/konga-workstation" onClick={() => setOpen(false)} />
+          <SidebarLink text="Servewell" iconType="project" href="/work/user-interface/servewell" onClick={() => setOpen(false)} />
+          <SidebarLink text="CeraVe CerAwards Campaign" iconType="project" href="/work/user-interface/cerave-cerawards" onClick={() => setOpen(false)} />
+          <SidebarLink text="Payfly Ecosystem" iconType="project" href="/work/user-interface/payfly-ecosystem" onClick={() => setOpen(false)} />
+          <SidebarLink text="DriveHelp" iconType="project" href="/work/user-interface/drivehelp" disabled onClick={() => setOpen(false)} />
+          <div className="mb-2 text-[#bdbdbd] pl-4 uppercase tracking-widest text-[10px] font-semibold mt-4">Engineering</div>
+          <SidebarLink text="CeraVe CerAwards Campaign" iconType="project" href="/work/engineering/cerave-cerawards" onClick={() => setOpen(false)} />
+          <SidebarLink text="Konga Group" iconType="project" href="/work/engineering/konga-group" onClick={() => setOpen(false)} />
+          <SidebarLink text="Konga Rework" iconType="project" href="/work/engineering/konga-rework" onClick={() => setOpen(false)} />
+          <SidebarLink text="KYC Interactive Form" iconType="project" href="/work/engineering/kyc-interactive-form" onClick={() => setOpen(false)} />
           <div className="mb-2 text-[#bdbdbd] pl-4 uppercase tracking-widest text-[10px] font-semibold mt-4">Contact</div>
+          <SidebarItem text="Resume" iconType="file" />
           <SidebarItem text="Email" iconType="at" />
           <SidebarItem text="LinkedIn" iconType="linkedin" />
           <SidebarItem text="Tiktok" iconType="tiktok" />
           <SidebarItem text="Twitter/X" iconType="x" />
-          <SidebarItem text="Resume" iconType="file" />
         </nav>
       </div>
       {/* Add top padding to main content on mobile to account for the top bar */}
