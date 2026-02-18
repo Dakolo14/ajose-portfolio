@@ -1,3 +1,4 @@
+'use client';
 import Link from "next/link";
 
 export default function ProjectCard({ title, subtitle, description, href, className = "", accentColor = "#ED017F" }: {
