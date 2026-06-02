@@ -28,7 +28,7 @@ export default function Sidebar() {
         >
           <div className="w-8 h-8 rounded-full overflow-hidden bg-[#232323] group-hover:ring-2 group-hover:ring-[#ED017F] transition">
             <Image
-              src="/Photo Corporate.jpg"
+              src="/photo-corporate.jpg"
               alt="Ajose Damilare"
               width={40}
               height={40}
