@@ -28,7 +28,7 @@ export default function Sidebar() {
         >
           <div className="w-8 h-8 rounded-full overflow-hidden bg-[#232323] group-hover:ring-2 group-hover:ring-[#ED017F] transition">
             <Image
-              src="/Photo Corporate.jpg"
+              src="/photo-corporate.jpg"
               alt="Ajose Damilare"
               width={40}
               height={40}
@@ -45,6 +45,11 @@ export default function Sidebar() {
           User Interface
         </div>
         <SidebarLink
+          text="CeraVe CerAwards Campaign"
+          iconType="project"
+          href="/work/user-interface/cerave-cerawards"
+        />
+        <SidebarLink
           text="StatMind"
           iconType="project"
           href="/work/user-interface/statmind"
@@ -58,11 +63,6 @@ export default function Sidebar() {
           text="Servewell"
           iconType="project"
           href="/work/user-interface/servewell"
-        />
-        <SidebarLink
-          text="CeraVe CerAwards Campaign"
-          iconType="project"
-          href="/work/user-interface/cerave-cerawards"
         />
         <SidebarLink
           text="Payfly Ecosystem"
