@@ -154,6 +154,13 @@ export default function Home() {
           {gridFormat === "list" && (
             <div className="flex flex-col gap-10">
               <ProjectCard
+                title="CeraVe CerAwards Campaign"
+                subtitle="Campaign Design & Experience"
+                description="Interactive awards campaign with gamification elements."
+                href="/work/user-interface/cerave-cerawards"
+                accentColor="#005994"
+              />
+              <ProjectCard
                   title="StatMind"
                   subtitle="Product Design & Strategy"
                   description="Analytics platform with intelligent insights and real-time dashboards."
@@ -172,13 +179,6 @@ export default function Home() {
                 description="Customer service platform with intuitive agent and customer interfaces."
                 href="/work/user-interface/servewell"
                 accentColor="#FF934F"
-              />
-              <ProjectCard
-                title="CeraVe CerAwards Campaign"
-                subtitle="Campaign Design & Experience"
-                description="Interactive awards campaign with gamification elements."
-                href="/work/user-interface/cerave-cerawards"
-                accentColor="#005994"
               />
               <ProjectCard
                 title="Payfly Ecosystem"
@@ -217,6 +217,13 @@ export default function Home() {
           {gridFormat === "2-col" && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <ProjectCard
+                title="CeraVe CerAwards Campaign"
+                subtitle="Campaign Design & Experience"
+                description="Interactive awards campaign with gamification elements."
+                href="/work/user-interface/cerave-cerawards"
+                accentColor="#005994"
+              />
+              <ProjectCard
                   title="StatMind"
                   subtitle="Product Design & Strategy"
                   description="Analytics platform with intelligent insights and real-time dashboards."
@@ -235,13 +242,6 @@ export default function Home() {
                 description="Customer service platform with intuitive agent and customer interfaces."
                 href="/work/user-interface/servewell"
                 accentColor="#FF934F"
-              />
-              <ProjectCard
-                title="CeraVe CerAwards Campaign"
-                subtitle="Campaign Design & Experience"
-                description="Interactive awards campaign with gamification elements."
-                href="/work/user-interface/cerave-cerawards"
-                accentColor="#005994"
               />
               <ProjectCard
                 title="Payfly Ecosystem"
@@ -280,6 +280,13 @@ export default function Home() {
           {gridFormat === "4-col" && (
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               <ProjectCard
+                title="CeraVe CerAwards Campaign"
+                subtitle="Campaign Design & Experience"
+                description="Interactive awards campaign with gamification elements."
+                href="/work/user-interface/cerave-cerawards"
+                accentColor="#005994"
+              />
+              <ProjectCard
                   title="StatMind"
                   subtitle="Product Design & Strategy"
                   description="Analytics platform with intelligent insights and real-time dashboards."
@@ -298,13 +305,6 @@ export default function Home() {
                 description="Customer service platform with intuitive agent and customer interfaces."
                 href="/work/user-interface/servewell"
                 accentColor="#FF934F"
-              />
-              <ProjectCard
-                title="CeraVe CerAwards Campaign"
-                subtitle="Campaign Design & Experience"
-                description="Interactive awards campaign with gamification elements."
-                href="/work/user-interface/cerave-cerawards"
-                accentColor="#005994"
               />
               <ProjectCard
                 title="Payfly Ecosystem"

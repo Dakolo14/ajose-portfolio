@@ -45,6 +45,11 @@ export default function Sidebar() {
           User Interface
         </div>
         <SidebarLink
+          text="CeraVe CerAwards Campaign"
+          iconType="project"
+          href="/work/user-interface/cerave-cerawards"
+        />
+        <SidebarLink
           text="StatMind"
           iconType="project"
           href="/work/user-interface/statmind"
@@ -58,11 +63,6 @@ export default function Sidebar() {
           text="Servewell"
           iconType="project"
           href="/work/user-interface/servewell"
-        />
-        <SidebarLink
-          text="CeraVe CerAwards Campaign"
-          iconType="project"
-          href="/work/user-interface/cerave-cerawards"
         />
         <SidebarLink
           text="Payfly Ecosystem"

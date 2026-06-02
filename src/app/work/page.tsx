@@ -7,6 +7,12 @@ export default function Work() {
         <h2 className="text-2xl font-bold text-white mb-6">User Interface</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           <ProjectCard
+            title="CeraVe CerAwards Campaign"
+            subtitle="Campaign Design & Experience"
+            description="Interactive awards campaign with gamification elements."
+            href="/work/user-interface/cerave-cerawards"
+          />
+          <ProjectCard
             title="StatMind"
             subtitle="Product Design & Strategy"
             description="Analytics platform with intelligent insights and real-time dashboards."
@@ -24,12 +30,6 @@ export default function Work() {
             subtitle="UI/UX Design"
             description="Customer service platform with intuitive agent and customer interfaces."
             href="/work/user-interface/servewell"
-          />
-          <ProjectCard
-            title="CeraVe CerAwards Campaign"
-            subtitle="Campaign Design & Experience"
-            description="Interactive awards campaign with gamification elements."
-            href="/work/user-interface/cerave-cerawards"
           />
           <ProjectCard
             title="Payfly Ecosystem"
