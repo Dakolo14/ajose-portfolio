@@ -93,7 +93,7 @@ export default function CeraveCerawardsEngineeringProject() {
       <div className="mt-4 w-full overflow-hidden">
         <div className="relative w-full aspect-[4/1] max-h-[72vh]">
           <Image
-            src="/cerawards.png"
+            src="/cerawardsstrip.png"
             alt="CeraVe CerAwards platform"
             fill
             className="object-cover object-center"

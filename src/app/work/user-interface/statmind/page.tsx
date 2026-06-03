@@ -42,7 +42,7 @@ export default function StatMindProject() {
       <div className="mt-4 w-full overflow-hidden">
         <div className="relative w-full aspect-[4/1] max-h-[72vh]">
           <Image
-            src="/statmindstrips.png"
+            src="/statmindstrips.gif"
             alt="StatMind platform"
             fill
             className="object-cover object-center"
