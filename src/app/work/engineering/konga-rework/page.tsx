@@ -1,376 +1,452 @@
 'use client';
-import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 
-export default function KongaReworkProject() {
-  const [showCodeModal, setShowCodeModal] = useState(false);
-
-  const codeSnippets = [
-    {
-      filename: "performance-optimization.ts",
-      language: "typescript",
-      code: `// Route-based code splitting strategy
-import { lazy, Suspense } from 'react';
-
-const HomePage = lazy(() => import('./pages/Home'));
-const ProductPage = lazy(() => import('./pages/Product'));
-const CheckoutPage = lazy(() => import('./pages/Checkout'));
-
-// Each route loads only its required code
-export default function Router() {
+function CalendarIcon() {
   return (
-    <Suspense fallback={<LoadingShell />}>
-      <Switch>
-        <Route path="/" component={HomePage} />
-        <Route path="/product/:id" component={ProductPage} />
-        <Route path="/checkout" component={CheckoutPage} />
-      </Switch>
-    </Suspense>
+    <svg width="13" height="13" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0 mt-[2px]">
+      <rect x="1" y="2" width="12" height="11" rx="1.5" stroke="#6a6a6a" strokeWidth="1.2"/>
+      <path d="M1 5.5h12" stroke="#6a6a6a" strokeWidth="1.2"/>
+      <path d="M4.5 1v2M9.5 1v2" stroke="#6a6a6a" strokeWidth="1.2" strokeLinecap="round"/>
+    </svg>
   );
 }
 
-// Result: Initial bundle 2.8MB → 680KB`
-    },
-    {
-      filename: "recommendation-engine.ts",
-      language: "typescript",
-      code: `// Pre-computed collaborative filtering
-interface UserVector {
-  userId: string;
-  embedding: number[];
-  lastUpdated: number;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function Placeholder({ label, aspect = "16/9" }: { label: string; aspect?: string }) {
+  return null; // images coming soon
 }
 
-// Compute recommendations during off-peak
-async function preComputeRecommendations() {
-  const allUsers = await getUserVectors();
-  const recommendations = new Map();
-  
-  for (const user of allUsers) {
-    // Collaborative filtering: find similar users
-    const similarUsers = findNearestNeighbors(user.embedding, 50);
-    
-    // Aggregate products from similar users
-    const products = aggregateProductsFromUsers(similarUsers);
-    
-    // Sort by purchase velocity and user rating
-    const ranked = rankByPopularityAndRating(products);
-    
-    recommendations.set(user.userId, ranked.slice(0, 20));
-  }
-  
-  // Store in Redis for <10ms lookups
-  await redis.set('recommendations', recommendations);
+function BeforeAfter({ label }: { label: string }) {
+  return (
+    <div className="mb-12 px-6 md:px-14 lg:px-20">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <figure>
+          <div className="flex aspect-[4/3] w-full items-center justify-center rounded-lg border border-dashed border-[#2e2e2e] bg-[#141414]">
+            <p className="font-helvetica text-[13px] text-[#3a3a3a] px-4 text-center">Before — {label}</p>
+          </div>
+          <figcaption className="mt-3 font-helvetica text-[12px] text-[#3a3a3a]">Before</figcaption>
+        </figure>
+        <figure>
+          <div className="flex aspect-[4/3] w-full items-center justify-center rounded-lg border border-dashed border-[#2e2e2e] bg-[#141414]">
+            <p className="font-helvetica text-[13px] text-[#3a3a3a] px-4 text-center">After — {label}</p>
+          </div>
+          <figcaption className="mt-3 font-helvetica text-[12px] text-[#3a3a3a]">After</figcaption>
+        </figure>
+      </div>
+    </div>
+  );
 }
 
-// Serve from cache during peak hours
-export async function getRecommendations(userId: string) {
-  return redis.get('recommendations')[userId];
-}`
-    },
-    {
-      filename: "zero-downtime-migration.ts",
-      language: "typescript",
-      code: `// Canary deployment with traffic shifting
-interface DeploymentConfig {
-  newVersion: string;
-  startCanaryPercentage: number;
-  targetPercentage: number;
-  rollbackThreshold: number;
+function CodeBlock({ filename, code }: { filename: string; code: string }) {
+  return (
+    <div className="mb-12 px-6 md:px-14 lg:px-20">
+      <div className="overflow-hidden rounded-lg border border-[#222]">
+        <div className="flex items-center gap-3 border-b border-[#222] bg-[#141414] px-5 py-3">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="text-[#ED017F]">
+            <path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z" fill="currentColor" opacity=".2"/>
+            <path d="M13 2v7h7M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9L13 2z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <span className="font-mono text-[12px] text-[#6a6a6a]">{filename}</span>
+        </div>
+        <pre className="overflow-x-auto bg-[#0d0d0d] p-6 text-[13px] leading-[1.75] text-[#c9d1d9]">
+          <code>{code}</code>
+        </pre>
+      </div>
+    </div>
+  );
 }
 
-async function canaryDeploy(config: DeploymentConfig) {
-  let currentPercentage = config.startCanaryPercentage; // Start at 5%
-  
-  while (currentPercentage <= config.targetPercentage) {
-    // Shift traffic gradually
-    await loadBalancer.setTrafficSplit({
-      newVersion: currentPercentage,
-      oldVersion: 100 - currentPercentage
-    });
-    
-    // Monitor error rates
-    const metrics = await prometheus.query('error_rate_5m');
-    
-    if (metrics.errorRate > config.rollbackThreshold) {
-      console.log('Rollback triggered');
-      await loadBalancer.setTrafficSplit({ newVersion: 0, oldVersion: 100 });
-      return;
-    }
-    
-    // Gradually increase traffic
-    currentPercentage += 10; // 5% → 15% → 25% ... 100%
-    await sleep(5 * 60 * 1000); // Wait 5 min between shifts
-  }
-  
-  console.log('Deployment complete with 99.99% uptime');
-}`
-    }
-  ];
+function Stat({ value, label }: { value: string; label: string }) {
+  return (
+    <div>
+      <p className="font-inter text-[1.75rem] font-light text-white">{value}</p>
+      <p className="font-helvetica mt-1 text-[13px] leading-snug text-[#5c5c5c]">{label}</p>
+    </div>
+  );
+}
+
+function SectionHeading({ children }: { children: React.ReactNode }) {
+  return (
+    <h2 className="font-inter text-[1.1rem] font-light text-white mb-6 tracking-tight">
+      {children}
+    </h2>
+  );
+}
+
+function Body({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="space-y-4 font-helvetica text-[15px] leading-[1.8] text-[#b8b8b8]">
+      {children}
+    </div>
+  );
+}
+
+export default function KongaReworkProject() {
+  return (
+    <div className="min-h-screen text-[#ededed]">
+
+      {/* ── Back ── */}
+      <div className="px-6 py-4 pb-0 md:px-6 lg:px-8">
+        <Link
+          href="/"
+          className="font-helvetica flex items-center gap-1.5 text-[13px] text-[#eeeeee] transition-colors hover:text-[#a8a8a8] w-fit"
+        >
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          Back
+        </Link>
+      </div>
+
+      {/* ── Hero ── */}
+      <div className="mt-4 w-full overflow-hidden">
+        <div className="relative w-full aspect-[4/1] max-h-[72vh] flex items-center justify-center bg-[#141414] border-y border-dashed border-[#2e2e2e]">
+          <p className="font-helvetica text-[13px] text-[#3a3a3a]">Hero image — konga.com homepage, new vs old</p>
+        </div>
+      </div>
+
+      {/* ── Header ── */}
+      <div className="px-6 pt-4 pb-0 md:px-14 lg:px-20">
+        <h1 className="font-inter text-[1.75rem] font-light leading-snug tracking-tight text-white md:text-[2.25rem] lg:text-[2.75rem]">
+          Konga.com Homepage Rework
+        </h1>
+        <p className="font-helvetica mt-3 text-[15px] text-[#6a6a6a]">
+          Optimizing for retention across Africa&apos;s largest e-commerce platform
+        </p>
+
+        <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:flex-wrap sm:gap-14">
+          <div className="flex items-start gap-2">
+            <CalendarIcon />
+            <div>
+              <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#6a6a6a]">Timeline</p>
+              <p className="font-helvetica mt-1 text-[13px] leading-snug text-[#c0c0c0]">2023 — Present</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-2">
+            <CalendarIcon />
+            <div>
+              <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#6a6a6a]">Platform</p>
+              <p className="font-helvetica mt-1 text-[13px] leading-snug text-[#c0c0c0]">konga.com</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-2">
+            <CalendarIcon />
+            <div>
+              <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#6a6a6a]">Role</p>
+              <p className="font-helvetica mt-1 text-[13px] leading-snug text-[#c0c0c0]">Designer & Developer</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-2">
+            <CalendarIcon />
+            <div>
+              <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#6a6a6a]">Focus</p>
+              <p className="font-helvetica mt-1 text-[13px] leading-snug text-[#c0c0c0]">Retention · Visual Hierarchy · Mobile</p>
+            </div>
+          </div>
+        </div>
+
+        <hr className="mt-8 border-[#222]" />
+      </div>
+
+      {/* ── Intro ── */}
+      <div className="px-6 py-12 md:px-14 lg:px-20">
+        <Body>
+          <p>
+            If you&apos;d like to learn more,{" "}
+            <Link href="/" className="text-[#ededed] underline underline-offset-2 hover:text-[#ED017F] transition-colors">
+              please get in touch
+            </Link>
+            .
+          </p>
+          <p>
+            The homepage is the most valuable real estate on any e-commerce site. I was given the
+            ability to redesign and develop key updates to the konga.com homepage, with a clear
+            mandate to increase retention and improve visual hierarchy across all devices.
+          </p>
+          <p>
+            This is a case study in small, deliberate changes that compound. Four strategic
+            interventions. Each one grounded in how users actually behave on mobile e-commerce.
+          </p>
+        </Body>
+      </div>
+
+      {/* ── Impact ── */}
+      <div className="px-6 pb-16 md:px-14 lg:px-20">
+        <div className="grid grid-cols-2 gap-y-10 gap-x-8 sm:grid-cols-4">
+          <Stat value="4" label="Changes shipped" />
+          <Stat value="10M+" label="Monthly visitors" />
+          <Stat value="—" label="Retention lift (add metric)" />
+          <Stat value="—" label="Scroll depth change (add metric)" />
+        </div>
+      </div>
+
+      <hr className="mx-6 mb-16 border-[#1f1f1f] md:mx-14 lg:mx-20" />
+
+      {/* ══ Change 1: Mobile Carousel ══ */}
+      <div className="px-6 pb-6 md:px-14 lg:px-20">
+        <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#3a3a3a] mb-3">Change 01</p>
+        <SectionHeading>Mobile Carousel — 1.2 → 2.5 Product View</SectionHeading>
+        <Body>
+          <p>
+            Previously, the mobile carousel showed only 1.2 products at a time. One full card and a
+            sliver of the next, not enough of a &quot;peek&quot; to signal that more was available.
+            The scroll felt stagnant. Users weren&apos;t swiping because they didn&apos;t know there was
+            anything to swipe to.
+          </p>
+          <p>
+            I redesigned this to a 2.5 product view. Two full items and a deliberate half-card peek
+            of the third. The partial card is the signal that tells the user, without any text or
+            icon, that there&apos;s more to see. Scroll behaviour went up immediately.
+          </p>
+          <p>
+            Small UI tweaks lead to big behavioural shifts. This one change was entirely visual, no
+            new data, no new logic. Just the right amount of visible affordance.
+          </p>
+        </Body>
+      </div>
+
+      <BeforeAfter label="Mobile carousel (1.2 vs 2.5 product view)" />
+
+      <CodeBlock
+        filename="components/ProductCarousel.tsx"
+        code={`// Before: 1.2 items visible — one full card, barely a peek
+const carouselConfig = {
+  slidesPerView: 1.2,
+  spaceBetween: 12,
+};
+
+// After: 2.5 items visible — two full cards, deliberate half-peek
+// The partial third card is the affordance that drives the swipe
+const carouselConfig = {
+  slidesPerView: 2.5,
+  spaceBetween: 10,
+};
+
+// Applied via CSS for fine-grained control across breakpoints
+// styles/carousel.module.css
+// .carousel-slide { width: calc((100% - 20px) / 2.5); }`}
+      />
+
+      <hr className="mx-6 mb-16 border-[#1f1f1f] md:mx-14 lg:mx-20" />
+
+      {/* ══ Change 2: Visual Consistency ══ */}
+      <div className="px-6 pb-6 md:px-14 lg:px-20">
+        <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#3a3a3a] mb-3">Change 02</p>
+        <SectionHeading>Visual Consistency — Unified Header System</SectionHeading>
+        <Body>
+          <p>
+            The homepage had accumulated inconsistency over time. &quot;Today&apos;s Deals&quot; looked different
+            from &quot;Official Stores.&quot; Section headers used different sizes, weights, and colours
+            depending on when they were built and by whom. The page felt assembled, not designed.
+          </p>
+          <p>
+            I introduced a unified header system using Konga&apos;s deep magenta as the anchor colour.
+            Every section header now uses the same visual treatment: consistent size, consistent
+            weight, consistent colour token. Whether you&apos;re looking at a flash sale or a brand store,
+            the visual language is now uniform and the page is easier to scan.
+          </p>
+          <p>
+            This was a code change as much as a design change. I refactored the section header into
+            a single shared component, replacing five different implementations that had diverged
+            over time.
+          </p>
+        </Body>
+      </div>
+
+      <BeforeAfter label="Section headers (inconsistent vs unified magenta system)" />
+
+      <CodeBlock
+        filename="components/SectionHeader.tsx"
+        code={`// Before: five different implementations scattered across page sections
+// Each built independently, each slightly different
+
+// After: single shared component used everywhere
+interface SectionHeaderProps {
+  title: string;
+  viewAllHref?: string;
+}
+
+export function SectionHeader({ title, viewAllHref }: SectionHeaderProps) {
+  return (
+    <div className="flex items-center justify-between mb-4">
+      <h2 className="text-base font-semibold" style={{ color: "#C5007C" }}>
+        {title}
+      </h2>
+      {viewAllHref && (
+        <a href={viewAllHref} className="text-xs text-[#C5007C] hover:underline">
+          See all
+        </a>
+      )}
+    </div>
+  );
+}`}
+      />
+
+      <hr className="mx-6 mb-16 border-[#1f1f1f] md:mx-14 lg:mx-20" />
+
+      {/* ══ Change 3: OEM Partner Section ══ */}
+      <div className="px-6 pb-6 md:px-14 lg:px-20">
+        <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#3a3a3a] mb-3">Change 03</p>
+        <SectionHeading>OEM Partner Visibility — Dedicated Brand Section</SectionHeading>
+        <Body>
+          <p>
+            Konga has premium OEM partners (CeraVe, Midea Group, and others) who run
+            targeted brand stores within the platform. These partners had no dedicated surface
+            on the homepage. They were buried in category listings alongside generic sellers.
+          </p>
+          <p>
+            I built a dedicated OEM partner section that gives these brands a first-class presence
+            on the homepage without disrupting the surrounding user flow. Partners get a consistent
+            branded tile, recognisable at a glance, that leads directly to their store.
+          </p>
+          <p>
+            The section is data-driven. The partner list is managed through the CMS,
+            so the marketing team can update it without a code deployment.
+          </p>
+        </Body>
+      </div>
+
+      <BeforeAfter label="OEM partner visibility (no section vs dedicated section)" />
+
+      <CodeBlock
+        filename="components/OEMPartners.tsx"
+        code={`// Dynamically rendered from CMS — no code deploy needed to add/remove partners
+interface OEMPartner {
+  id: string;
+  name: string;
+  logoUrl: string;
+  storeHref: string;
+  accentColor: string;
+}
+
+export function OEMPartners({ partners }: { partners: OEMPartner[] }) {
+  return (
+    <section className="mb-8">
+      <SectionHeader title="Official Brand Stores" />
+      <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+        {partners.map((partner) => (
+          <a
+            key={partner.id}
+            href={partner.storeHref}
+            className="shrink-0 flex flex-col items-center gap-2 w-20"
+          >
+            <div
+              className="w-16 h-16 rounded-full flex items-center justify-center"
+              style={{ backgroundColor: partner.accentColor + "1a" }}
+            >
+              <img src={partner.logoUrl} alt={partner.name} className="w-10 h-10 object-contain" />
+            </div>
+            <span className="text-[11px] text-center text-[#333] leading-tight">{partner.name}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  );
+}`}
+      />
+
+      <hr className="mx-6 mb-16 border-[#1f1f1f] md:mx-14 lg:mx-20" />
+
+      {/* ══ Change 4: Back to Top ══ */}
+      <div className="px-6 pb-6 md:px-14 lg:px-20">
+        <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#3a3a3a] mb-3">Change 04</p>
+        <SectionHeading>Back to Top — Friction Reduction</SectionHeading>
+        <Body>
+          <p>
+            The konga.com homepage is long by design. More inventory surface, more discovery
+            opportunity. But long pages create a return problem: users who scroll deep lose their
+            bearings, and getting back to the top search bar requires effort.
+          </p>
+          <p>
+            The original &quot;Back to Top&quot; button was small, low-contrast, and easy to miss. I redesigned
+            it to be more visually prominent: larger tap target, Konga magenta, positioned in the
+            lower right away from content so it doesn&apos;t obstruct product cards.
+          </p>
+          <p>
+            The button appears after the user has scrolled past the first viewport, and disappears
+            when they return to the top. Present when needed, invisible when not.
+          </p>
+        </Body>
+      </div>
+
+      <BeforeAfter label="Back to Top button (old vs redesigned)" />
+
+      <CodeBlock
+        filename="components/BackToTop.tsx"
+        code={`'use client';
+import { useState, useEffect } from "react";
+
+export function BackToTop() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > window.innerHeight);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  if (!visible) return null;
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-4 sm:px-8 py-12">
-      {/* Header */}
-      <div className="mb-12">
-        <Link href="/work" className="text-[#ED017F] hover:underline text-sm mb-4 inline-block">← Back to Work</Link>
-        <h1 className="text-5xl font-bold text-white mb-4">Konga Rework</h1>
-        <p className="text-[#bdbdbd] text-lg mb-8">Homepage performance optimization and engagement engine redesign for Africa's largest e-commerce platform</p>
-        
-        {/* Project Meta */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-8 border-t border-b border-[#232323]">
-          <div>
-            <p className="text-[#bdbdbd] text-xs uppercase tracking-widest mb-2">Role</p>
-            <p className="text-white font-semibold">Full-Stack Engineer</p>
-          </div>
-          <div>
-            <p className="text-[#bdbdbd] text-xs uppercase tracking-widest mb-2">Timeline</p>
-            <p className="text-white font-semibold">5 Months</p>
-          </div>
-          <div>
-            <p className="text-[#bdbdbd] text-xs uppercase tracking-widest mb-2">Scale</p>
-            <p className="text-white font-semibold">10M+ Monthly</p>
-          </div>
-          <div>
-            <p className="text-[#bdbdbd] text-xs uppercase tracking-widest mb-2">Status</p>
-            <p className="text-white font-semibold">Live</p>
-          </div>
+    <button
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      aria-label="Back to top"
+      className="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center
+                 rounded-full shadow-lg transition-all duration-200 hover:scale-105 active:scale-95"
+      style={{ backgroundColor: "#C5007C" }}
+    >
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M9 14V4M4 9l5-5 5 5" stroke="white" strokeWidth="1.6"
+              strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    </button>
+  );
+}`}
+      />
+
+      <Placeholder label="Image — Back to Top button in context on the live page" />
+
+      <hr className="mx-6 mb-16 border-[#1f1f1f] md:mx-14 lg:mx-20" />
+
+      {/* ── Reflection ── */}
+      <div className="px-6 pb-6 md:px-14 lg:px-20">
+        <SectionHeading>What This Work Reinforced</SectionHeading>
+        <Body>
+          <p>
+            Working on a platform with 10M+ monthly visitors makes the cost of vague decisions very
+            clear. A carousel that shows 2.5 items instead of 1.2 isn&apos;t a stylistic preference —
+            it&apos;s a behavioural intervention with measurable consequences.
+          </p>
+          <p>
+            The most impactful changes on the Konga homepage weren&apos;t new features. They were
+            refinements to existing surfaces: the right affordance in the right place,
+            consistency where there was drift, and removing friction from paths users were
+            already trying to take.
+          </p>
+        </Body>
+      </div>
+
+      <Placeholder label="Image — Full homepage overview showing all 4 changes in context" />
+
+      {/* ── Footer ── */}
+      <div className="px-6 pb-20 md:px-14 lg:px-20">
+        <hr className="mb-10 border-[#1f1f1f]" />
+        <p className="font-helvetica text-[15px] text-[#5c5c5c]">Thanks for reading.</p>
+        <p className="font-helvetica mt-2 text-[15px] text-[#5c5c5c]">
+          Questions about this project?{" "}
+          <Link href="/" className="text-[#c0c0c0] underline underline-offset-2 hover:text-[#ED017F] transition-colors">
+            Get in touch
+          </Link>
+          .
+        </p>
+        <div className="mt-8 flex flex-wrap gap-8 text-sm">
+          <Link href="/work/engineering/konga-group" className="font-helvetica text-[#5c5c5c] transition-colors hover:text-[#ED017F]">
+            ← Konga Group Engineering
+          </Link>
+          <Link href="/work/engineering/kyc-interactive-form" className="font-helvetica text-[#5c5c5c] transition-colors hover:text-[#ED017F]">
+            KYC Interactive Form →
+          </Link>
         </div>
       </div>
 
-      {/* Hero Image Placeholder */}
-      <div className="w-full aspect-video bg-gradient-to-br from-[#2a2a2a] to-[#1a1a1a] rounded-xl mb-16 shadow-lg flex items-center justify-center">
-        <div className="text-center">
-          <Image src="/file.svg" alt="Konga Rework Preview" width={120} height={120} className="mx-auto mb-4 opacity-50" />
-          <p className="text-[#bdbdbd]">Project Preview</p>
-        </div>
-      </div>
-
-      {/* Overview Section */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold text-white mb-6">Overview</h2>
-        <p className="text-[#bdbdbd] text-lg leading-relaxed mb-4">
-          The Konga homepage rework was a comprehensive optimization project targeting user retention and product discovery for Africa's largest e-commerce platform serving 10M+ monthly visitors.
-        </p>
-        <p className="text-[#bdbdbd] text-lg leading-relaxed mb-4">
-          As Full-Stack Engineer, I led the technical redesign focusing on performance (3x faster load times), engagement (algorithmic recommendations), and conversion (reduced friction in product discovery).
-        </p>
-        <p className="text-[#bdbdbd] text-lg leading-relaxed">
-          The challenge was improving user retention 23% while maintaining backward compatibility with existing recommendation logic and third-party integrations across millions of daily users.
-        </p>
-      </section>
-
-      {/* Technical Challenge */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold text-white mb-6">Engineering Challenges</h2>
-        <div className="space-y-6">
-          <div className="bg-[#1a1a1a] border border-[#232323] rounded-lg p-8">
-            <h3 className="text-[#ED017F] font-semibold text-lg mb-3">Zero-Downtime Migration</h3>
-            <p className="text-[#bdbdbd]">Rolling out a new homepage architecture to millions of daily users without service disruption, supporting A/B testing and gradual rollout</p>
-          </div>
-
-          <div className="bg-[#1a1a1a] border border-[#232323] rounded-lg p-8">
-            <h3 className="text-[#ED017F] font-semibold text-lg mb-3">Performance at Scale</h3>
-            <p className="text-[#bdbdbd]">Achieving &lt;2s homepage load on 3G networks across Nigeria, Egypt, and Kenya with image-heavy content and complex recommendations</p>
-          </div>
-
-          <div className="bg-[#1a1a1a] border border-[#232323] rounded-lg p-8">
-            <h3 className="text-[#ED017F] font-semibold text-lg mb-3">Algorithmic Recommendations</h3>
-            <p className="text-[#bdbdbd]">Building a real-time recommendation engine that personalizes product displays without sacrificing performance or privacy</p>
-          </div>
-
-          <div className="bg-[#1a1a1a] border border-[#232323] rounded-lg p-8">
-            <h3 className="text-[#ED017F] font-semibold text-lg mb-3">Third-Party Integration Coordination</h3>
-            <p className="text-[#bdbdbd]">Managing 50+ integrations (ads, tracking, payments) while improving performance and ensuring compatibility</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Architecture Section */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold text-white mb-8">Architecture & Solution</h2>
-
-        <div className="mb-10">
-          <h3 className="text-2xl font-semibold text-white mb-6">Frontend Optimization</h3>
-          <div className="space-y-6">
-            <div className="bg-[#1a1a1a] border border-[#232323] rounded-lg p-8">
-              <h4 className="text-[#ED017F] font-semibold mb-3">Lazy Loading & Code Splitting</h4>
-              <p className="text-[#bdbdbd]">Reduced initial bundle from 2.8MB to 680KB using route-based code splitting and dynamic imports</p>
-            </div>
-            <div className="bg-[#1a1a1a] border border-[#232323] rounded-lg p-8">
-              <h4 className="text-[#ED017F] font-semibold mb-3">Image Optimization</h4>
-              <p className="text-[#bdbdbd]">WebP format with JPEG fallbacks, responsive images, srcset optimization, reduced image size by 65%</p>
-            </div>
-            <div className="bg-[#1a1a1a] border border-[#232323] rounded-lg p-8">
-              <h4 className="text-[#ED017F] font-semibold mb-3">Virtual Scrolling</h4>
-              <p className="text-[#bdbdbd]">Rendering only visible product cards, preventing DOM bloat and memory issues on low-end devices</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="mb-10">
-          <h3 className="text-2xl font-semibold text-white mb-6">Backend Optimization</h3>
-          <div className="space-y-6">
-            <div className="bg-[#1a1a1a] border border-[#232323] rounded-lg p-8">
-              <h4 className="text-[#ED017F] font-semibold mb-3">Recommendation Engine</h4>
-              <p className="text-[#bdbdbd]">Collaborative filtering with real-time personalization, pre-computed during off-peak hours, served from cache</p>
-            </div>
-            <div className="bg-[#1a1a1a] border border-[#232323] rounded-lg p-8">
-              <h4 className="text-[#ED017F] font-semibold mb-3">GraphQL API</h4>
-              <p className="text-[#bdbdbd]">Clients request exactly what they need, reducing payload by 40% compared to REST endpoints</p>
-            </div>
-            <div className="bg-[#1a1a1a] border border-[#232323] rounded-lg p-8">
-              <h4 className="text-[#ED017F] font-semibold mb-3">Redis Caching Layer</h4>
-              <p className="text-[#bdbdbd]">Cache homepage components, recommendations, and product data, reducing database queries by 85%</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Results Section */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold text-white mb-6">Results & Impact</h2>
-        
-        <div className="mb-10">
-          <h3 className="text-[#ED017F] font-semibold text-lg mb-6">Performance Metrics</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <p className="text-4xl font-bold text-[#ED017F] mb-2">67%</p>
-              <p className="text-[#bdbdbd]">Faster Load Time (3G)</p>
-            </div>
-            <div className="text-center">
-              <p className="text-4xl font-bold text-[#ED017F] mb-2">1.8s</p>
-              <p className="text-[#bdbdbd]">First Contentful Paint</p>
-            </div>
-            <div className="text-center">
-              <p className="text-4xl font-bold text-[#ED017F] mb-2">2.1s</p>
-              <p className="text-[#bdbdbd]">Largest Contentful Paint</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="mb-10">
-          <h3 className="text-[#ED017F] font-semibold text-lg mb-6">User Engagement</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <p className="text-4xl font-bold text-[#ED017F] mb-2">23%</p>
-              <p className="text-[#bdbdbd]">Increase in User Retention</p>
-            </div>
-            <div className="text-center">
-              <p className="text-4xl font-bold text-[#ED017F] mb-2">38%</p>
-              <p className="text-[#bdbdbd]">Higher Click-Through Rate</p>
-            </div>
-            <div className="text-center">
-              <p className="text-4xl font-bold text-[#ED017F] mb-2">44%</p>
-              <p className="text-[#bdbdbd]">Increased Avg. Session Time</p>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <h3 className="text-[#ED017F] font-semibold text-lg mb-6">Business Impact</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <p className="text-4xl font-bold text-[#ED017F] mb-2">$12M+</p>
-              <p className="text-[#bdbdbd]">Incremental Revenue</p>
-            </div>
-            <div className="text-center">
-              <p className="text-4xl font-bold text-[#ED017F] mb-2">15%</p>
-              <p className="text-[#bdbdbd]">Conversion Rate Lift</p>
-            </div>
-            <div className="text-center">
-              <p className="text-4xl font-bold text-[#ED017F] mb-2">99.99%</p>
-              <p className="text-[#bdbdbd]">Uptime During Rollout</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Code Logic Section */}
-      <section className="mb-16">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-3xl font-bold text-white">Code Logic</h2>
-          <button
-            onClick={() => setShowCodeModal(true)}
-            className="px-6 py-3 bg-[#ED017F] text-white rounded-lg hover:bg-[#ff62b9] transition-colors font-semibold flex items-center gap-2"
-          >
-            <span>View Code</span>
-            <span className="text-lg">→</span>
-          </button>
-        </div>
-        <p className="text-[#bdbdbd] text-lg">Deep dive into the performance optimization strategies with key code snippets showing zero-downtime deployment, recommendation engine, and bundle optimization.</p>
-      </section>
-
-      {/* Call to Action */}
-      <section className="py-12 border-t border-[#232323]">
-        <div className="flex flex-col md:flex-row gap-6 items-center justify-between">
-          <div>
-            <h3 className="text-2xl font-bold text-white mb-2">Ready to explore more?</h3>
-            <p className="text-[#bdbdbd]">Check out other engineering projects or get in touch</p>
-          </div>
-          <div className="flex gap-4">
-            <Link href="/work" className="px-6 py-3 bg-[#232323] text-white rounded-lg hover:bg-[#2a2a2a] transition-colors">
-              View All Projects
-            </Link>
-            <Link href="/" className="px-6 py-3 bg-[#ED017F] text-white rounded-lg hover:bg-[#ff62b9] transition-colors">
-              Contact Me
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Code Modal */}
-      {showCodeModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-10 flex items-center justify-center z-50 p-4" onClick={(e) => e.target === e.currentTarget && setShowCodeModal(false)}>
-          <div className="bg-[#1e1e1e] rounded-lg shadow-2xl w-full max-w-4xl max-h-[90vh] flex flex-col border border-[#232323]">
-            {/* Modal Header */}
-            <div className="flex items-center justify-between p-4 border-b border-[#232323] bg-[#252526]">
-              <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-[#ED017F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-                <span className="text-white font-semibold">Code Logic Explorer</span>
-              </div>
-              <button
-                onClick={() => setShowCodeModal(false)}
-                className="text-[#bdbdbd] hover:text-white transition-colors"
-              >
-                ✕
-              </button>
-            </div>
-
-            {/* Modal Content */}
-            <div className="flex-1 overflow-y-auto">
-              <div className="space-y-4 p-4">
-                {codeSnippets.map((snippet, idx) => (
-                  <div key={idx} className="bg-[#1e1e1e] border border-[#232323] rounded-lg overflow-hidden">
-                    {/* File Tab */}
-                    <div className="bg-[#252526] px-4 py-3 border-b border-[#232323] flex items-center gap-2">
-                      <svg className="w-4 h-4 text-[#ED017F]" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z" />
-                      </svg>
-                      <span className="text-[#bdbdbd] text-sm font-mono">{snippet.filename}</span>
-                      <span className="ml-auto text-xs text-[#666] bg-[#1e1e1e] px-2 py-1 rounded">{snippet.language}</span>
-                    </div>
-
-                    {/* Code Content */}
-                    <div className="overflow-x-auto">
-                      <pre className="text-sm text-[#d4d4d4] font-mono p-4 leading-relaxed">
-                        <code>{snippet.code}</code>
-                      </pre>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Modal Footer */}
-            <div className="border-t border-[#232323] bg-[#252526] px-4 py-3 text-sm text-[#bdbdbd]">
-              Showing {codeSnippets.length} key code snippets from the project architecture
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

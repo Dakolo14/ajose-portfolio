@@ -28,7 +28,7 @@ export default function Sidebar() {
         >
           <div className="w-8 h-8 rounded-full overflow-hidden bg-[#232323] group-hover:ring-2 group-hover:ring-[#ED017F] transition">
             <Image
-              src="/Photo Corporate.jpg"
+              src="/photo-corporate.jpg"
               alt="Ajose Damilare"
               width={40}
               height={40}
@@ -45,9 +45,9 @@ export default function Sidebar() {
           User Interface
         </div>
         <SidebarLink
-          text="StatMind"
+          text="CeraVe CerAwards Campaign"
           iconType="project"
-          href="/work/user-interface/statmind"
+          href="/work/user-interface/cerave-cerawards"
         />
         <SidebarLink
           text="Konga WorkStation"
@@ -55,19 +55,27 @@ export default function Sidebar() {
           href="/work/user-interface/konga-workstation"
         />
         <SidebarLink
-          text="Servewell"
+          text="StatMind"
           iconType="project"
-          href="/work/user-interface/servewell"
+          href="/work/user-interface/statmind"
         />
         <SidebarLink
-          text="CeraVe CerAwards Campaign"
+          text="Tradon App"
           iconType="project"
-          href="/work/user-interface/cerave-cerawards"
+          href="/work/user-interface/tradon-app"
+          comingSoon
         />
         <SidebarLink
           text="Payfly Ecosystem"
           iconType="project"
           href="/work/user-interface/payfly-ecosystem"
+          comingSoon
+        />
+        <SidebarLink
+          text="Servewell"
+          iconType="project"
+          href="/work/user-interface/servewell"
+          comingSoon
         />
         <SidebarLink
           text="DriveHelp"
@@ -116,11 +124,13 @@ function SidebarLink({
   iconType,
   href,
   disabled = false,
+  comingSoon = false,
 }: {
   text: string;
   iconType?: string;
   href: string;
   disabled?: boolean;
+  comingSoon?: boolean;
 }) {
   let icon = null;
   let iconSrc = null;
@@ -141,28 +151,38 @@ function SidebarLink({
   } else if (iconType === "project") {
     iconSrc = "/briefcase.svg";
   }
+
+  const isBlocked = disabled || comingSoon;
+
   return (
     <Link
-      href={disabled ? "#" : href}
-      className={`flex items-center gap-2 py-1 px-2 rounded transition-all duration-300 ${
-        disabled
-          ? "opacity-60 cursor-not-allowed pointer-events-none"
+      href={isBlocked ? "#" : href}
+      className={`flex items-center justify-between gap-2 py-1 px-2 rounded transition-all duration-300 ${
+        isBlocked
+          ? "opacity-50 cursor-not-allowed pointer-events-none"
           : "hover:bg-[#232323] cursor-pointer group hover:translate-x-1"
       }`}
-      tabIndex={disabled ? -1 : 0}
+      tabIndex={isBlocked ? -1 : 0}
     >
-      {iconSrc ? (
-        <Image
-          src={iconSrc}
-          alt={iconType || "icon"}
-          width={16}
-          height={16}
-          className="opacity-40 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110"
-        />
-      ) : (
-        icon
+      <div className="flex items-center gap-2 min-w-0">
+        {iconSrc ? (
+          <Image
+            src={iconSrc}
+            alt={iconType || "icon"}
+            width={16}
+            height={16}
+            className="opacity-40 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110 shrink-0"
+          />
+        ) : (
+          icon
+        )}
+        <span className="transition-all duration-300 group-hover:text-white truncate">{text}</span>
+      </div>
+      {comingSoon && (
+        <span className="shrink-0 text-[9px] font-semibold uppercase tracking-wider text-[#4a4a4a] border border-[#333] rounded px-1.5 py-0.5">
+          Soon
+        </span>
       )}
-      <span className="transition-all duration-300 group-hover:text-white">{text}</span>
     </Link>
   );
 }

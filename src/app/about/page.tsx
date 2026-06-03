@@ -14,118 +14,109 @@ export default function About() {
           priority
         />
       </div>
-      {/* Text content below */}
-      <div className="w-full py-12 md:px-12 sm:px-8">
-        <div className="flex flex-col sm:flex-row gap-8 items-start mb-12">
-          {/* Optionally keep the round avatar here or remove */}
-          {/* <div className="w-32 h-32 rounded-full bg-[#232323] flex-shrink-0 mb-4 sm:mb-0" /> */}
-          <div>
-            <h1 className="text-3xl font-bold text-white mb-4">Background</h1>
-            <p className="text-[#ededed] mb-3">
+
+      {/* Content */}
+      <div className="w-full px-6 py-12 md:px-14 lg:px-20">
+
+        {/* Background */}
+        <div className="mb-16">
+          <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#6a6a6a] mb-6">Background</p>
+          <h1 className="font-inter text-[1.75rem] font-light leading-snug tracking-tight text-white mb-8 md:text-[2.25rem]">
+            Product designer focused on<br className="hidden md:block" /> product thinking and craft.
+          </h1>
+          <div className="space-y-4 font-helvetica text-[15px] leading-[1.8] text-[#9a9a9a]">
+            <p>
               Ever since I can remember, I&apos;ve always been drawn to creating
               and sharing my creations with others. While I can&apos;t say for
               certain if I had a natural talent for it, I found immense joy in
               seeing people appreciate the things I made.
             </p>
-            <p className="text-[#ededed] mb-3">
+            <p>
               When I first discovered UX design in 2017, it felt like a perfect
               blend of two worlds I was deeply interested in and naturally
               inclined towards: technology and art. The moment I realized the
               potential of this field, I dove in headfirst, never looking back.
             </p>
-            <p className="text-[#ededed]">
+            <p>
               Now, I&apos;m designing products, hoping they can bring impact and
               value to the people around the world.
             </p>
           </div>
         </div>
-        <div className="mb-12">
-          <div className="text-[#bdbdbd] text-sm mb-8">Some extra facts</div>
-          <div className="mb-2 text-[#ededed]">Recently, I&apos;ve been:</div>
-          <ul className="space-y-1">
-            <li className="flex items-center gap-2">
-              <span>🦄</span>{" "}
-              <span className="font-semibold text-[#ededed]">
-                Drinking 6+ espresso shots a day on average
-              </span>
-            </li>
-            <li className="flex items-center gap-2">
-              <span>🥁</span>{" "}
-              <span className="font-semibold text-[#ededed]">
-                Drumming bossa nova beats
-              </span>
-            </li>
-            <li className="flex items-center gap-2">
-              <span>⌚</span>{" "}
-              <span className="font-semibold text-[#ededed]">
-                Appreciating Swiss and German watches & typography
-              </span>
-            </li>
-            <li className="flex items-center gap-2">
-              <span>🏋️‍♂️</span>{" "}
-              <span className="font-semibold text-[#ededed]">
-                Trying to hit the gym more often
-              </span>
-            </li>
+
+        <hr className="border-[#1f1f1f] mb-16" />
+
+        {/* Extra facts */}
+        <div className="mb-16">
+          <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#6a6a6a] mb-8">Recently, I&apos;ve been</p>
+          <ul className="space-y-3">
+            {[
+              { emoji: "🏋️‍♂️", text: "Working out 4 times weekly" },
+              { emoji: "⚽", text: "Supporting Arsenal after winning the Premier League" },
+              { emoji: "🚀", text: "Interested in SaaS application builds" },
+              { emoji: "🤖", text: "Involving myself in AI automations" },
+            ].map(({ emoji, text }) => (
+              <li key={text} className="flex items-center gap-3">
+                <span className="text-base">{emoji}</span>
+                <span className="font-helvetica text-[15px] text-[#c0c0c0]">{text}</span>
+              </li>
+            ))}
           </ul>
         </div>
-        <div className="mb-12">
-          <div className="text-[#bdbdbd] text-sm mb-8">Experience</div>
-          <div className="flex flex-col gap-4">
-            <div className="flex items-center justify-between border-b border-[#232323] pb-2">
-              <div className="flex items-center gap-2">
-                <span className="bg-[#ED017F] text-white font-medium px-2 py-1 rounded text-xs">
-                  Konga Group
-                </span>
-                <span className="text-sm">Product Design</span>
+
+        <hr className="border-[#1f1f1f] mb-16" />
+
+        {/* Experience */}
+        <div className="mb-16">
+          <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#6a6a6a] mb-8">Experience</p>
+          <div className="flex flex-col gap-5">
+            {[
+              { company: "Konga Group", role: "Product Design", period: "2023 — Present", color: "#ED017F" },
+              { company: "CeraVe", role: "Product Designer & Developer", period: "Contract", color: "#005994" },
+              { company: "StatMind", role: "UI/UX Designer", period: "Contract · 2025 — 2026", color: "#5A6BFF" },
+            ].map(({ company, role, period, color }) => (
+              <div key={company} className="flex items-center justify-between border-b border-[#1f1f1f] pb-5">
+                <div className="flex items-center gap-3">
+                  <span
+                    className="px-2 py-1 rounded text-xs font-medium text-white"
+                    style={{ backgroundColor: color }}
+                  >
+                    {company}
+                  </span>
+                  <span className="font-helvetica text-[14px] text-[#9a9a9a]">{role}</span>
+                </div>
+                <span className="font-helvetica text-[13px] text-[#5c5c5c]">{period}</span>
               </div>
-              <span className="text-xs text-[#bdbdbd]">2023 - Present</span>
-            </div>
-            <div className="flex items-center justify-between border-b border-[#232323] pb-2">
-              <div className="flex items-center gap-2">
-                <span className="bg-[#232323] text-white font-bold px-2 py-1 rounded text-xs">
-                  Buzzy Media
-                </span>
-                <span className="text-sm">Lead Product Designer</span>
-              </div>
-              <span className="text-xs text-[#bdbdbd]">2024 - 2025</span>
-            </div>
-            <div className="flex items-center justify-between border-b border-[#232323] pb-2">
-              <div className="flex items-center gap-2">
-                <span className="bg-[#5A6BFF] text-white font-medium px-2 py-1 rounded text-xs">
-                  StatMind
-                </span>
-                <span className="text-sm">UI/UX Designer</span>
-              </div>
-              <span className="text-xs text-[#bdbdbd]">2025 - Present</span>
-            </div>
+            ))}
           </div>
         </div>
+
+        <hr className="border-[#1f1f1f] mb-16" />
+
+        {/* Education */}
         <div>
-          <div className="text-[#bdbdbd] text-sm mb-8">Education</div>
-          <div className="flex flex-col gap-4">
-            <div className="flex items-center justify-between border-b border-[#232323] pb-2">
-              <div className="flex items-center gap-2">
-                <span className="bg-[#ff4d00] text-white font-bold px-2 py-1 rounded text-xs">
-                  ArtCenter College of Design
-                </span>
-                <span className="text-[#ededed]">B.S. Interaction Design</span>
+          <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#6a6a6a] mb-8">Education</p>
+          <div className="flex flex-col gap-5">
+            {[
+              { institution: "Caleb University", course: "BSc Computer Science", period: "2018 — 2022", color: "#ff4d00" },
+              { institution: "Google · Coursera", course: "UX Design Certificate", period: "2022", color: "#232323" },
+            ].map(({ institution, course, period, color }) => (
+              <div key={institution} className="flex items-center justify-between border-b border-[#1f1f1f] pb-5">
+                <div className="flex items-center gap-3">
+                  <span
+                    className="px-2 py-1 rounded text-xs font-medium text-white"
+                    style={{ backgroundColor: color }}
+                  >
+                    {institution}
+                  </span>
+                  <span className="font-helvetica text-[14px] text-[#9a9a9a]">{course}</span>
+                </div>
+                <span className="font-helvetica text-[13px] text-[#5c5c5c]">{period}</span>
               </div>
-              <span className="text-xs text-[#bdbdbd]">2019 – 2025</span>
-            </div>
-            <div className="flex items-center justify-between border-b border-[#232323] pb-2">
-              <div className="flex items-center gap-2">
-                <span className="bg-[#232323] text-white font-bold px-2 py-1 rounded text-xs">
-                  WeCode
-                </span>
-                <span className="text-[#ededed]">
-                  Coding Bootcamp, Front-end Development
-                </span>
-              </div>
-              <span className="text-xs text-[#bdbdbd]">2023</span>
-            </div>
+            ))}
           </div>
         </div>
+
       </div>
     </div>
   );

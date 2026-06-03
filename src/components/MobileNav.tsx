@@ -167,11 +167,12 @@ export default function MobileNav() {
           <SidebarLink text="About" iconType={undefined} href="/about" onClick={() => setOpen(false)} />
           <SidebarLink text="Work" iconType={undefined} href="/work" onClick={() => setOpen(false)} />
           <div className="mb-2 text-[#bdbdbd] pl-4 uppercase tracking-widest text-[10px] font-semibold mt-4">User Interface</div>
-          <SidebarLink text="StatMind" iconType="project" href="/work/user-interface/statmind" onClick={() => setOpen(false)} />
-          <SidebarLink text="Konga WorkStation" iconType="project" href="/work/user-interface/konga-workstation" onClick={() => setOpen(false)} />
-          <SidebarLink text="Servewell" iconType="project" href="/work/user-interface/servewell" onClick={() => setOpen(false)} />
           <SidebarLink text="CeraVe CerAwards Campaign" iconType="project" href="/work/user-interface/cerave-cerawards" onClick={() => setOpen(false)} />
+          <SidebarLink text="Konga WorkStation" iconType="project" href="/work/user-interface/konga-workstation" onClick={() => setOpen(false)} />
+          <SidebarLink text="StatMind" iconType="project" href="/work/user-interface/statmind" onClick={() => setOpen(false)} />
+          <SidebarLink text="Tradon App" iconType="project" href="/work/user-interface/tradon-app" onClick={() => setOpen(false)} />
           <SidebarLink text="Payfly Ecosystem" iconType="project" href="/work/user-interface/payfly-ecosystem" onClick={() => setOpen(false)} />
+          <SidebarLink text="Servewell" iconType="project" href="/work/user-interface/servewell" onClick={() => setOpen(false)} />
           <SidebarLink text="DriveHelp" iconType="project" href="/work/user-interface/drivehelp" disabled onClick={() => setOpen(false)} />
           <div className="mb-2 text-[#bdbdbd] pl-4 uppercase tracking-widest text-[10px] font-semibold mt-4">Engineering</div>
           <SidebarLink text="CeraVe CerAwards Campaign" iconType="project" href="/work/engineering/cerave-cerawards" onClick={() => setOpen(false)} />

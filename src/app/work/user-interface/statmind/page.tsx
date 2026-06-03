@@ -2,139 +2,240 @@
 import Image from "next/image";
 import Link from "next/link";
 
+function CalendarIcon() {
+  return (
+    <svg width="13" height="13" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0 mt-[2px]">
+      <rect x="1" y="2" width="12" height="11" rx="1.5" stroke="#6a6a6a" strokeWidth="1.2"/>
+      <path d="M1 5.5h12" stroke="#6a6a6a" strokeWidth="1.2"/>
+      <path d="M4.5 1v2M9.5 1v2" stroke="#6a6a6a" strokeWidth="1.2" strokeLinecap="round"/>
+    </svg>
+  );
+}
+
+function Placeholder({ label }: { label: string }) {
+  return (
+    <div className="mb-12 px-6 md:px-14 lg:px-20">
+      <div className="flex aspect-[16/9] w-full items-center justify-center rounded-lg border border-dashed border-[#2e2e2e] bg-[#141414]">
+        <p className="font-helvetica text-[13px] text-[#3a3a3a]">{label}</p>
+      </div>
+    </div>
+  );
+}
+
+
 export default function StatMindProject() {
   return (
-    <div className="w-full max-w-4xl mx-auto px-4 sm:px-8 py-12">
-      {/* Header */}
-      <div className="mb-12">
-        <Link href="/work" className="text-[#5A6BFF] hover:underline text-sm mb-4 inline-block">← Back to Work</Link>
-        <h1 className="text-5xl font-bold text-white mb-4">StatMind</h1>
-        <p className="text-[#bdbdbd] text-lg mb-8">Analytics platform with intelligent insights and real-time dashboards</p>
-        
-        {/* Project Meta */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-8 border-t border-b border-[#232323]">
-          <div>
-            <p className="text-[#bdbdbd] text-xs uppercase tracking-widest mb-2">Role</p>
-            <p className="text-white font-semibold">UI/UX Designer</p>
-          </div>
-          <div>
-            <p className="text-[#bdbdbd] text-xs uppercase tracking-widest mb-2">Timeline</p>
-            <p className="text-white font-semibold">3 Months</p>
-          </div>
-          <div>
-            <p className="text-[#bdbdbd] text-xs uppercase tracking-widest mb-2">Team</p>
-            <p className="text-white font-semibold">Design + Dev</p>
-          </div>
-          <div>
-            <p className="text-[#bdbdbd] text-xs uppercase tracking-widest mb-2">Status</p>
-            <p className="text-white font-semibold">Live</p>
-          </div>
+    <div className="min-h-screen text-[#ededed]">
+
+      {/* ── Back link ── */}
+      <div className="px-6 py-4 pb-0 md:px-6 lg:px-8">
+        <Link
+          href="/"
+          className="font-helvetica flex items-center gap-1.5 text-[13px] text-[#eeeeee] transition-colors hover:text-[#a8a8a8] w-fit"
+        >
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          Back
+        </Link>
+      </div>
+
+      {/* ── Hero ── */}
+      <div className="mt-4 w-full overflow-hidden">
+        <div className="relative w-full aspect-[4/1] max-h-[72vh]">
+          <Image
+            src="/statmindstrips.png"
+            alt="StatMind platform"
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
+          />
         </div>
       </div>
 
-      {/* Hero Image Placeholder */}
-      <div className="w-full aspect-video bg-gradient-to-br from-[#2a2a2a] to-[#1a1a1a] rounded-xl mb-16 shadow-lg flex items-center justify-center">
-        <div className="text-center">
-          <Image src="/file.svg" alt="StatMind Preview" width={120} height={120} className="mx-auto mb-4 opacity-50" />
-          <p className="text-[#bdbdbd]">Project Preview</p>
+      {/* ── Project header ── */}
+      <div className="px-6 pt-10 pb-0 md:px-14 lg:px-20">
+        <h1 className="font-inter text-[1.75rem] font-light leading-snug tracking-tight text-white md:text-[2.25rem] lg:text-[2.75rem]">
+          StatMind
+        </h1>
+
+        <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:flex-wrap sm:gap-14">
+          <div className="flex items-start gap-2">
+            <CalendarIcon />
+            <div>
+              <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#6a6a6a]">Timeline</p>
+              <p className="font-helvetica mt-1 text-[13px] leading-snug text-[#c0c0c0]">August 2025 — December 2025</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-2">
+            <CalendarIcon />
+            <div>
+              <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#6a6a6a]">Location</p>
+              <p className="font-helvetica mt-1 text-[13px] leading-snug text-[#c0c0c0]">Texas, United States</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-2">
+            <CalendarIcon />
+            <div>
+              <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#6a6a6a]">Role</p>
+              <p className="font-helvetica mt-1 text-[13px] leading-snug text-[#c0c0c0]">UI/UX Designer</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-2">
+            <CalendarIcon />
+            <div>
+              <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#6a6a6a]">Status</p>
+              <p className="font-helvetica mt-1 text-[13px] leading-snug text-[#c0c0c0]">Live</p>
+            </div>
+          </div>
+        </div>
+
+        <hr className="mt-8 border-[#222]" />
+      </div>
+
+      {/* ── Intro ── */}
+      <div className="px-6 py-12 md:px-14 lg:px-20">
+        <div className="space-y-5 font-helvetica text-[15px] leading-[1.8] text-[#b8b8b8]">
+          <p>
+            If you&apos;d like to learn more,{" "}
+            <Link href="/" className="text-[#ededed] underline underline-offset-2 hover:text-[#5A6BFF] transition-colors">
+              please get in touch
+            </Link>
+            .
+          </p>
+          <p>
+            StatMind is an analytics platform designed to help businesses make data-driven decisions
+            without the cognitive overhead that comes with most analytics tools. The goal was to make
+            complex data feel approachable: powerful for experts, readable for everyone else.
+          </p>
+          <p>
+            I led the UI/UX design from concept through to final screens: information architecture,
+            dashboard layout system, data visualisation patterns, and the component library the
+            product runs on.
+          </p>
         </div>
       </div>
 
-      {/* Overview Section */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold text-white mb-6">Overview</h2>
-        <p className="text-[#bdbdbd] text-lg leading-relaxed mb-4">
-          StatMind is a comprehensive analytics platform designed to help businesses make data-driven decisions. The platform combines real-time data visualization with intelligent insights to provide users with actionable analytics at their fingertips.
+      {/* ── Main visual ── */}
+      <div className="mb-12 px-6 md:px-14 lg:px-20">
+        <figure>
+          <div className="relative w-full aspect-[1336/1002] overflow-hidden rounded-lg">
+            <Image
+              src="/fig1.png"
+              alt="StatMind dashboard — primary analytics view"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 90vw"
+            />
+          </div>
+          <figcaption className="mt-4 font-helvetica text-[13px] leading-relaxed text-[#5c5c5c] text-center">
+            StatMind dashboard — primary analytics view with real-time data and intelligent insight panels.
+          </figcaption>
+        </figure>
+      </div>
+
+      {/* ── Design sections ── */}
+      <div className="px-6 pb-6 md:px-14 lg:px-20">
+        <h2 className="font-inter text-[1.1rem] font-light text-white mb-6 tracking-tight">The Challenge</h2>
+        <div className="space-y-4 font-helvetica text-[15px] leading-[1.8] text-[#b8b8b8]">
+          <p>
+            Complex data needed to be visualised intuitively without overwhelming users. The
+            platform had to serve two very different audiences simultaneously: analysts who want
+            raw control, and decision-makers who just need the headline.
+          </p>
+          <p>
+            The design challenge was building one system that could flex between both without
+            feeling schizophrenic. The solution was a consistent visual language that scales from simple to deep.
+          </p>
+        </div>
+      </div>
+
+      <div className="mb-12 px-6 md:px-14 lg:px-20">
+        <figure>
+          <div className="relative w-full aspect-[1336/1002] overflow-hidden rounded-lg">
+            <Image
+              src="/lowstatmindwireframe.png"
+              alt="StatMind wireframes — dashboard layout exploration"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 90vw"
+            />
+          </div>
+          <figcaption className="mt-4 font-helvetica text-[13px] leading-relaxed text-[#5c5c5c] text-center">
+            Early wireframes — dashboard layout exploration before visual design.
+          </figcaption>
+        </figure>
+      </div>
+
+      <div className="px-6 pb-6 md:px-14 lg:px-20">
+        <h2 className="font-inter text-[1.1rem] font-light text-white mb-6 tracking-tight">Dashboard System</h2>
+        <div className="space-y-4 font-helvetica text-[15px] leading-[1.8] text-[#b8b8b8]">
+          <p>
+            I designed a modular widget system where each card is an independent unit with its own
+            data context, resize behaviour, and interaction state. Users can build personalised
+            views by composing widgets, without needing to understand the underlying data model.
+          </p>
+          <p>
+            Real-time updates are animated subtly. Values transition rather than jump, so the
+            dashboard feels alive without being distracting during a live presentation or a deep
+            analysis session.
+          </p>
+        </div>
+      </div>
+
+      <Placeholder label="Image — Widget system / component breakdown" />
+
+      <div className="px-6 pb-6 md:px-14 lg:px-20">
+        <h2 className="font-inter text-[1.1rem] font-light text-white mb-6 tracking-tight">AI Insights Layer</h2>
+        <div className="space-y-4 font-helvetica text-[15px] leading-[1.8] text-[#b8b8b8]">
+          <p>
+            StatMind surfaces intelligent recommendations alongside the raw data: pattern
+            detection, anomaly flags, and trend summaries. Designing this layer required
+            careful thought around trust: the AI suggestions needed to feel useful, not
+            intrusive, and never more confident than the data warranted.
+          </p>
+        </div>
+      </div>
+
+      <Placeholder label="Image — AI insights panel / recommendation UI" />
+
+      <div className="mb-12 px-6 md:px-14 lg:px-20">
+        <figure>
+          <div className="relative w-full aspect-[1336/1002] overflow-hidden rounded-lg">
+            <Image
+              src="/statmind.png"
+              alt="StatMind final screens"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 90vw"
+            />
+          </div>
+          <figcaption className="mt-4 font-helvetica text-[13px] leading-relaxed text-[#5c5c5c] text-center">
+            Final screens — full platform view across dashboard, reports, and insights.
+          </figcaption>
+        </figure>
+      </div>
+
+      {/* ── Footer ── */}
+      <div className="px-6 pb-20 md:px-14 lg:px-20">
+        <hr className="mb-10 border-[#1f1f1f]" />
+        <p className="font-helvetica text-[15px] text-[#5c5c5c]">Thanks for reading.</p>
+        <p className="font-helvetica mt-2 text-[15px] text-[#5c5c5c]">
+          Questions about this project?{" "}
+          <Link href="/" className="text-[#c0c0c0] underline underline-offset-2 hover:text-[#5A6BFF] transition-colors">
+            Get in touch
+          </Link>
+          .
         </p>
-        <p className="text-[#bdbdbd] text-lg leading-relaxed">
-          My role involved designing the entire user interface from concept through implementation, ensuring a seamless experience for both novice and advanced analytics users.
-        </p>
-      </section>
-
-      {/* Problem Statement */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold text-white mb-6">The Challenge</h2>
-        <div className="bg-[#1a1a1a] border border-[#232323] rounded-lg p-8">
-          <ul className="space-y-4">
-            <li className="flex gap-4">
-              <span className="text-[#5A6BFF] font-bold min-w-fit">•</span>
-              <span className="text-[#bdbdbd]">Complex data needed to be visualized in an intuitive way without overwhelming users</span>
-            </li>
-            <li className="flex gap-4">
-              <span className="text-[#5A6BFF] font-bold min-w-fit">•</span>
-              <span className="text-[#bdbdbd]">Balance between powerful features for experts and simplicity for beginners</span>
-            </li>
-            <li className="flex gap-4">
-              <span className="text-[#5A6BFF] font-bold min-w-fit">•</span>
-              <span className="text-[#bdbdbd]">Real-time data updates required responsive and performant dashboard</span>
-            </li>
-          </ul>
+        <div className="mt-8 flex flex-wrap gap-8 text-sm">
+          <Link href="/work/user-interface/konga-workstation" className="font-helvetica text-[#5c5c5c] transition-colors hover:text-[#5A6BFF]">
+            ← Konga WorkStation
+          </Link>
+          <Link href="/work/user-interface/tradon-app" className="font-helvetica text-[#5c5c5c] transition-colors hover:text-[#5A6BFF]">
+            Tradon App →
+          </Link>
         </div>
-      </section>
+      </div>
 
-      {/* Solution Section */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold text-white mb-6">Solution</h2>
-        <p className="text-[#bdbdbd] text-lg leading-relaxed mb-8">
-          I designed a modular dashboard system with customizable widgets that allows users to create personalized analytics views. Key features include:
-        </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-[#1a1a1a] border border-[#232323] rounded-lg p-6">
-            <h3 className="text-[#5A6BFF] font-semibold mb-3">Smart Dashboards</h3>
-            <p className="text-[#bdbdbd]">Customizable widgets and drag-and-drop interface for intuitive dashboard building</p>
-          </div>
-          <div className="bg-[#1a1a1a] border border-[#232323] rounded-lg p-6">
-            <h3 className="text-[#5A6BFF] font-semibold mb-3">Real-time Updates</h3>
-            <p className="text-[#bdbdbd]">Live data streams with smooth animations and instant notifications</p>
-          </div>
-          <div className="bg-[#1a1a1a] border border-[#232323] rounded-lg p-6">
-            <h3 className="text-[#5A6BFF] font-semibold mb-3">AI Insights</h3>
-            <p className="text-[#bdbdbd]">Intelligent recommendations based on data patterns and trends</p>
-          </div>
-          <div className="bg-[#1a1a1a] border border-[#232323] rounded-lg p-6">
-            <h3 className="text-[#5A6BFF] font-semibold mb-3">Accessibility First</h3>
-            <p className="text-[#bdbdbd]">WCAG compliant design ensuring usability for all users</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Results Section */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold text-white mb-6">Results & Impact</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="text-center">
-            <p className="text-4xl font-bold text-[#5A6BFF] mb-2">92%</p>
-            <p className="text-[#bdbdbd]">User Satisfaction Score</p>
-          </div>
-          <div className="text-center">
-            <p className="text-4xl font-bold text-[#5A6BFF] mb-2">45%</p>
-            <p className="text-[#bdbdbd]">Increase in User Engagement</p>
-          </div>
-          <div className="text-center">
-            <p className="text-4xl font-bold text-[#5A6BFF] mb-2">2.3s</p>
-            <p className="text-[#bdbdbd]">Average Dashboard Load Time</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="py-12 border-t border-[#232323]">
-        <div className="flex flex-col md:flex-row gap-6 items-center justify-between">
-          <div>
-            <h3 className="text-2xl font-bold text-white mb-2">Ready to explore more?</h3>
-            <p className="text-[#bdbdbd]">Check out other projects or get in touch</p>
-          </div>
-          <div className="flex gap-4">
-            <Link href="/work" className="px-6 py-3 bg-[#232323] text-white rounded-lg hover:bg-[#2a2a2a] transition-colors">
-              View All Projects
-            </Link>
-            <Link href="/" className="px-6 py-3 bg-[#5A6BFF] text-white rounded-lg hover:bg-[#707FFF] transition-colors">
-              Contact Me
-            </Link>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

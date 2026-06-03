@@ -1,426 +1,470 @@
 'use client';
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 
-export default function CeraveCerawardsEngineeringProject() {
-  const [showCodeModal, setShowCodeModal] = useState(false);
-
-  const codeSnippets = [
-    {
-      filename: "rewards-engine.ts",
-      language: "typescript",
-      code: `// Event-sourced transaction processing
-async function processRewardTransaction(event: RewardEvent) {
-  // 1. Validate event integrity
-  const validated = await validateEventSignature(event);
-  
-  // 2. Calculate points with tier multiplier
-  const basePoints = calculateBasePoints(event.amount, event.category);
-  const tierMultiplier = await getTierMultiplier(event.userId);
-  const finalPoints = basePoints * tierMultiplier;
-  
-  // 3. Check for promotional multipliers
-  const promoMultiplier = await getActivePromo(event.userId, event.category);
-  const bonusPoints = finalPoints * (1 + promoMultiplier);
-  
-  // 4. Atomic ledger update with event sourcing
-  const transaction = {
-    userId: event.userId,
-    points: bonusPoints,
-    timestamp: Date.now(),
-    tier: await getUserTier(event.userId),
-    expiryDate: calculateExpiry(event.userId)
-  };
-  
-  // 5. Persist immutable event
-  await eventStore.append(transaction);
-  await updateUserBalance(event.userId, bonusPoints);
-  
-  return transaction;
-}`
-    },
-    {
-      filename: "tier-progression.ts",
-      language: "typescript",
-      code: `// Complex tier logic with edge case handling
-async function evaluateTierProgression(userId: string) {
-  const user = await getUser(userId);
-  const balance = await getUserBalance(userId);
-  
-  // Tier progression thresholds
-  const tiers = {
-    BRONZE: { min: 0, max: 5000, benefits: [...] },
-    SILVER: { min: 5000, max: 15000, benefits: [...] },
-    GOLD: { min: 15000, max: 50000, benefits: [...] },
-    PLATINUM: { min: 50000, max: Infinity, benefits: [...] }
-  };
-  
-  // Determine new tier
-  let newTier = user.currentTier;
-  for (const [tierName, tierConfig] of Object.entries(tiers)) {
-    if (balance >= tierConfig.min && balance <= tierConfig.max) {
-      newTier = tierName;
-      break;
-    }
-  }
-  
-  // Handle tier change
-  if (newTier !== user.currentTier) {
-    // Promotion: add anniversary points bonus
-    if (getTierRank(newTier) > getTierRank(user.currentTier)) {
-      await addPoints(userId, tierConfig.promotionBonus);
-    }
-    // Demotion: notify user but keep accumulated benefits
-    else if (getTierRank(newTier) < getTierRank(user.currentTier)) {
-      await notifyDemotion(userId);
-    }
-    
-    await updateUserTier(userId, newTier);
-  }
-}`
-    },
-    {
-      filename: "eventual-consistency.ts",
-      language: "typescript",
-      code: `// Distributed ledger reconciliation
-async function reconcilePointsLedger() {
-  const eventLog = await eventStore.getAll();
-  const currentBalances = new Map();
-  
-  // Replay all events to calculate ground truth
-  for (const event of eventLog) {
-    const current = currentBalances.get(event.userId) || 0;
-    
-    // Handle point expiration
-    if (isPointExpired(event.expiryDate)) {
-      continue;
-    }
-    
-    // Apply transaction
-    const newBalance = current + event.points;
-    currentBalances.set(event.userId, newBalance);
-    
-    // Audit: track reconciliation
-    await auditLog.record({
-      userId: event.userId,
-      operation: 'RECONCILE',
-      calculatedBalance: newBalance,
-      timestamp: Date.now()
-    });
-  }
-  
-  // Verify consistency across replicas
-  const dbBalances = await database.getAllBalances();
-  const discrepancies = [];
-  
-  for (const [userId, calculated] of currentBalances) {
-    const stored = dbBalances.get(userId);
-    if (calculated !== stored) {
-      discrepancies.push({ userId, calculated, stored });
-    }
-  }
-  
-  return discrepancies;
-}`
-    }
-  ];
-
+function CalendarIcon() {
   return (
-    <div className="w-full max-w-4xl mx-auto px-4 sm:px-8 py-12">
-      {/* Header */}
-      <div className="mb-12">
-        <Link href="/work" className="text-[#ED017F] hover:underline text-sm mb-4 inline-block">← Back to Work</Link>
-        <h1 className="text-5xl font-bold text-white mb-4">CeraVe CerAwards</h1>
-        <p className="text-[#bdbdbd] text-lg mb-8">Distributed rewards engine handling points, tiers, and transactions at scale</p>
-        
-        {/* Project Meta */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-8 border-t border-b border-[#232323]">
-          <div>
-            <p className="text-[#bdbdbd] text-xs uppercase tracking-widest mb-2">Role</p>
-            <p className="text-white font-semibold">Backend Engineer</p>
-          </div>
-          <div>
-            <p className="text-[#bdbdbd] text-xs uppercase tracking-widest mb-2">Timeline</p>
-            <p className="text-white font-semibold">4 Months</p>
-          </div>
-          <div>
-            <p className="text-[#bdbdbd] text-xs uppercase tracking-widest mb-2">Scale</p>
-            <p className="text-white font-semibold">450K Users</p>
-          </div>
-          <div>
-            <p className="text-[#bdbdbd] text-xs uppercase tracking-widest mb-2">Status</p>
-            <p className="text-white font-semibold">Live</p>
-          </div>
+    <svg width="13" height="13" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0 mt-[2px]">
+      <rect x="1" y="2" width="12" height="11" rx="1.5" stroke="#6a6a6a" strokeWidth="1.2"/>
+      <path d="M1 5.5h12" stroke="#6a6a6a" strokeWidth="1.2"/>
+      <path d="M4.5 1v2M9.5 1v2" stroke="#6a6a6a" strokeWidth="1.2" strokeLinecap="round"/>
+    </svg>
+  );
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function Placeholder({ label }: { label: string }) {
+  return null; // images coming soon
+}
+
+function CodeBlock({ filename, code }: { filename: string; code: string }) {
+  return (
+    <div className="mb-12 px-6 md:px-14 lg:px-20">
+      <div className="overflow-hidden rounded-lg border border-[#222]">
+        <div className="flex items-center gap-3 border-b border-[#222] bg-[#141414] px-5 py-3">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="text-[#005994]">
+            <path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z" fill="currentColor" opacity=".2"/>
+            <path d="M13 2v7h7M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9L13 2z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <span className="font-mono text-[12px] text-[#6a6a6a]">{filename}</span>
         </div>
+        <pre className="overflow-x-auto bg-[#0d0d0d] p-6 text-[13px] leading-[1.75] text-[#c9d1d9]">
+          <code>{code}</code>
+        </pre>
       </div>
+    </div>
+  );
+}
 
-      {/* Hero Image Placeholder */}
-      <div className="w-full aspect-video bg-gradient-to-br from-[#2a2a2a] to-[#1a1a1a] rounded-xl mb-16 shadow-lg flex items-center justify-center">
-        <div className="text-center">
-          <Image src="/file.svg" alt="CeraVe CerAwards Preview" width={120} height={120} className="mx-auto mb-4 opacity-50" />
-          <p className="text-[#bdbdbd]">Project Preview</p>
-        </div>
-      </div>
-
-      {/* Overview Section */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold text-white mb-6">Overview</h2>
-        <p className="text-[#bdbdbd] text-lg leading-relaxed mb-4">
-          The CeraVe CerAwards engineering project centers on building a distributed rewards engine that processes loyalty transactions, calculates points, manages tier progression, and handles redemptions for 450K+ active users.
-        </p>
-        <p className="text-[#bdbdbd] text-lg leading-relaxed mb-4">
-          As Backend Engineer, I architected the core transaction pipeline handling millions of monthly operations while maintaining accuracy, consistency, and sub-100ms API responses.
-        </p>
-        <p className="text-[#bdbdbd] text-lg leading-relaxed">
-          The system needed to handle complex business rules (bonus multipliers, tier benefits, expiring points) while remaining eventually consistent across microservices and distributed databases.
-        </p>
-      </section>
-
-      {/* Technical Challenge */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold text-white mb-6">Engineering Challenges</h2>
-        <div className="space-y-6">
-          <div className="bg-[#1a1a1a] border border-[#232323] rounded-lg p-8">
-            <h3 className="text-[#ED017F] font-semibold text-lg mb-3">Distributed Transaction Consistency</h3>
-            <p className="text-[#bdbdbd]">Ensuring accuracy when recording purchases, earning points, and applying tier bonuses across multiple services without race conditions or double-counting</p>
-          </div>
-
-          <div className="bg-[#1a1a1a] border border-[#232323] rounded-lg p-8">
-            <h3 className="text-[#ED017F] font-semibold text-lg mb-3">Complex Point Calculation</h3>
-            <p className="text-[#bdbdbd]">Managing dynamic point multipliers, category-specific rates, tier bonuses, promotional campaigns, and earning/expiration rules in real-time</p>
-          </div>
-
-          <div className="bg-[#1a1a1a] border border-[#232323] rounded-lg p-8">
-            <h3 className="text-[#ED017F] font-semibold text-lg mb-3">High-Volume Processing</h3>
-            <p className="text-[#bdbdbd]">Processing 15K+ transactions/minute during peak times while maintaining under 100ms API response times</p>
-          </div>
-
-          <div className="bg-[#1a1a1a] border border-[#232323] rounded-lg p-8">
-            <h3 className="text-[#ED017F] font-semibold text-lg mb-3">Tier Promotion & Demotion Logic</h3>
-            <p className="text-[#bdbdbd]">Accurately tracking progress toward tiers, triggering promotions, managing benefits, and handling edge cases (expired points, refunds, cancellations)</p>
-          </div>
-
-          <div className="bg-[#1a1a1a] border border-[#232323] rounded-lg p-8">
-            <h3 className="text-[#ED017F] font-semibold text-lg mb-3">Data Accuracy & Auditing</h3>
-            <p className="text-[#bdbdbd]">Complete audit trail for regulatory compliance, reconciliation with finance systems, and dispute resolution</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Architecture Section */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold text-white mb-8">Architecture & Solution</h2>
-
-        <div className="mb-10">
-          <h3 className="text-2xl font-semibold text-white mb-6">Event-Driven Architecture</h3>
-          <div className="bg-[#1a1a1a] border border-[#232323] rounded-lg p-8">
-            <p className="text-[#bdbdbd] mb-6">Built an event-sourced rewards system where all point transactions are immutable events:</p>
-            <div className="space-y-4 text-[#bdbdbd]">
-              <p>• <strong>Purchase event</strong> → Calculate base points → Apply tier multiplier → Store event → Update balance</p>
-              <p>• <strong>Tier promotion event</strong> → Unlock new benefits → Notify user → Update profile</p>
-              <p>• <strong>Redemption event</strong> → Deduct points → Apply discount → Record transaction</p>
-              <p>• <strong>Expiration event</strong> → Remove expired balance → Notify user → Update ledger</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="mb-10">
-          <h3 className="text-2xl font-semibold text-white mb-6">Key Technical Implementations</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-[#1a1a1a] border border-[#232323] rounded-lg p-6">
-              <h4 className="text-[#ED017F] font-semibold mb-3">Saga Pattern</h4>
-              <p className="text-[#bdbdbd] text-sm">Choreography-based sagas for multi-step transactions (purchase → points → tier check → notification)</p>
-            </div>
-            <div className="bg-[#1a1a1a] border border-[#232323] rounded-lg p-6">
-              <h4 className="text-[#ED017F] font-semibold mb-3">Event Sourcing</h4>
-              <p className="text-[#bdbdbd] text-sm">Immutable event log as source of truth, enabling full audit trail and temporal queries</p>
-            </div>
-            <div className="bg-[#1a1a1a] border border-[#232323] rounded-lg p-6">
-              <h4 className="text-[#ED017F] font-semibold mb-3">CQRS Pattern</h4>
-              <p className="text-[#bdbdbd] text-sm">Separate read models (optimized for queries) from write model (canonical source of truth)</p>
-            </div>
-            <div className="bg-[#1a1a1a] border border-[#232323] rounded-lg p-6">
-              <h4 className="text-[#ED017F] font-semibold mb-3">Eventual Consistency</h4>
-              <p className="text-[#bdbdbd] text-sm">Distributed consensus protocol ensuring all replicas converge within SLA</p>
-            </div>
-            <div className="bg-[#1a1a1a] border border-[#232323] rounded-lg p-6">
-              <h4 className="text-[#ED017F] font-semibold mb-3">Caching Strategy</h4>
-              <p className="text-[#bdbdbd] text-sm">Redis for hot data (user balances, tier info), PostgreSQL for cold storage and reconciliation</p>
-            </div>
-            <div className="bg-[#1a1a1a] border border-[#232323] rounded-lg p-6">
-              <h4 className="text-[#ED017F] font-semibold mb-3">Message Queue</h4>
-              <p className="text-[#bdbdbd] text-sm">Apache Kafka for event streaming with partitioning by user ID to preserve ordering</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Results Section */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold text-white mb-6">Performance & Scale</h2>
-        
-        <div className="mb-10">
-          <h3 className="text-[#ED017F] font-semibold text-lg mb-6">Transaction Performance</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <p className="text-4xl font-bold text-[#ED017F] mb-2">45ms</p>
-              <p className="text-[#bdbdbd]">P95 API Response Time</p>
-            </div>
-            <div className="text-center">
-              <p className="text-4xl font-bold text-[#ED017F] mb-2">15K+</p>
-              <p className="text-[#bdbdbd]">Transactions/Minute Peak</p>
-            </div>
-            <div className="text-center">
-              <p className="text-4xl font-bold text-[#ED017F] mb-2">99.95%</p>
-              <p className="text-[#bdbdbd]">Accuracy Rate</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="mb-10">
-          <h3 className="text-[#ED017F] font-semibold text-lg mb-6">Reliability & Consistency</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <p className="text-4xl font-bold text-[#ED017F] mb-2">99.99%</p>
-              <p className="text-[#bdbdbd]">System Uptime</p>
-            </div>
-            <div className="text-center">
-              <p className="text-4xl font-bold text-[#ED017F] mb-2">100%</p>
-              <p className="text-[#bdbdbd]">Reconciliation Match</p>
-            </div>
-            <div className="text-center">
-              <p className="text-4xl font-bold text-[#ED017F] mb-2">2.5s</p>
-              <p className="text-[#bdbdbd]">Event Propagation SLA</p>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <h3 className="text-[#ED017F] font-semibold text-lg mb-6">Business Impact</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <p className="text-4xl font-bold text-[#ED017F] mb-2">450K+</p>
-              <p className="text-[#bdbdbd]">Active Users</p>
-            </div>
-            <div className="text-center">
-              <p className="text-4xl font-bold text-[#ED017F] mb-2">$2.4M</p>
-              <p className="text-[#bdbdbd]">Revenue Influenced</p>
-            </div>
-            <div className="text-center">
-              <p className="text-4xl font-bold text-[#ED017F] mb-2">4.8x</p>
-              <p className="text-[#bdbdbd]">CLV Increase</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Technical Insights */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold text-white mb-6">Technical Insights</h2>
-        <div className="bg-[#1a1a1a] border border-[#ED017F] border-opacity-30 rounded-lg p-8">
-          <ul className="space-y-4">
-            <li className="flex gap-4">
-              <span className="text-[#ED017F] font-bold">•</span>
-              <span className="text-[#bdbdbd]"><strong>Event sourcing scales:</strong> Trading some write complexity for unlimited auditability and temporal queries is a smart trade at this scale</span>
-            </li>
-            <li className="flex gap-4">
-              <span className="text-[#ED017F] font-bold">•</span>
-              <span className="text-[#bdbdbd]"><strong>Eventual consistency is fine:</strong> For loyalty systems, eventual consistency (2-5s) is acceptable and massively simplifies architecture</span>
-            </li>
-            <li className="flex gap-4">
-              <span className="text-[#ED017F] font-bold">•</span>
-              <span className="text-[#bdbdbd]"><strong>Kafka as source of truth:</strong> Using Kafka as the event log combined with computed caches makes debugging and reprocessing trivial</span>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      {/* Code Logic Section */}
-      <section className="mb-16">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-3xl font-bold text-white">Code Logic</h2>
-          <button
-            onClick={() => setShowCodeModal(true)}
-            className="px-6 py-3 bg-[#ED017F] text-white rounded-lg hover:bg-[#ff62b9] transition-colors font-semibold flex items-center gap-2"
-          >
-            <span>View Code</span>
-            <span className="text-lg">→</span>
-          </button>
-        </div>
-        <p className="text-[#bdbdbd] text-lg">Deep dive into the architecture with key code snippets showing event sourcing, tier progression logic, and distributed consistency patterns.</p>
-      </section>
-
-      {/* Call to Action */}
-      <section className="py-12 border-t border-[#232323]">
-        <div className="flex flex-col md:flex-row gap-6 items-center justify-between">
-          <div>
-            <h3 className="text-2xl font-bold text-white mb-2">Ready to explore more?</h3>
-            <p className="text-[#bdbdbd]">Check out other engineering projects or get in touch</p>
-          </div>
-          <div className="flex gap-4">
-            <Link href="/work" className="px-6 py-3 bg-[#232323] text-white rounded-lg hover:bg-[#2a2a2a] transition-colors">
-              View All Projects
-            </Link>
-            <Link href="/" className="px-6 py-3 bg-[#ED017F] text-white rounded-lg hover:bg-[#ff62b9] transition-colors">
-              Contact Me
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Code Modal */}
-      {showCodeModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-10 flex items-center justify-center z-50 p-4" onClick={(e) => e.target === e.currentTarget && setShowCodeModal(false)}>
-          <div className="bg-[#1e1e1e] rounded-lg shadow-2xl w-full max-w-4xl max-h-[90vh] flex flex-col border border-[#232323]">
-            {/* Modal Header */}
-            <div className="flex items-center justify-between p-4 border-b border-[#232323] bg-[#252526]">
-              <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-[#ED017F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-                <span className="text-white font-semibold">Code Logic Explorer</span>
-              </div>
-              <button
-                onClick={() => setShowCodeModal(false)}
-                className="text-[#bdbdbd] hover:text-white transition-colors"
-              >
-                ✕
-              </button>
-            </div>
-
-            {/* Modal Content */}
-            <div className="flex-1 overflow-y-auto">
-              <div className="space-y-4 p-4">
-                {codeSnippets.map((snippet, idx) => (
-                  <div key={idx} className="bg-[#1e1e1e] border border-[#232323] rounded-lg overflow-hidden">
-                    {/* File Tab */}
-                    <div className="bg-[#252526] px-4 py-3 border-b border-[#232323] flex items-center gap-2">
-                      <svg className="w-4 h-4 text-[#ED017F]" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z" />
-                      </svg>
-                      <span className="text-[#bdbdbd] text-sm font-mono">{snippet.filename}</span>
-                      <span className="ml-auto text-xs text-[#666] bg-[#1e1e1e] px-2 py-1 rounded">{snippet.language}</span>
-                    </div>
-
-                    {/* Code Content */}
-                    <div className="overflow-x-auto">
-                      <pre className="text-sm text-[#d4d4d4] font-mono p-4 leading-relaxed">
-                        <code>{snippet.code}</code>
-                      </pre>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Modal Footer */}
-            <div className="border-t border-[#232323] bg-[#252526] px-4 py-3 text-sm text-[#bdbdbd]">
-              Showing {codeSnippets.length} key code snippets from the project architecture
-            </div>
-          </div>
+function Section({
+  image,
+  caption,
+  children,
+}: {
+  image: string;
+  caption?: string;
+  children?: React.ReactNode;
+}) {
+  return (
+    <div className="mb-12 px-6 md:px-14 lg:px-20">
+      {children && (
+        <div className="mb-8 space-y-4 font-helvetica text-[15px] leading-[1.8] text-[#b8b8b8]">
+          {children}
         </div>
       )}
+      <figure>
+        <div className="overflow-hidden rounded-lg bg-[#f0f0f0] p-6 md:p-10">
+          <div className="relative w-full aspect-[1336/1002]">
+            <Image
+              src={image}
+              alt={caption ?? ""}
+              fill
+              className="object-contain"
+              sizes="(max-width: 768px) 100vw, 90vw"
+            />
+          </div>
+        </div>
+        {caption && (
+          <figcaption className="mt-4 font-helvetica text-[13px] leading-relaxed text-[#5c5c5c]">
+            {caption}
+          </figcaption>
+        )}
+      </figure>
+    </div>
+  );
+}
+
+export default function CeraveCerawardsEngineeringProject() {
+  return (
+    <div className="min-h-screen text-[#ededed]">
+
+      {/* ── Back link ── */}
+      <div className="px-6 py-4 pb-0 md:px-6 lg:px-8">
+        <Link
+          href="/"
+          className="font-helvetica flex items-center gap-1.5 text-[13px] text-[#eeeeee] transition-colors hover:text-[#a8a8a8] w-fit"
+        >
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          Back
+        </Link>
+      </div>
+
+      {/* ── Hero ── */}
+      <div className="mt-4 w-full overflow-hidden">
+        <div className="relative w-full aspect-[4/1] max-h-[72vh]">
+          <Image
+            src="/cerawards.png"
+            alt="CeraVe CerAwards platform"
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
+          />
+        </div>
+      </div>
+
+      {/* ── Project header ── */}
+      <div className="px-6 pt-10 pb-0 md:px-14 lg:px-20">
+        <h1 className="font-inter text-[1.75rem] font-light leading-snug tracking-tight text-white md:text-[2.25rem] lg:text-[2.75rem]">
+          CeraVe CerAwards — Engineering
+        </h1>
+
+        <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:gap-16">
+          <div className="flex items-start gap-2">
+            <CalendarIcon />
+            <div>
+              <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#6a6a6a]">Timeline</p>
+              <p className="font-helvetica mt-1 text-[13px] leading-snug text-[#c0c0c0]">February — March 2026</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-2">
+            <CalendarIcon />
+            <div>
+              <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#6a6a6a]">Stack</p>
+              <p className="font-helvetica mt-1 text-[13px] leading-snug text-[#c0c0c0]">Next.js, TypeScript</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-2">
+            <CalendarIcon />
+            <div>
+              <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#6a6a6a]">Role</p>
+              <p className="font-helvetica mt-1 text-[13px] leading-snug text-[#c0c0c0]">Technical Lead</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-2">
+            <CalendarIcon />
+            <div>
+              <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#6a6a6a]">Live at</p>
+              <a
+                href="https://www.cerawards.com.ng"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-helvetica mt-1 block text-[13px] leading-snug text-[#c0c0c0] underline underline-offset-2 hover:text-[#005994] transition-colors"
+              >
+                cerawards.com.ng
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <hr className="mt-8 border-[#222]" />
+      </div>
+
+      {/* ── Intro ── */}
+      <div className="px-6 py-12 md:px-14 lg:px-20">
+        <div className="space-y-5 font-helvetica text-[15px] leading-[1.8] text-[#b8b8b8]">
+          <p>
+            If you&apos;d like to learn more,{" "}
+            <Link href="/" className="text-[#ededed] underline underline-offset-2 hover:text-[#005994] transition-colors">
+              please get in touch
+            </Link>
+            .
+          </p>
+          <p>
+            This covers the engineering side of the CerAwards platform: the architecture decisions,
+            the problems that only showed up in code, and the workarounds that made it to production.
+            The design process lives in a{" "}
+            <Link href="/work/user-interface/cerave-cerawards" className="text-[#ededed] underline underline-offset-2 hover:text-[#005994] transition-colors">
+              separate case study
+            </Link>
+            .
+          </p>
+          <p>
+            I led the technical side of the build alongside Damilare and one other developer. Three
+            people, one tight deadline, a platform that needed to hold up under thousands of creator
+            submissions and a high-traffic public vote. Every decision around structure and performance
+            had a real consequence.
+          </p>
+        </div>
+      </div>
+
+      {/* ── Stats ── */}
+      <div className="px-6 pb-16 md:px-14 lg:px-20">
+        <div className="grid grid-cols-2 gap-y-10 gap-x-8 sm:grid-cols-3 lg:grid-cols-6">
+          {[
+            { stat: "800+", label: "Creator entries" },
+            { stat: "68,000+", label: "Public votes" },
+            { stat: "6", label: "Entry categories" },
+            { stat: "500M+", label: "Total reach" },
+            { stat: "3", label: "Developers" },
+            { stat: "~6 wks", label: "Build to live" },
+          ].map(({ stat, label }) => (
+            <div key={label}>
+              <p className="font-inter text-[1.75rem] font-light text-white">{stat}</p>
+              <p className="font-helvetica mt-1 text-[13px] leading-snug text-[#5c5c5c]">{label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <hr className="mx-6 mb-16 border-[#1f1f1f] md:mx-14 lg:mx-20" />
+
+      {/* ── Architecture ── */}
+      <div className="px-6 pb-6 md:px-14 lg:px-20">
+        <h2 className="font-inter text-[1.1rem] font-light text-white mb-6 tracking-tight">Architecture</h2>
+        <div className="space-y-4 font-helvetica text-[15px] leading-[1.8] text-[#b8b8b8]">
+          <p>
+            Next.js was the right call here. Server-side rendering for the public voting pages
+            (SEO and load speed mattered for a campaign site), API routes for all submission and
+            vote handling, and a single deployment target that kept the team moving fast.
+          </p>
+          <p>
+            The database layer held two core objects: submissions and votes. Submissions tracked the
+            creator, the category, the content link, and the thumbnail. Votes tracked the voter
+            identity and the submission they voted for, with deduplication enforced at the database
+            level, not just in code.
+          </p>
+        </div>
+      </div>
+
+      <Placeholder label="Image — Architecture diagram or database schema" />
+
+      {/* ── Submission logic ── */}
+      <div className="px-6 pb-6 md:px-14 lg:px-20">
+        <h2 className="font-inter text-[1.1rem] font-light text-white mb-6 tracking-tight">Submission Logic</h2>
+        <div className="space-y-4 font-helvetica text-[15px] leading-[1.8] text-[#b8b8b8]">
+          <p>
+            Each creator could submit to up to six categories. Their email was the key, used to
+            track which categories they&apos;d already entered and lock slots once submitted. The
+            validation had to be airtight: the same email couldn&apos;t resubmit to a category, but
+            it could come back and fill remaining ones. Once all six were done, the email was
+            inactive for uploads entirely.
+          </p>
+          <p>
+            This ran as a server-side check on every submission request. No client-side trust.
+          </p>
+        </div>
+      </div>
+
+      <CodeBlock
+        filename="api/submit/route.ts"
+        code={`export async function POST(req: Request) {
+  const { email, category, contentUrl, thumbnail } = await req.json();
+
+  // Check how many categories this email has already entered
+  const existing = await db.submission.findMany({
+    where: { email },
+    select: { category: true },
+  });
+
+  const enteredCategories = existing.map((s) => s.category);
+
+  // Block if already submitted to this category
+  if (enteredCategories.includes(category)) {
+    return Response.json(
+      { error: "Already submitted to this category." },
+      { status: 409 }
+    );
+  }
+
+  // Block if all 6 categories are filled
+  if (enteredCategories.length >= 6) {
+    return Response.json(
+      { error: "All categories submitted. Email is inactive for uploads." },
+      { status: 403 }
+    );
+  }
+
+  // Create the submission
+  const submission = await db.submission.create({
+    data: { email, category, contentUrl, thumbnail },
+  });
+
+  return Response.json({ success: true, id: submission.id });
+}`}
+      />
+
+      {/* ── Thumbnail problem ── */}
+      <div className="px-6 pb-6 md:px-14 lg:px-20">
+        <h2 className="font-inter text-[1.1rem] font-light text-white mb-6 tracking-tight">The Thumbnail Problem</h2>
+        <div className="space-y-4 font-helvetica text-[15px] leading-[1.8] text-[#b8b8b8]">
+          <p>
+            This was the part that wasn&apos;t obvious until we were in it. Creators submitted Instagram
+            and TikTok links. The voting page needed to show each entry visually. You can&apos;t ask
+            68,000 voters to click a link to decide what to vote for.
+          </p>
+          <p>
+            The problem: you cannot reliably pull a thumbnail from an Instagram or TikTok URL on the
+            server. Both platforms actively block cross-origin image access. oEmbed returns HTML,
+            not a usable image src. Attempting to proxy the thumbnail server-side ran into
+            authentication walls and inconsistent responses depending on whether the post was public,
+            private, or had already been cached differently.
+          </p>
+          <p>
+            The workaround was to shift the responsibility to the creator at submission time. Rather
+            than trying to extract the thumbnail after the fact, we required uploaders to provide a
+            still image alongside their link, a screenshot or export from their content. We stored
+            that in our own bucket. Controlled, consistent, no third-party dependency at render time.
+          </p>
+          <p>
+            It added a small step to the submission form, but it solved the problem permanently and
+            actually gave us better-quality preview images than auto-extracted thumbnails would have.
+          </p>
+        </div>
+      </div>
+
+      <CodeBlock
+        filename="api/thumbnail/route.ts"
+        code={`// What we tried first — server-side oEmbed extraction
+async function tryOEmbed(url: string): Promise<string | null> {
+  try {
+    // TikTok oEmbed — returns HTML embed, not a direct image URL
+    const res = await fetch(
+      \`https://www.tiktok.com/oembed?url=\${encodeURIComponent(url)}\`
+    );
+    const data = await res.json();
+    // thumbnail_url exists sometimes — but not reliably for all content types
+    return data.thumbnail_url ?? null;
+  } catch {
+    return null;
+  }
+}
+
+// What we shipped — creator uploads their own thumbnail at submission
+// Stored in our bucket, served directly with no third-party dependency
+async function uploadThumbnail(file: File, submissionId: string) {
+  const key = \`thumbnails/\${submissionId}-\${Date.now()}\`;
+
+  await storage.put(key, file, {
+    contentType: file.type,
+    access: "public",
+  });
+
+  return \`\${process.env.STORAGE_URL}/\${key}\`;
+}`}
+      />
+
+      <Placeholder label="Image — Submission form showing thumbnail upload step" />
+
+      {/* ── Voting integrity ── */}
+      <div className="px-6 pb-6 md:px-14 lg:px-20">
+        <h2 className="font-inter text-[1.1rem] font-light text-white mb-6 tracking-tight">Voting Integrity</h2>
+        <div className="space-y-4 font-helvetica text-[15px] leading-[1.8] text-[#b8b8b8]">
+          <p>
+            68,000+ votes coming in through a public-facing page is a surface for abuse. We needed
+            deduplication that was strict enough to prevent ballot-stuffing but not so aggressive
+            that it blocked legitimate voters on shared IPs (families, offices, mobile networks).
+          </p>
+          <p>
+            We keyed votes on a combination of email and submission ID at the database level. A
+            unique constraint made duplicate votes a hard error, not just a soft warning. The
+            API returned a clean error state the UI could handle gracefully, without retrying.
+          </p>
+        </div>
+      </div>
+
+      <CodeBlock
+        filename="api/vote/route.ts"
+        code={`export async function POST(req: Request) {
+  const { voterEmail, submissionId } = await req.json();
+
+  try {
+    // Unique constraint on (voterEmail, submissionId) in the DB schema
+    // If a duplicate vote is attempted, Prisma throws a P2002 error
+    await db.vote.create({
+      data: { voterEmail, submissionId },
+    });
+
+    // Increment the vote count on the submission atomically
+    await db.submission.update({
+      where: { id: submissionId },
+      data: { voteCount: { increment: 1 } },
+    });
+
+    return Response.json({ success: true });
+
+  } catch (err: unknown) {
+    if (
+      typeof err === "object" &&
+      err !== null &&
+      "code" in err &&
+      (err as { code: string }).code === "P2002"
+    ) {
+      // Already voted — return a friendly error, not a 500
+      return Response.json(
+        { error: "You have already voted for this entry." },
+        { status: 409 }
+      );
+    }
+    throw err;
+  }
+}`}
+      />
+
+      <Placeholder label="Image — Voting page / vote confirmation UI" />
+
+      {/* ── Performance ── */}
+      <div className="px-6 pb-6 md:px-14 lg:px-20">
+        <h2 className="font-inter text-[1.1rem] font-light text-white mb-6 tracking-tight">Performance on Mobile</h2>
+        <div className="space-y-4 font-helvetica text-[15px] leading-[1.8] text-[#b8b8b8]">
+          <p>
+            The brief was explicit about mobile performance. Thousands of Nigerian creators, most
+            on phones, many on variable network connections. We leaned on Next.js{" "}
+            <code className="font-mono text-[13px] text-[#c0c0c0] bg-[#1a1a1a] px-1.5 py-0.5 rounded">Image</code>{" "}
+            for automatic format optimisation and lazy loading on the voting gallery.
+            Submission thumbnails were stored at a fixed resolution to keep page weight predictable.
+          </p>
+          <p>
+            The voting gallery was the heaviest page, potentially hundreds of entries visible at once.
+            We paginated server-side and prefetched the next page in the background so the scroll
+            felt continuous even though data was loading in chunks.
+          </p>
+        </div>
+      </div>
+
+      <Placeholder label="Image — Lighthouse score or performance metrics screenshot" />
+
+      {/* ── Reflection ── */}
+      <div className="px-6 pb-6 md:px-14 lg:px-20">
+        <h2 className="font-inter text-[1.1rem] font-light text-white mb-6 tracking-tight">What I&apos;d Do Differently</h2>
+        <div className="space-y-4 font-helvetica text-[15px] leading-[1.8] text-[#b8b8b8]">
+          <p>
+            Asking creators to upload a still image alongside their link worked, but it added an
+            extra step that not every creator expected. A better approach
+            would have been to collect the thumbnail information at the point of content creation,
+            or pull it from the creator&apos;s own profile data, rather than making it a manual upload
+            requirement in the submission form itself.
+          </p>
+          <p>
+            The email OTP step ran into a specific issue with Gmail. Certain Gmail addresses were
+            not receiving the OTP reliably due to how Gmail&apos;s servers were handling the sending
+            domain. We had to pull the OTP requirement mid-campaign to unblock voters who were
+            stuck. It held up well enough without it, but it left the vote integrity layer thinner
+            than intended. Next time, I&apos;d test deliverability across Gmail, Yahoo and Outlook
+            before launch, not just assume the email goes through.
+          </p>
+        </div>
+      </div>
+
+      <div className="mb-12 px-6 md:px-14 lg:px-20">
+        <img
+          src="/cerawardshero.png"
+          alt="CerAwards — the finished platform"
+          className="w-full h-auto rounded-lg"
+        />
+      </div>
+
+      {/* ── Footer ── */}
+      <div className="px-6 pb-20 md:px-14 lg:px-20">
+        <hr className="mb-10 border-[#1f1f1f]" />
+        <p className="font-helvetica text-[15px] text-[#5c5c5c]">Thanks for reading.</p>
+        <p className="font-helvetica mt-2 text-[15px] text-[#5c5c5c]">
+          Questions about this project?{" "}
+          <Link href="/" className="text-[#c0c0c0] underline underline-offset-2 hover:text-[#005994] transition-colors">
+            Get in touch
+          </Link>
+          .
+        </p>
+        <div className="mt-8 flex flex-wrap gap-8 text-sm">
+          <Link href="/" className="font-helvetica text-[#5c5c5c] transition-colors hover:text-[#005994]">
+            ← Home
+          </Link>
+          <Link href="/work/user-interface/cerave-cerawards" className="font-helvetica text-[#5c5c5c] transition-colors hover:text-[#005994]">
+            Design case study →
+          </Link>
+        </div>
+      </div>
+
     </div>
   );
 }

@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import BackToTop from "../components/BackToTop";
 import ProjectCard from "../components/ProjectCard";
+import { featuredProjects } from "../data/featuredProjects";
 import { useState, useEffect } from "react";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
   const [currentTime, setCurrentTime] = useState<string>("");
   // For grid format selection
   const [gridFormat, setGridFormat] = useState<"list" | "2-col" | "4-col">("2-col");
+  const activeProjects = featuredProjects.filter((p) => p.active);
 
   useEffect(() => {
     function updateTime() {
@@ -72,46 +74,36 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-r from-[#ED017F]/0 to-[#ED017F]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
             <div className="animate-slideInUp flex-1">
-              <h1 className="text-2xl font-bold leading-tight mb-1 transition-colors duration-300 group-hover:text-[#ED017F]">Product designer with focus on product thinking and craft.</h1>
-              <p className="text-[#bdbdbd] text-base mb-2 transition-colors duration-300 hover:text-[#ededed] cursor-default">I design and prototype digital products & visual interfaces.<br/>Welcome to my small corner of web.</p>
-              <div className="text-sm font-semibold text-white group">
-                Currently <span className="text-[#FF37A2] transition-all duration-300 hover:text-[#ff62b9] cursor-default group-hover:font-bold">@ Konga Group</span>, Prev. <span className="text-[#60a5fa] transition-all duration-300 hover:text-[#93c5fd] cursor-default group-hover:font-bold">@ Buzzy Media</span>
+              <h1 className="font-inter text-2xl font-light leading-tight mb-1 tracking-tight text-white">Product designer with focus on product thinking and craft.</h1>
+              <p className="font-helvetica text-[#bdbdbd] text-base mb-2 cursor-default">I design and prototype digital products & visual interfaces.<br/>Welcome to my small corner of web.</p>
+              <div className="font-helvetica text-sm text-white">
+                Currently <span className="text-[#FF37A2]">@ Konga Group</span>, Contract <span className="text-[#005994]">@ CeraVe</span>
               </div>
-              <div className="flex items-center gap-2 text-xs text-[#bdbdbd] mt-1 transition-colors duration-300 hover:text-[#ededed] cursor-default group">
-                <span className="transition-all duration-300 group-hover:text-[#FF37A2]">📍</span>
-                <span>San Francisco, CA</span>
+              <div className="flex items-center gap-2 text-xs text-[#bdbdbd] mt-1 font-helvetica cursor-default">
+                <span>📍</span>
+                <span>Lagos, Nigeria</span>
                 <span>•</span>
-                <span className="font-mono transition-all duration-300 group-hover:text-[#60a5fa]">{currentTime}</span>
+                <span className="font-mono">{currentTime}</span>
               </div>
             </div>
           </div>
           {/* Team/Experience section */}
           <section className="mb-8 animate-slideInUp" style={{ animationDelay: '0.1s' }}>
             <div className="flex flex-col divide-y divide-[#232323]">
-              <div className="group relative flex items-center justify-between py-3 transition-all duration-300 hover:bg-[#1a1a1a] px-3 rounded-lg hover:translate-x-1 cursor-pointer">
-                <div className="flex items-center gap-2">
-                  <span className="bg-[#ED017F] text-white font-medium px-2 py-1 rounded text-xs transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-[#ED017F]/30 transform group-hover:scale-105">Konga Group</span>
-                  <span className="text-sm transition-colors duration-300">Product Design</span>
+              {[
+                { company: "Konga Group", role: "Product Design", period: "2023 — Present", color: "#ED017F" },
+                { company: "CeraVe", role: "Product Designer & Developer", period: "Contract", color: "#005994" },
+                { company: "StatMind", role: "UI/UX Designer", period: "Contract · 2025 — 2026", color: "#5A6BFF" },
+              ].map(({ company, role, period, color }) => (
+                <div key={company} className="group relative flex items-center justify-between py-3 transition-all duration-300 hover:bg-[#1a1a1a] px-3 rounded-lg hover:translate-x-1 cursor-pointer">
+                  <div className="flex items-center gap-2">
+                    <span className="text-white font-medium px-2 py-1 rounded text-xs transition-all duration-300 transform group-hover:scale-105" style={{ backgroundColor: color }}>{company}</span>
+                    <span className="font-helvetica text-sm text-[#9a9a9a] transition-colors duration-300">{role}</span>
+                  </div>
+                  <span className="font-helvetica text-xs text-[#5c5c5c] transition-colors duration-300">{period}</span>
+                  <div className="absolute left-0 top-0 h-1 w-0 group-hover:w-full transition-all duration-500 rounded-t-lg" style={{ background: `linear-gradient(to right, ${color}, transparent)` }} />
                 </div>
-                <span className="text-xs text-[#bdbdbd] transition-colors duration-300">2023 - Present</span>
-                <div className="absolute left-0 top-0 h-1 w-0 bg-gradient-to-r from-[#ED017F] to-transparent group-hover:w-full transition-all duration-500 rounded-t-lg" />
-              </div>
-              <div className="group relative flex items-center justify-between py-3 transition-all duration-300 hover:bg-[#1a1a1a] px-3 rounded-lg hover:translate-x-1 cursor-pointer">
-                <div className="flex items-center gap-2">
-                  <span className="bg-[#232323] text-white font-bold px-2 py-1 rounded text-xs transition-all duration-300 hover:bg-[#333] hover:shadow-lg">Buzzy Media</span>
-                  <span className="text-sm transition-colors duration-300">Lead Product Designer</span>
-                </div>
-                <span className="text-xs text-[#bdbdbd] transition-colors duration-300">2024 - 2025</span>
-                <div className="absolute left-0 top-0 h-1 w-0 bg-gradient-to-r from-[#60a5fa] to-transparent group-hover:w-full transition-all duration-500 rounded-t-lg" />
-              </div>
-              <div className="group relative flex items-center justify-between py-3 transition-all duration-300 hover:bg-[#1a1a1a] px-3 rounded-lg hover:translate-x-1 cursor-pointer">
-                <div className="flex items-center gap-2">
-                  <span className="bg-[#5A6BFF] text-white font-medium px-2 py-1 rounded text-xs transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-[#5A6BFF]/30 transform group-hover:scale-105">StatMind</span>
-                  <span className="text-sm transition-colors duration-300">UI/UX Designer</span>
-                </div>
-                <span className="text-xs text-[#bdbdbd] transition-colors duration-300">2025 - Present</span>
-                <div className="absolute left-0 top-0 h-1 w-0 bg-gradient-to-r from-[#5A6BFF] to-transparent group-hover:w-full transition-all duration-500 rounded-t-lg" />
-              </div>
+              ))}
             </div>
           </section>
           {/* Grid Format Selector */}
@@ -153,191 +145,23 @@ export default function Home() {
           {/* Projects as cards */}
           {gridFormat === "list" && (
             <div className="flex flex-col gap-10">
-              <ProjectCard
-                  title="StatMind"
-                  subtitle="Product Design & Strategy"
-                  description="Analytics platform with intelligent insights and real-time dashboards."
-                  href="/work/user-interface/statmind"
-                  accentColor="#5A6BFF"
-              />
-              <ProjectCard
-                title="Konga WorkStation"
-                subtitle="User Interface Design"
-                description="Enterprise workspace management solution for team collaboration."
-                href="/work/user-interface/konga-workstation"
-              />
-              <ProjectCard
-                title="Servewell"
-                subtitle="UI/UX Design"
-                description="Customer service platform with intuitive agent and customer interfaces."
-                href="/work/user-interface/servewell"
-                accentColor="#FF934F"
-              />
-              <ProjectCard
-                title="CeraVe CerAwards Campaign"
-                subtitle="Campaign Design & Experience"
-                description="Interactive awards campaign with gamification elements."
-                href="/work/user-interface/cerave-cerawards"
-                accentColor="#005994"
-              />
-              <ProjectCard
-                title="Payfly Ecosystem"
-                subtitle="Payment System Design"
-                description="Comprehensive payment infrastructure with seamless integration."
-                href="/work/user-interface/payfly-ecosystem"
-                accentColor="#60a5fa"
-              />
-              <ProjectCard
-                title="CeraVe CerAwards Campaign"
-                subtitle="Campaign Engineering"
-                description="Interactive awards campaign with gamification elements."
-                href="/work/engineering/cerave-cerawards"
-                accentColor="#005994"
-              />
-              <ProjectCard
-                title="Konga Group"
-                subtitle="Product Engineering"
-                description="Engineering and development for Konga Group platform."
-                href="/work/engineering/konga-group"
-              />
-              <ProjectCard
-                title="Konga Rework"
-                subtitle="Platform Rework"
-                description="Complete platform restructuring and optimization."
-                href="/work/engineering/konga-rework"
-              />
-              <ProjectCard
-                title="KYC Interactive Form"
-                subtitle="Form Engineering"
-                description="Developed a dynamic KYC form for seamless onboarding."
-                href="/work/engineering/kyc-interactive-form"
-              />
+              {activeProjects.map((project) => (
+                <ProjectCard key={project.href} {...project} />
+              ))}
             </div>
           )}
           {gridFormat === "2-col" && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <ProjectCard
-                  title="StatMind"
-                  subtitle="Product Design & Strategy"
-                  description="Analytics platform with intelligent insights and real-time dashboards."
-                  href="/work/user-interface/statmind"
-                  accentColor="#5A6BFF"
-              />
-              <ProjectCard
-                title="Konga WorkStation"
-                subtitle="User Interface Design"
-                description="Enterprise workspace management solution for team collaboration."
-                href="/work/user-interface/konga-workstation"
-              />
-              <ProjectCard
-                title="Servewell"
-                subtitle="UI/UX Design"
-                description="Customer service platform with intuitive agent and customer interfaces."
-                href="/work/user-interface/servewell"
-                accentColor="#FF934F"
-              />
-              <ProjectCard
-                title="CeraVe CerAwards Campaign"
-                subtitle="Campaign Design & Experience"
-                description="Interactive awards campaign with gamification elements."
-                href="/work/user-interface/cerave-cerawards"
-                accentColor="#005994"
-              />
-              <ProjectCard
-                title="Payfly Ecosystem"
-                subtitle="Payment System Design"
-                description="Comprehensive payment infrastructure with seamless integration."
-                href="/work/user-interface/payfly-ecosystem"
-                accentColor="#60a5fa"
-              />
-              <ProjectCard
-                title="CeraVe CerAwards Campaign"
-                subtitle="Campaign Engineering"
-                description="Interactive awards campaign with gamification elements."
-                href="/work/engineering/cerave-cerawards"
-                accentColor="#005994"
-              />
-              <ProjectCard
-                title="Konga Group"
-                subtitle="Product Engineering"
-                description="Engineering and development for Konga Group platform."
-                href="/work/engineering/konga-group"
-              />
-              <ProjectCard
-                title="Konga Rework"
-                subtitle="Platform Rework"
-                description="Complete platform restructuring and optimization."
-                href="/work/engineering/konga-rework"
-              />
-              <ProjectCard
-                title="KYC Interactive Form"
-                subtitle="Form Engineering"
-                description="Developed a dynamic KYC form for seamless onboarding."
-                href="/work/engineering/kyc-interactive-form"
-              />
+              {activeProjects.map((project) => (
+                <ProjectCard key={project.href} {...project} />
+              ))}
             </div>
           )}
           {gridFormat === "4-col" && (
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-              <ProjectCard
-                  title="StatMind"
-                  subtitle="Product Design & Strategy"
-                  description="Analytics platform with intelligent insights and real-time dashboards."
-                  href="/work/user-interface/statmind"
-                  accentColor="#5A6BFF"
-              />
-              <ProjectCard
-                title="Konga WorkStation"
-                subtitle="User Interface Design"
-                description="Enterprise workspace management solution for team collaboration."
-                href="/work/user-interface/konga-workstation"
-              />
-              <ProjectCard
-                title="Servewell"
-                subtitle="UI/UX Design"
-                description="Customer service platform with intuitive agent and customer interfaces."
-                href="/work/user-interface/servewell"
-                accentColor="#FF934F"
-              />
-              <ProjectCard
-                title="CeraVe CerAwards Campaign"
-                subtitle="Campaign Design & Experience"
-                description="Interactive awards campaign with gamification elements."
-                href="/work/user-interface/cerave-cerawards"
-                accentColor="#005994"
-              />
-              <ProjectCard
-                title="Payfly Ecosystem"
-                subtitle="Payment System Design"
-                description="Comprehensive payment infrastructure with seamless integration."
-                href="/work/user-interface/payfly-ecosystem"
-                accentColor="#60a5fa"
-              />
-              <ProjectCard
-                title="CeraVe CerAwards Campaign"
-                subtitle="Campaign Engineering"
-                description="Interactive awards campaign with gamification elements."
-                href="/work/engineering/cerave-cerawards"
-                accentColor="#005994"
-              />
-              <ProjectCard
-                title="Konga Group"
-                subtitle="Product Engineering"
-                description="Engineering and development for Konga Group platform."
-                href="/work/engineering/konga-group"
-              />
-              <ProjectCard
-                title="Konga Rework"
-                subtitle="Platform Rework"
-                description="Complete platform restructuring and optimization."
-                href="/work/engineering/konga-rework"
-              />
-              <ProjectCard
-                title="KYC Interactive Form"
-                subtitle="Form Engineering"
-                description="Developed a dynamic KYC form for seamless onboarding."
-                href="/work/engineering/kyc-interactive-form"
-              />
+              {activeProjects.map((project) => (
+                <ProjectCard key={project.href} {...project} />
+              ))}
             </div>
           )}
         </main>
