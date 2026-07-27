@@ -8,6 +8,39 @@ import ProjectCard from "../components/ProjectCard";
 import { featuredProjects } from "../data/featuredProjects";
 import { useState, useEffect } from "react";
 
+const webApps = [
+  {
+    title: "Verselift AI SaaS",
+    description: "Next-gen AI SaaS platform engineered for operational management and revenue growth.",
+    url: "https://verseliftai.vercel.app/",
+    tags: ["Next.js", "TypeScript", "AI SaaS", "Tailwind"],
+  },
+  {
+    title: "Konga FM Media & Streaming",
+    description: "Live broadcasting web app & custom Firebase CMS with audio stream persistence.",
+    url: "https://kongafm.com/",
+    tags: ["Next.js", "Firebase", "SSR", "Custom CMS"],
+  },
+  {
+    title: "CeraVe CerAwards Platform",
+    description: "Gamified awards and voting platform for CeraVe's Nigerian market debut campaign.",
+    url: "https://www.cerawards.com.ng",
+    tags: ["Next.js", "TypeScript", "Public Voting", "Tailwind"],
+  },
+  {
+    title: "Konga Group Corporate",
+    description: "Official corporate platform for Konga Group holding company, subsidiaries & careers.",
+    url: "https://group.konga.com/",
+    tags: ["Next.js", "Corporate Web", "Figma Design"],
+  },
+  {
+    title: "Konga Shop-in-Shop Hub",
+    description: "E-commerce flagship store hubs for Samsung, Apple, HP, CeraVe, and OEM partners.",
+    url: "https://www.konga.com/content/samsungsis",
+    tags: ["E-Commerce", "Shop-in-Shop", "CRO Strategy"],
+  },
+];
+
 export default function Home() {
   // For the update bar dismiss
   const [showUpdate, setShowUpdate] = useState(true);
@@ -108,6 +141,69 @@ export default function Home() {
               ))}
             </div>
           </section>
+          {/* Live Web Applications Marquee Section */}
+          <section className="mb-12 animate-slideInUp" style={{ animationDelay: '0.15s' }}>
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <h2 className="font-inter text-lg font-medium text-white flex items-center gap-2">
+                  <span>🚀</span> Web Applications I&apos;ve Designed & Developed
+                </h2>
+                <p className="font-helvetica text-xs text-[#6a6a6a] mt-0.5">
+                  Live production applications engineered from Figma design to full-stack code (hover to pause).
+                </p>
+              </div>
+            </div>
+
+            <div className="relative w-full overflow-hidden rounded-2xl border border-[#222] bg-[#121212]/80 py-4 shadow-inner">
+              {/* Left and Right Fade Gradients */}
+              <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-12 bg-gradient-to-r from-[#121212] to-transparent" />
+              <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-12 bg-gradient-to-l from-[#121212] to-transparent" />
+
+              <div className="animate-marquee gap-4 px-2">
+                {[...webApps, ...webApps].map((app, idx) => (
+                  <a
+                    key={`${app.title}-${idx}`}
+                    href={app.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group w-[320px] sm:w-[350px] shrink-0 rounded-xl border border-[#262626] bg-[#161616] p-4 transition-all duration-300 hover:border-[#444] hover:bg-[#1a1a1a] hover:-translate-y-1 hover:shadow-lg flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="flex items-center gap-2">
+                          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                          <span className="font-mono text-[10px] uppercase tracking-wider text-emerald-400 font-medium">
+                            Live Web App
+                          </span>
+                        </div>
+                        <span className="text-xs text-[#6a6a6a] group-hover:text-white transition-colors">
+                          ↗
+                        </span>
+                      </div>
+                      <h3 className="font-inter text-sm font-semibold text-white group-hover:text-[#ED017F] transition-colors mb-1">
+                        {app.title}
+                      </h3>
+                      <p className="font-helvetica text-xs text-[#9a9a9a] line-clamp-2 leading-relaxed mb-3">
+                        {app.description}
+                      </p>
+                    </div>
+
+                    <div className="flex flex-wrap gap-1.5 pt-2 border-t border-[#222]">
+                      {app.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="font-mono text-[10px] text-[#888] bg-[#202020] px-2 py-0.5 rounded border border-[#282828]"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </section>
+
           {/* Controls: Category Filter + Grid Format Selector */}
           <div className="mb-8 flex flex-wrap items-center justify-between gap-4 animate-slideInUp" style={{ animationDelay: '0.2s' }}>
             {/* Category Filter */}
