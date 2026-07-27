@@ -77,7 +77,7 @@ export default function Home() {
     <div className="flex min-h-screen bg-[#181818] text-[#ededed] font-sans">
       <Sidebar />
       {/* Main Content */}
-      <div className="flex-1 flex flex-col min-h-screen ml-0 md:ml-[260px]">
+      <div className="flex-1 flex flex-col min-h-screen ml-0 md:ml-[260px] min-w-0 max-w-full overflow-x-hidden">
         <Header />
         {/* Blue update bar */}
         {showUpdate && (
@@ -96,7 +96,7 @@ export default function Home() {
           </div>
         )}
         {/* Content */}
-        <main className="flex-1 px-4 sm:px-8 md:px-12 lg:px-18 py-12">
+        <main className="flex-1 px-4 sm:px-8 md:px-12 lg:px-18 py-12 min-w-0 max-w-full overflow-x-hidden">
           <div className="flex flex-start gap-4 mb-6 animate-fadeIn">
             <div className="hidden md:!block md:w-16 md:h-16 bg-gradient-to-br from-[#2a2a2a] to-[#1a1a1a] overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:shadow-lg hover:from-[#333] hover:to-[#1f1f1f] hover:scale-105 group cursor-pointer relative">
               <Image
@@ -142,14 +142,14 @@ export default function Home() {
             </div>
           </section>
           {/* Minimalist Web Applications Marquee Section */}
-          <section className="mb-12 animate-slideInUp" style={{ animationDelay: '0.15s' }}>
+          <section className="mb-12 animate-slideInUp w-full max-w-full overflow-hidden" style={{ animationDelay: '0.15s' }}>
             <div className="mb-3 px-1">
               <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#6a6a6a]">
                 Live Web Applications
               </p>
             </div>
 
-            <div className="relative w-full overflow-hidden border-y border-[#222] bg-[#141414]/30 py-4">
+            <div className="relative w-full max-w-full overflow-hidden border-y border-[#222] bg-[#141414]/30 py-4">
               {/* Subtle Fade Overlays */}
               <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-12 bg-gradient-to-r from-[#181818] to-transparent" />
               <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-12 bg-gradient-to-l from-[#181818] to-transparent" />
