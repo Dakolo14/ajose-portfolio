@@ -16,7 +16,9 @@ export default function Home() {
   const [currentTime, setCurrentTime] = useState<string>("");
   // For grid format selection
   const [gridFormat, setGridFormat] = useState<"list" | "2-col" | "4-col">("2-col");
-  const activeProjects = featuredProjects.filter((p) => p.active);
+  // For category filtering
+  const [categoryFilter, setCategoryFilter] = useState<"all" | "design" | "engineering">("all");
+  const activeProjects = featuredProjects.filter((p) => p.active && (categoryFilter === "all" || p.category === categoryFilter));
 
   useEffect(() => {
     function updateTime() {
@@ -74,8 +76,8 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-r from-[#ED017F]/0 to-[#ED017F]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
             <div className="animate-slideInUp flex-1">
-              <h1 className="font-inter text-2xl font-light leading-tight mb-1 tracking-tight text-white">Product designer with focus on product thinking and craft.</h1>
-              <p className="font-helvetica text-[#bdbdbd] text-base mb-2 cursor-default">I design and prototype digital products & visual interfaces.<br/>Welcome to my small corner of web.</p>
+              <h1 className="font-inter text-2xl font-light leading-tight mb-1 tracking-tight text-white">Product Designer & Developer focused on <span className="font-normal text-[#ED017F]">Revenue Growth</span></h1>
+              <p className="font-helvetica text-[#bdbdbd] text-base mb-2 cursor-default">I design and build digital products, high-converting interfaces & web experiences built to scale business revenue.<br/>Welcome to my small corner of web.</p>
               <div className="font-helvetica text-sm text-white">
                 Currently <span className="text-[#FF37A2]">@ Konga Group</span>, Contract <span className="text-[#005994]">@ CeraVe</span>
               </div>
@@ -91,8 +93,8 @@ export default function Home() {
           <section className="mb-8 animate-slideInUp" style={{ animationDelay: '0.1s' }}>
             <div className="flex flex-col divide-y divide-[#232323]">
               {[
-                { company: "Konga Group", role: "Product Design", period: "2023 — Present", color: "#ED017F" },
-                { company: "CeraVe", role: "Product Designer & Developer", period: "Contract", color: "#005994" },
+                { company: "Konga Group", role: "Product Design & Frontend", period: "2023 — Present", color: "#ED017F" },
+                { company: "CeraVe", role: "Product Designer & Developer", period: "Contract · 2026", color: "#005994" },
                 { company: "StatMind", role: "UI/UX Designer", period: "Contract · 2025 — 2026", color: "#5A6BFF" },
               ].map(({ company, role, period, color }) => (
                 <div key={company} className="group relative flex items-center justify-between py-3 transition-all duration-300 hover:bg-[#1a1a1a] px-3 rounded-lg hover:translate-x-1 cursor-pointer">
@@ -106,42 +108,78 @@ export default function Home() {
               ))}
             </div>
           </section>
-          {/* Grid Format Selector */}
-          <div className="mb-8 flex items-center gap-3 animate-slideInUp" style={{ animationDelay: '0.2s' }}>
-            <span className="text-sm text-[#bdbdbd] hidden md:inline">View:</span>
-            <div className="flex gap-2">
+          {/* Controls: Category Filter + Grid Format Selector */}
+          <div className="mb-8 flex flex-wrap items-center justify-between gap-4 animate-slideInUp" style={{ animationDelay: '0.2s' }}>
+            {/* Category Filter */}
+            <div className="flex items-center gap-2">
               <button
-                onClick={() => setGridFormat("list")}
+                onClick={() => setCategoryFilter("all")}
                 className={`px-4 py-2 rounded-lg text-xs font-medium transition-all duration-300 ${
-                  gridFormat === "list"
+                  categoryFilter === "all"
+                    ? "bg-[#ededed] text-[#181818] font-semibold shadow-md"
+                    : "bg-[#232323] text-[#bdbdbd] hover:text-white hover:bg-[#2a2a2a]"
+                }`}
+              >
+                All Work ({featuredProjects.filter(p => p.active).length})
+              </button>
+              <button
+                onClick={() => setCategoryFilter("design")}
+                className={`px-4 py-2 rounded-lg text-xs font-medium transition-all duration-300 ${
+                  categoryFilter === "design"
                     ? "bg-[#ED017F] text-white shadow-lg shadow-[#ED017F]/30"
                     : "bg-[#232323] text-[#bdbdbd] hover:text-white hover:bg-[#2a2a2a]"
+                }`}
+              >
+                Product Design ({featuredProjects.filter(p => p.active && p.category === "design").length})
+              </button>
+              <button
+                onClick={() => setCategoryFilter("engineering")}
+                className={`px-4 py-2 rounded-lg text-xs font-medium transition-all duration-300 ${
+                  categoryFilter === "engineering"
+                    ? "bg-[#2563eb] text-white shadow-lg shadow-[#2563eb]/30"
+                    : "bg-[#232323] text-[#bdbdbd] hover:text-white hover:bg-[#2a2a2a]"
+                }`}
+              >
+                Engineering ({featuredProjects.filter(p => p.active && p.category === "engineering").length})
+              </button>
+            </div>
+
+            {/* Grid Format */}
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-[#bdbdbd] hidden lg:inline">Layout:</span>
+              <button
+                onClick={() => setGridFormat("list")}
+                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-300 ${
+                  gridFormat === "list"
+                    ? "bg-[#333] text-white"
+                    : "bg-[#232323] text-[#888] hover:text-white"
                 }`}
               >
                 List
               </button>
               <button
                 onClick={() => setGridFormat("2-col")}
-                className={`hidden md:inline-block px-4 py-2 rounded-lg text-xs font-medium transition-all duration-300 ${
+                className={`hidden md:inline-block px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-300 ${
                   gridFormat === "2-col"
-                    ? "bg-[#ED017F] text-white shadow-lg shadow-[#ED017F]/30"
-                    : "bg-[#232323] text-[#bdbdbd] hover:text-white hover:bg-[#2a2a2a]"
+                    ? "bg-[#333] text-white"
+                    : "bg-[#232323] text-[#888] hover:text-white"
                 }`}
               >
                 2 Grid
               </button>
               <button
                 onClick={() => setGridFormat("4-col")}
-                className={`hidden md:inline-block px-4 py-2 rounded-lg text-xs font-medium transition-all duration-300 ${
+                className={`hidden md:inline-block px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-300 ${
                   gridFormat === "4-col"
-                    ? "bg-[#ED017F] text-white shadow-lg shadow-[#ED017F]/30"
-                    : "bg-[#232323] text-[#bdbdbd] hover:text-white hover:bg-[#2a2a2a]"
+                    ? "bg-[#333] text-white"
+                    : "bg-[#232323] text-[#888] hover:text-white"
                 }`}
               >
                 4 Grid
               </button>
             </div>
           </div>
+
           {/* Projects as cards */}
           {gridFormat === "list" && (
             <div className="flex flex-col gap-10">

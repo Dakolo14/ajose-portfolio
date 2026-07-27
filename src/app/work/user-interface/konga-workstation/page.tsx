@@ -149,7 +149,165 @@ export default function KongaWorkstationProject() {
           <Stat value="3" label="Products shipped" />
           <Stat value="2" label="Public websites" />
           <Stat value="1" label="Internal dashboard" />
-          <Stat value="—" label="Metrics (add yours)" />
+          <Stat value="20+" label="OEM Partner Brands" />
+        </div>
+      </div>
+
+      <hr className="mx-6 mb-16 border-[#1f1f1f] md:mx-14 lg:mx-20" />
+
+      {/* ══ Brands I've Worked With & Shop-in-Shop Strategy ══ */}
+      <div className="px-6 pb-16 md:px-14 lg:px-20">
+        <SectionHeading>Brands I&apos;ve Worked With — Shop in Shop Strategy</SectionHeading>
+        <Body>
+          <p>
+            As part of my work at Konga Group, I led the design and digital storefront development for <strong className="text-white">Shop-in-Shop</strong> pages across major global and regional OEM partners.
+          </p>
+          <p>
+            Working directly with brand managers and growth leads, I strategized visual merchandising, layout architectures, and promotional UX aimed at maximizing brand visibility, customer engagement, and revenue performance across the Konga e-commerce ecosystem.
+          </p>
+        </Body>
+
+        {/* Brand Cards Grid with Larger Logos and Live Storefront Buttons */}
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[
+            {
+              name: "Samsung",
+              category: "Consumer Electronics",
+              url: "https://www.konga.com/content/samsungsis",
+              brand: "Samsung"
+            },
+            {
+              name: "Apple",
+              category: "Premium Electronics",
+              url: "https://www.konga.com/content/apple",
+              brand: "Apple"
+            },
+            {
+              name: "HP Store",
+              category: "Computing & Laptops",
+              url: "https://www.konga.com/content/hpstore",
+              brand: "HP"
+            },
+            {
+              name: "Orca Mall",
+              category: "Furniture & Living",
+              url: "https://www.konga.com/content/orca-mall",
+              brand: "Orca Mall"
+            },
+            {
+              name: "Mikano International",
+              category: "Power & Industrial",
+              url: "https://www.konga.com/content/mikano",
+              brand: "Mikano"
+            },
+            {
+              name: "CeraVe",
+              category: "Skincare & Beauty",
+              url: "/work/user-interface/cerave-cerawards",
+              brand: "CeraVe"
+            },
+            {
+              name: "Midea Group",
+              category: "Home Appliances",
+              url: "https://www.konga.com/content/samsungsis",
+              brand: "Midea"
+            },
+            {
+              name: "Intel",
+              category: "Hardware & Processors",
+              url: "https://www.konga.com/content/hpstore",
+              brand: "Intel"
+            },
+          ].map(({ name, category, url, brand }) => (
+            <div
+              key={name}
+              className="group flex flex-col justify-between p-6 rounded-xl border border-[#262626] bg-[#141414] transition-all duration-300 hover:border-[#383838] hover:bg-[#1a1a1a] hover:-translate-y-1 hover:shadow-xl hover:shadow-black/60"
+            >
+              <div>
+                {/* Logo Header Container with uniform height (h-12) */}
+                <div className="h-12 w-full flex items-center justify-between mb-4">
+                  <div className="flex items-center">
+                    {brand === "Apple" && (
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" className="text-white">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.32c.62-.75 1.04-1.8 0.92-2.85-.9.04-2 .6-2.65 1.36-.58.68-1.09 1.77-.95 2.81 1.01.08 2.06-.57 2.68-1.32z"/>
+                      </svg>
+                    )}
+                    {brand === "Samsung" && (
+                      <span className="font-inter font-black text-xl text-[#3b82f6] tracking-wider uppercase">SAMSUNG</span>
+                    )}
+                    {brand === "HP" && (
+                      <span className="font-inter font-black italic text-2xl text-[#0096d6] tracking-tighter">hp</span>
+                    )}
+                    {brand === "CeraVe" && (
+                      <span className="font-inter font-black text-xl text-[#005994] tracking-tight">CeraVe</span>
+                    )}
+                    {brand === "Orca Mall" && (
+                      <span className="font-inter font-black text-xl text-[#f59e0b] tracking-widest uppercase">ORCA</span>
+                    )}
+                    {brand === "Mikano" && (
+                      <span className="font-inter font-black text-xl text-[#ef4444] tracking-widest uppercase">MIKANO</span>
+                    )}
+                    {brand === "Midea" && (
+                      <span className="font-inter font-black text-xl text-[#008ac9] tracking-tight">Midea</span>
+                    )}
+                    {brand === "Intel" && (
+                      <span className="font-inter font-black text-2xl text-[#0068b5] tracking-tight">intel</span>
+                    )}
+                  </div>
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#6a6a6a] px-2.5 py-1 rounded bg-[#1c1c1c] border border-[#2a2a2a]">
+                    Shop-in-Shop
+                  </span>
+                </div>
+
+                <h3 className="font-inter text-sm font-semibold text-white group-hover:text-[#ED017F] transition-colors mb-1">
+                  {name}
+                </h3>
+                <p className="font-helvetica text-xs text-[#6a6a6a] mb-5">
+                  {category}
+                </p>
+              </div>
+
+              <a
+                href={url}
+                target={url.startsWith("http") ? "_blank" : "_self"}
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-between w-full px-3.5 py-2.5 rounded-lg bg-[#1e1e1e] border border-[#2a2a2a] text-xs font-medium text-[#c0c0c0] hover:text-white hover:bg-[#252525] hover:border-[#383838] transition-all duration-300 group/btn"
+              >
+                <span>Visit Storefront</span>
+                <span className="transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5">
+                  ↗
+                </span>
+              </a>
+            </div>
+          ))}
+        </div>
+
+        {/* Strategic Impact Grid */}
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="p-5 rounded-xl border border-[#222] bg-[#141414]/80 hover:border-[#333] transition-colors">
+            <h3 className="font-inter text-sm font-medium text-white mb-2 flex items-center gap-2">
+              <span>🛍️</span> Shop-in-Shop Storefronts
+            </h3>
+            <p className="font-helvetica text-xs text-[#9a9a9a] leading-relaxed">
+              Created dedicated digital hubs for flagship partner brands, giving them a distinct brand identity within the core marketplace.
+            </p>
+          </div>
+          <div className="p-5 rounded-xl border border-[#222] bg-[#141414]/80 hover:border-[#333] transition-colors">
+            <h3 className="font-inter text-sm font-medium text-white mb-2 flex items-center gap-2">
+              <span>📈</span> Revenue & Growth Strategy
+            </h3>
+            <p className="font-helvetica text-xs text-[#9a9a9a] leading-relaxed">
+              Partnered with brand marketing leads to align UX layouts with product launches, flash sales, and targeted bundle offers to drive conversions.
+            </p>
+          </div>
+          <div className="p-5 rounded-xl border border-[#222] bg-[#141414]/80 hover:border-[#333] transition-colors">
+            <h3 className="font-inter text-sm font-medium text-white mb-2 flex items-center gap-2">
+              <span>🎨</span> Brand Governance & UX
+            </h3>
+            <p className="font-helvetica text-xs text-[#9a9a9a] leading-relaxed">
+              Ensured strict compliance with international brand guidelines while maintaining fast load times, responsive UI, and seamless checkout flows.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -188,41 +346,6 @@ export default function KongaWorkstationProject() {
 
       <Placeholder label="Image — group.konga.com mobile view" />
       <Placeholder label="Image — group.konga.com key sections / component detail" />
-
-      <hr className="mx-6 mb-16 border-[#1f1f1f] md:mx-14 lg:mx-20" />
-
-      {/* ══ kongafm.com ══ */}
-      <div className="px-6 pb-6 md:px-14 lg:px-20">
-        <SectionHeading>kongafm.com — Media Property</SectionHeading>
-        <Body>
-          <p>
-            KongaFM is Konga&apos;s dedicated media channel, a content-driven property that sits alongside
-            the e-commerce platform. I designed and developed the full website from scratch, building
-            a layout that could carry editorial content, brand storytelling, and product promotion
-            simultaneously.
-          </p>
-          <p>
-            The design challenge here was distinct from the corporate site: this needed to feel
-            energetic and current, closer to a media brand than a corporate one, while still
-            sitting clearly within the Konga visual family.
-          </p>
-        </Body>
-      </div>
-
-      <Placeholder label="Image — kongafm.com homepage design" />
-
-      <div className="px-6 pb-6 md:px-14 lg:px-20">
-        <Body>
-          <p>
-            Content structure was the core design problem. The site needed to surface different
-            content types (articles, videos, brand features) without the hierarchy feeling cluttered.
-            I used a modular grid that could flex based on content volume without breaking the layout.
-          </p>
-        </Body>
-      </div>
-
-      <Placeholder label="Image — kongafm.com content pages / article view" />
-      <Placeholder label="Image — kongafm.com mobile experience" />
 
       <hr className="mx-6 mb-16 border-[#1f1f1f] md:mx-14 lg:mx-20" />
 

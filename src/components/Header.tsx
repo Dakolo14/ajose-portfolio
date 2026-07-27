@@ -56,22 +56,6 @@ export default function Header() {
           <span className="flex items-center transition-all duration-300 group-hover:scale-110"><Image src="/copy.svg" alt="copy icon" width={16} height={16} className="opacity-40 group-hover:opacity-100 group-hover:text-white transition-all duration-300" /></span>
         </button>
       </div>
-      {/* Mobile Breadcrumbs */}
-      <nav className="flex sm:block md:!hidden items-center gap-2 text-xs font-medium px-4 pt-3 pb-2 border-b border-[#232323] bg-[#181818] sticky top-0 z-10 animate-slideInDown">
-        {crumbs.map((crumb, i) => {
-          const isSection = ["Interface", "Design Engineering"].includes(crumb.name);
-          return (
-            <span key={crumb.href} className="flex items-center gap-2 transition-all duration-300">
-              {i > 0 && <span className="text-[#bdbdbd] transition-all duration-300">/</span>}
-              {isSection ? (
-                <span className="text-[#bdbdbd] transition-all duration-300">{crumb.name}</span>
-              ) : (
-                <Link href={crumb.href} className={`hover:underline transition-all duration-300 hover:text-[#60a5fa] ${i === crumbs.length - 1 ? 'text-[#ededed]' : 'text-[#bdbdbd]'}`}>{crumb.name}</Link>
-              )}
-            </span>
-          );
-        })}
-      </nav>
     </>
   );
 } 

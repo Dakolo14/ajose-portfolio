@@ -55,6 +55,11 @@ export default function Sidebar() {
           href="/work/user-interface/konga-workstation"
         />
         <SidebarLink
+          text="Verselift"
+          iconType="project"
+          href="/work/user-interface/verselift"
+        />
+        <SidebarLink
           text="StatMind"
           iconType="project"
           href="/work/user-interface/statmind"
@@ -63,18 +68,6 @@ export default function Sidebar() {
           text="Tradon App"
           iconType="project"
           href="/work/user-interface/tradon-app"
-          comingSoon
-        />
-        <SidebarLink
-          text="Payfly Ecosystem"
-          iconType="project"
-          href="/work/user-interface/payfly-ecosystem"
-          comingSoon
-        />
-        <SidebarLink
-          text="Servewell"
-          iconType="project"
-          href="/work/user-interface/servewell"
           comingSoon
         />
         <SidebarLink
@@ -90,6 +83,11 @@ export default function Sidebar() {
           text="CeraVe CerAwards Campaign"
           iconType="project"
           href="/work/engineering/cerave-cerawards"
+        />
+        <SidebarLink
+          text="KongaFM Web & Admin"
+          iconType="project"
+          href="/work/engineering/konga-fm"
         />
         <SidebarLink
           text="Konga Group"

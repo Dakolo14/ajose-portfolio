@@ -167,22 +167,27 @@ export default function StatMindProject() {
       </div>
 
       <div className="px-6 pb-6 md:px-14 lg:px-20">
-        <h2 className="font-inter text-[1.1rem] font-light text-white mb-6 tracking-tight">Dashboard System</h2>
+        <h2 className="font-inter text-[1.1rem] font-light text-white mb-6 tracking-tight">Player Stats Review</h2>
         <div className="space-y-4 font-helvetica text-[15px] leading-[1.8] text-[#b8b8b8]">
           <p>
-            I designed a modular widget system where each card is an independent unit with its own
-            data context, resize behaviour, and interaction state. Users can build personalised
-            views by composing widgets, without needing to understand the underlying data model.
+            The core of the StatMind experience is the Player Stats Review screen. A user selects a
+            player prop (for example, Over 25.5 Points) and the platform instantly surfaces everything
+            needed to make a confident decision: a predicted outcome with a confidence score, a
+            historical hit rate table broken down by H2H, last 5, last 10, last 20, and the full season,
+            a bar chart of recent game results against the line, and an AI-generated deeper analysis
+            pulling from current form, matchup context, and opponent defensive tendencies.
           </p>
           <p>
-            Real-time updates are animated subtly. Values transition rather than jump, so the
-            dashboard feels alive without being distracting during a live presentation or a deep
-            analysis session.
+            The design challenge was presenting that much information without it feeling like a
+            data dump. The confidence score leads the hierarchy. The hit rate table is scannable
+            in under three seconds. The deeper analysis expands below for users who want the reasoning,
+            not just the number. Related props sit at the bottom so the experience continues naturally
+            rather than ending at a dead end.
           </p>
         </div>
       </div>
 
-      <Placeholder label="Image — Widget system / component breakdown" />
+      <Placeholder label="Image — Player Stats Review screen" />
 
       <div className="px-6 pb-6 md:px-14 lg:px-20">
         <h2 className="font-inter text-[1.1rem] font-light text-white mb-6 tracking-tight">AI Insights Layer</h2>
