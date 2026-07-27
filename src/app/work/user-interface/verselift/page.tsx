@@ -42,6 +42,15 @@ export default function VerseliftProject() {
         </Link>
       </div>
 
+      {/* ── Top Hero Image Placeholder ── */}
+      <div className="mt-6 px-6 md:px-14 lg:px-20">
+        <div className="flex w-full items-center justify-center rounded-lg border border-dashed border-[#2e2e2e] bg-[#141414] aspect-[16/9] sm:aspect-[21/9] max-h-[50vh] min-h-[260px]">
+          <p className="font-helvetica text-[13px] text-[#5c5c5c] px-4 text-center">
+            Hero Image — Verselift AI SaaS Platform Overview &amp; Conversion Interface
+          </p>
+        </div>
+      </div>
+
       {/* ── Project Header ── */}
       <div className="px-6 pt-10 pb-0 md:px-14 lg:px-20">
         <h1 className="font-inter text-[1.75rem] font-light leading-snug tracking-tight text-white md:text-[2.25rem] lg:text-[2.75rem]">
