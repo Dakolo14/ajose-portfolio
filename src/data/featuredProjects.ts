@@ -56,6 +56,15 @@ export const featuredProjects: FeaturedProject[] = [
 
   // Engineering Projects
   {
+    title: "Bella Homes Ltd",
+    subtitle: "Full-Stack Luxury Short-Let & Property Portal",
+    description: "Hotel-grade booking engine with real-time availability search, multi-currency engine (NGN, USD, GBP), WhatsApp concierge integration, and isolated owner management portal.",
+    href: "/work/engineering/bella-homes",
+    accentColor: "#D4AF37",
+    active: true,
+    category: "engineering",
+  },
+  {
     title: "CeraVe CerAwards Platform",
     subtitle: "Frontend & Platform Engineering",
     description: "Built the high-traffic voting platform for CeraVe's Nigerian debut campaign.",

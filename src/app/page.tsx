@@ -10,6 +10,12 @@ import { useState, useEffect } from "react";
 
 const webApps = [
   {
+    title: "Bella Homes Ltd",
+    description: "Luxury short-let & property portal with real-time search & multi-currency engine.",
+    url: "https://bellahomes.vercel.app/",
+    domain: "bellahomes.vercel.app",
+  },
+  {
     title: "Verselift AI SaaS",
     description: "AI-powered platform engineered for operational efficiency & subscription growth.",
     url: "https://verseliftai.vercel.app/",

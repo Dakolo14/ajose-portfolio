@@ -80,6 +80,11 @@ export default function Sidebar() {
           Engineering
         </div>
         <SidebarLink
+          text="Bella Homes Ltd"
+          iconType="project"
+          href="/work/engineering/bella-homes"
+        />
+        <SidebarLink
           text="CeraVe CerAwards Campaign"
           iconType="project"
           href="/work/engineering/cerave-cerawards"
