@@ -172,7 +172,6 @@ export default function MobileNav() {
           <SidebarLink text="Verselift" iconType="project" href="/work/user-interface/verselift" onClick={() => setOpen(false)} />
           <SidebarLink text="StatMind" iconType="project" href="/work/user-interface/statmind" onClick={() => setOpen(false)} />
           <SidebarLink text="Tradon App" iconType="project" href="/work/user-interface/tradon-app" onClick={() => setOpen(false)} />
-          <SidebarLink text="DriveHelp" iconType="project" href="/work/user-interface/drivehelp" disabled onClick={() => setOpen(false)} />
           <div className="mb-2 text-[#bdbdbd] pl-4 uppercase tracking-widest text-[10px] font-semibold mt-4">Engineering</div>
           <SidebarLink text="Bella Homes Ltd" iconType="project" href="/work/engineering/bella-homes" onClick={() => setOpen(false)} />
           <SidebarLink text="CeraVe CerAwards Campaign" iconType="project" href="/work/engineering/cerave-cerawards" onClick={() => setOpen(false)} />

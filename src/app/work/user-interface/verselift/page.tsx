@@ -21,7 +21,7 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 
 function Body({ children }: { children: React.ReactNode }) {
   return (
-    <div className="space-y-5 font-helvetica text-[15px] leading-[1.8] text-[#b8b8b8]">
+    <div className="space-y-4 font-helvetica text-[15px] leading-[1.8] text-[#b8b8b8]">
       {children}
     </div>
   );
@@ -31,7 +31,7 @@ export default function VerseliftProject() {
   return (
     <div className="min-h-screen text-[#ededed]">
 
-      {/* ── Back link ── */}
+      {/* ── Back ── */}
       <div className="px-6 py-4 pb-0 md:px-6 lg:px-8">
         <Link
           href="/"
@@ -42,22 +42,25 @@ export default function VerseliftProject() {
         </Link>
       </div>
 
-      {/* ── Top Hero Image Placeholder ── */}
-      <div className="mt-6 px-6 md:px-14 lg:px-20">
-        <div className="flex w-full items-center justify-center rounded-lg border border-dashed border-[#2e2e2e] bg-[#141414] aspect-[16/9] sm:aspect-[21/9] max-h-[50vh] min-h-[260px]">
+      {/* ── Hero Strip ── */}
+      <div className="mt-4 w-full overflow-hidden">
+        <div className="flex w-full items-center justify-center border-y border-[#222] bg-[#141414] aspect-[4/1] max-h-[72vh] min-h-[220px]">
           <p className="font-helvetica text-[13px] text-[#5c5c5c] px-4 text-center">
-            Hero Image — Verselift AI SaaS Platform Overview &amp; Conversion Interface
+            Verselift — AI SaaS Platform Overview &amp; Conversion Interface
           </p>
         </div>
       </div>
 
-      {/* ── Project Header ── */}
+      {/* ── Header ── */}
       <div className="px-6 pt-10 pb-0 md:px-14 lg:px-20">
         <h1 className="font-inter text-[1.75rem] font-light leading-snug tracking-tight text-white md:text-[2.25rem] lg:text-[2.75rem]">
           Verselift — AI SaaS Platform
         </h1>
+        <p className="font-helvetica mt-3 text-[15px] text-[#6a6a6a]">
+          AI-powered SaaS platform engineered for operational efficiency &amp; subscription revenue growth
+        </p>
 
-        <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:gap-16">
+        <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:flex-wrap sm:gap-14">
           <div className="flex items-start gap-2">
             <CalendarIcon />
             <div>
@@ -70,7 +73,7 @@ export default function VerseliftProject() {
             <CalendarIcon />
             <div>
               <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#6a6a6a]">Category</p>
-              <p className="font-helvetica mt-1 text-[13px] leading-snug text-[#c0c0c0]">AI SaaS & Growth UX</p>
+              <p className="font-helvetica mt-1 text-[13px] leading-snug text-[#c0c0c0]">AI SaaS &amp; Growth UX</p>
             </div>
           </div>
 
@@ -78,7 +81,7 @@ export default function VerseliftProject() {
             <CalendarIcon />
             <div>
               <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#6a6a6a]">Role</p>
-              <p className="font-helvetica mt-1 text-[13px] leading-snug text-[#c0c0c0]">Product Designer & Strategist</p>
+              <p className="font-helvetica mt-1 text-[13px] leading-snug text-[#c0c0c0]">Product Designer &amp; Strategist</p>
             </div>
           </div>
 
@@ -105,28 +108,12 @@ export default function VerseliftProject() {
       <div className="px-6 py-12 md:px-14 lg:px-20">
         <Body>
           <p>
-            If you&apos;d like to learn more,{" "}
-            <Link href="/" className="text-[#ededed] underline underline-offset-2 hover:text-[#3b82f6] transition-colors">
-              please get in touch
-            </Link>
-            .
-          </p>
-          <p>
             Verselift (<a href="https://verseliftai.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-[#ededed] underline underline-offset-2 hover:text-[#3b82f6] transition-colors">verseliftai.vercel.app</a>) is an AI-powered SaaS platform engineered to solve core operational bottlenecks and drive recurring subscription revenue for businesses.
           </p>
           <p>
-            As Lead Product Designer & Strategist, I architected the end-to-end design system, onboarding conversion flows, user analytics dashboards, and monetization touchpoints.
+            As Lead Product Designer &amp; Strategist, I architected the end-to-end design system, onboarding conversion flows, user analytics dashboards, and monetization touchpoints.
           </p>
         </Body>
-      </div>
-
-      {/* ── Hero Image Placeholder ── */}
-      <div className="mb-12 px-6 md:px-14 lg:px-20">
-        <div className="flex w-full items-center justify-center rounded-lg border border-dashed border-[#2e2e2e] bg-[#141414] aspect-[16/9] min-h-[220px]">
-          <p className="font-helvetica text-[13px] text-[#5c5c5c] px-4 text-center">
-            Verselift — Main Application Dashboard & AI Workflow Interface
-          </p>
-        </div>
       </div>
 
       {/* ── Results / Metrics ── */}
@@ -150,8 +137,8 @@ export default function VerseliftProject() {
       <hr className="mx-6 mb-16 border-[#1f1f1f] md:mx-14 lg:mx-20" />
 
       {/* ── Strategy Section ── */}
-      <div className="px-6 pb-6 md:px-14 lg:px-20">
-        <SectionHeading>Growth Strategy & Product Architecture</SectionHeading>
+      <div className="px-6 pb-12 md:px-14 lg:px-20">
+        <SectionHeading>Growth Strategy &amp; Product Architecture</SectionHeading>
         <Body>
           <p>
             The core objective for Verselift was balancing complex AI capabilities with an intuitive, self-serve interface that drives user activation and premium tier conversions.
@@ -162,9 +149,25 @@ export default function VerseliftProject() {
         </Body>
       </div>
 
+      {/* ── Section Figure Placeholder 1 ── */}
+      <div className="mb-16 px-6 md:px-14 lg:px-20">
+        <figure>
+          <div className="overflow-hidden rounded-lg bg-[#141414] border border-[#222] p-6 md:p-10">
+            <div className="flex w-full aspect-[16/9] min-h-[220px] items-center justify-center border border-dashed border-[#2e2e2e] bg-[#0d0d0d] rounded-lg">
+              <p className="font-helvetica text-[13px] text-[#5c5c5c] px-4 text-center">
+                Verselift — Main Application Dashboard &amp; AI Workflow Interface
+              </p>
+            </div>
+          </div>
+          <figcaption className="mt-4 font-helvetica text-[13px] leading-relaxed text-[#5c5c5c]">
+            Main application dashboard featuring real-time telemetry, workflow execution metrics, and subscription tier controls.
+          </figcaption>
+        </figure>
+      </div>
+
       {/* ── Design System Section ── */}
-      <div className="px-6 pb-6 md:px-14 lg:px-20">
-        <SectionHeading>Design System & Visual Craft</SectionHeading>
+      <div className="px-6 pb-12 md:px-14 lg:px-20">
+        <SectionHeading>Design System &amp; Visual Craft</SectionHeading>
         <Body>
           <p>
             To ensure rapid feature expansion without design debt, I established a comprehensive dark-mode UI token architecture, responsive grid layouts, and interactive component states in Figma.
@@ -172,13 +175,20 @@ export default function VerseliftProject() {
         </Body>
       </div>
 
-      {/* ── Image Placeholder ── */}
-      <div className="mb-12 px-6 md:px-14 lg:px-20">
-        <div className="flex w-full items-center justify-center rounded-lg border border-dashed border-[#2e2e2e] bg-[#141414] aspect-[16/9] min-h-[220px]">
-          <p className="font-helvetica text-[13px] text-[#5c5c5c] px-4 text-center">
-            Verselift — Design System & Component Token Detail
-          </p>
-        </div>
+      {/* ── Section Figure Placeholder 2 ── */}
+      <div className="mb-16 px-6 md:px-14 lg:px-20">
+        <figure>
+          <div className="overflow-hidden rounded-lg bg-[#141414] border border-[#222] p-6 md:p-10">
+            <div className="flex w-full aspect-[16/9] min-h-[220px] items-center justify-center border border-dashed border-[#2e2e2e] bg-[#0d0d0d] rounded-lg">
+              <p className="font-helvetica text-[13px] text-[#5c5c5c] px-4 text-center">
+                Verselift — Design System Tokens, Color Palette &amp; Typography Specs
+              </p>
+            </div>
+          </div>
+          <figcaption className="mt-4 font-helvetica text-[13px] leading-relaxed text-[#5c5c5c]">
+            Figma design system token architecture detailing dark mode color palettes, button hierarchies, and responsive grid rules.
+          </figcaption>
+        </figure>
       </div>
 
       {/* ── Footer ── */}
@@ -188,18 +198,9 @@ export default function VerseliftProject() {
         <p className="font-helvetica mt-2 text-[15px] text-[#5c5c5c]">
           Questions about this project?{" "}
           <Link href="/" className="text-[#c0c0c0] underline underline-offset-2 hover:text-[#3b82f6] transition-colors">
-            Get in touch
+            Back to home
           </Link>
-          .
         </p>
-        <div className="mt-8 flex flex-wrap gap-8 text-sm">
-          <Link href="/work/user-interface/konga-workstation" className="font-helvetica text-[#5c5c5c] transition-colors hover:text-[#3b82f6]">
-            ← Konga WorkStation
-          </Link>
-          <Link href="/work/user-interface/statmind" className="font-helvetica text-[#5c5c5c] transition-colors hover:text-[#3b82f6]">
-            StatMind →
-          </Link>
-        </div>
       </div>
 
     </div>

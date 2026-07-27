@@ -70,12 +70,6 @@ export default function Sidebar() {
           href="/work/user-interface/tradon-app"
           comingSoon
         />
-        <SidebarLink
-          text="DriveHelp"
-          iconType="project"
-          href="/work/user-interface/drivehelp"
-          disabled
-        />
         <div className="mt-4 mb-2 text-[#bdbdbd] uppercase tracking-widest text-[10px] font-semibold">
           Engineering
         </div>
