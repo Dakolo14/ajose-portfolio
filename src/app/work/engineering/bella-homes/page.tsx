@@ -89,29 +89,14 @@ export default function BellaHomesEngineeringProject() {
           <div className="flex items-start gap-2">
             <CalendarIcon />
             <div>
-              <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#6a6a6a]">Live Platform</p>
+              <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#6a6a6a]">Live at</p>
               <a
                 href="https://bellahomes.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-helvetica mt-1 block text-[13px] leading-snug text-[#c0c0c0] underline underline-offset-2 hover:text-[#D4AF37] transition-colors"
               >
-                bellahomes.vercel.app <span className="text-[#6a6a6a] text-[11px]">(Target: bellahomeng.com)</span>
-              </a>
-            </div>
-          </div>
-
-          <div className="flex items-start gap-2">
-            <CalendarIcon />
-            <div>
-              <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#6a6a6a]">Repository</p>
-              <a
-                href="https://github.com/Dakolo14/bellahomes"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-helvetica mt-1 block text-[13px] leading-snug text-[#c0c0c0] underline underline-offset-2 hover:text-[#D4AF37] transition-colors"
-              >
-                github.com/Dakolo14/bellahomes
+                bellahomes.vercel.app
               </a>
             </div>
           </div>
