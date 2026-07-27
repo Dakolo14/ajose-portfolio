@@ -106,11 +106,11 @@ export default function Sidebar() {
         <div className="mt-4 mb-2 text-[#bdbdbd] uppercase tracking-widest text-[10px] font-semibold">
           Contact
         </div>
-        <SidebarItem text="Resume" iconType="file" />
-        <SidebarItem text="Email" iconType="at" />
-        <SidebarItem text="LinkedIn" iconType="linkedin" />
-        <SidebarItem text="Tiktok" iconType="tiktok" />
-        <SidebarItem text="Twitter/X" iconType="x" />
+        <SidebarLink text="Resume" iconType="file" href="#" comingSoon />
+        <SidebarLink text="Email" iconType="at" href="mailto:ajosedare4u@gmail.com" external />
+        <SidebarLink text="LinkedIn" iconType="linkedin" href="https://www.linkedin.com/in/ajose-damilare-643189169/?skipRedirect=true" external />
+        <SidebarLink text="Tiktok" iconType="tiktok" href="https://www.tiktok.com/@aj.design15?lang=en" external />
+        <SidebarLink text="Twitter/X" iconType="x" href="https://x.com/PrettyboyAJ14" external />
       </nav>
     </aside>
   );
@@ -122,18 +122,20 @@ function SidebarLink({
   href,
   disabled = false,
   comingSoon = false,
+  external = false,
 }: {
   text: string;
   iconType?: string;
   href: string;
   disabled?: boolean;
   comingSoon?: boolean;
+  external?: boolean;
 }) {
   let icon = null;
   let iconSrc = null;
   if (iconType === "at") {
     icon = (
-      <span className="text-lg font-bold opacity-60 group-hover:opacity-100 group-hover:text-white transition-all duration-300">
+      <span className="text-sm font-bold opacity-60 group-hover:opacity-100 group-hover:text-white transition-all duration-300">
         @
       </span>
     );
@@ -150,6 +152,33 @@ function SidebarLink({
   }
 
   const isBlocked = disabled || comingSoon;
+
+  if (external && !isBlocked) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center justify-between gap-2 py-1 px-2 rounded transition-all duration-300 hover:bg-[#232323] cursor-pointer group hover:translate-x-1"
+      >
+        <div className="flex items-center gap-2 min-w-0">
+          {iconSrc ? (
+            <Image
+              src={iconSrc}
+              alt={iconType || "icon"}
+              width={16}
+              height={16}
+              className="opacity-40 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110 shrink-0"
+            />
+          ) : (
+            icon
+          )}
+          <span className="transition-all duration-300 group-hover:text-white truncate">{text}</span>
+        </div>
+        <span className="text-[11px] text-[#5c5c5c] group-hover:text-[#aaa] transition-colors">↗</span>
+      </a>
+    );
+  }
 
   return (
     <Link

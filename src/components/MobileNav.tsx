@@ -4,11 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-function SidebarLink({ text, iconType, href, disabled = false, onClick }: { text: string; iconType?: string; href: string; disabled?: boolean; onClick?: () => void }) {
+function SidebarLink({ text, iconType, href, disabled = false, external = false, onClick }: { text: string; iconType?: string; href: string; disabled?: boolean; external?: boolean; onClick?: () => void }) {
   let icon = null;
   let iconSrc = null;
   if (iconType === "at") {
-    icon = <span className="text-lg font-bold opacity-60 group-hover:opacity-100 group-hover:text-white">@</span>;
+    icon = <span className="text-sm font-bold opacity-60 group-hover:opacity-100 group-hover:text-white">@</span>;
   } else if (iconType === "linkedin") {
     iconSrc = "/linkedin.svg";
   } else if (iconType === "tiktok") {
@@ -20,6 +20,29 @@ function SidebarLink({ text, iconType, href, disabled = false, onClick }: { text
   } else if (iconType === "project") {
     iconSrc = "/briefcase.svg";
   }
+
+  if (external && !disabled) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={onClick}
+        className="flex items-center justify-between py-2 px-4 rounded hover:bg-[#232323] cursor-pointer group"
+      >
+        <div className="flex items-center gap-2">
+          {iconSrc ? (
+            <Image src={iconSrc} alt={iconType || "icon"} width={18} height={18} className="opacity-40 group-hover:opacity-100 group-hover:text-white transition" />
+          ) : (
+            icon
+          )}
+          <span className="transition group-hover:text-white text-base">{text}</span>
+        </div>
+        <span className="text-xs text-[#5c5c5c] group-hover:text-white transition-colors">↗</span>
+      </a>
+    );
+  }
+
   return (
     <Link
       href={disabled ? "#" : href}
@@ -180,11 +203,11 @@ export default function MobileNav() {
           <SidebarLink text="Konga Rework" iconType="project" href="/work/engineering/konga-rework" onClick={() => setOpen(false)} />
           <SidebarLink text="KYC Interactive Form" iconType="project" href="/work/engineering/kyc-interactive-form" onClick={() => setOpen(false)} />
           <div className="mb-2 text-[#bdbdbd] pl-4 uppercase tracking-widest text-[10px] font-semibold mt-4">Contact</div>
-          <SidebarItem text="Resume" iconType="file" />
-          <SidebarItem text="Email" iconType="at" />
-          <SidebarItem text="LinkedIn" iconType="linkedin" />
-          <SidebarItem text="Tiktok" iconType="tiktok" />
-          <SidebarItem text="Twitter/X" iconType="x" />
+          <SidebarLink text="Resume" iconType="file" href="#" disabled onClick={() => setOpen(false)} />
+          <SidebarLink text="Email" iconType="at" href="mailto:ajosedare4u@gmail.com" external onClick={() => setOpen(false)} />
+          <SidebarLink text="LinkedIn" iconType="linkedin" href="https://www.linkedin.com/in/ajose-damilare-643189169/?skipRedirect=true" external onClick={() => setOpen(false)} />
+          <SidebarLink text="Tiktok" iconType="tiktok" href="https://www.tiktok.com/@aj.design15?lang=en" external onClick={() => setOpen(false)} />
+          <SidebarLink text="Twitter/X" iconType="x" href="https://x.com/PrettyboyAJ14" external onClick={() => setOpen(false)} />
         </nav>
       </div>
       {/* Add top padding to main content on mobile to account for the top bar */}
