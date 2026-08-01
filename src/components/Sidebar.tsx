@@ -45,14 +45,14 @@ export default function Sidebar() {
           User Interface
         </div>
         <SidebarLink
-          text="CeraVe CerAwards Campaign"
-          iconType="project"
-          href="/work/user-interface/cerave-cerawards"
-        />
-        <SidebarLink
           text="Konga WorkStation"
           iconType="project"
           href="/work/user-interface/konga-workstation"
+        />
+        <SidebarLink
+          text="CeraVe CerAwards Campaign"
+          iconType="project"
+          href="/work/user-interface/cerave-cerawards"
         />
         <SidebarLink
           text="Verselift"

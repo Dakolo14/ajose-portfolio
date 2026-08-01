@@ -155,6 +155,33 @@ export default function KongaWorkstationProject() {
 
       <hr className="mx-6 mb-16 border-[#1f1f1f] md:mx-14 lg:mx-20" />
 
+      {/* ══ The Konga Group Redesign ══ */}
+      <div className="px-6 pb-6 md:px-14 lg:px-20">
+        <SectionHeading>The Konga Group Redesign: Designing for Scale</SectionHeading>
+        <Body>
+          <p>
+            Working on a platform at the scale of Konga reinforces how structural design decisions directly influence both core business outcomes and the daily user experience. As part of a larger cross-functional team, my role centered on redesigning specific, high-impact sections of the platform while ensuring strict alignment with established brand guidelines and maintaining consistency across the entire user journey.
+          </p>
+          <p>
+            A significant part of this process required a data-driven e-commerce strategy, looking closely at how incremental UX improvements and UI optimizations could yield compounding results. The focus was on identifying marginal gains within the interface that would directly support broader revenue growth, enhance conversion efficiency, and elevate overall customer satisfaction without fragmenting the established visual identity.
+          </p>
+        </Body>
+      </div>
+
+      <div className="mb-12 px-6 md:px-14 lg:px-20">
+        <div className="w-full overflow-hidden rounded-xl border border-[#222] bg-[#141414]">
+          <iframe 
+            width="100%" 
+            height="750" 
+            src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2F3L9Lo10FyTIEug7DmtOWnB%2FKonga-Mobile-App-Redesign%3Fnode-id%3D376-67462%26viewport%3D-1020%252C51%252C0.33%26t%3DoY51VD67pBhteZFM-1%26scaling%3Dscale-down%26content-scaling%3Dfixed%26starting-point-node-id%3D376%253A67792%26page-id%3D376%253A67461" 
+            allowFullScreen
+            style={{ border: 'none' }}
+          ></iframe>
+        </div>
+      </div>
+
+      <hr className="mx-6 mb-16 border-[#1f1f1f] md:mx-14 lg:mx-20" />
+
       {/* ══ Brands I've Worked With & Shop-in-Shop Strategy ══ */}
       <div className="px-6 pb-16 md:px-14 lg:px-20">
         <SectionHeading>Brands I&apos;ve Worked With — Shop in Shop Strategy</SectionHeading>
@@ -174,94 +201,65 @@ export default function KongaWorkstationProject() {
               name: "Samsung",
               category: "Consumer Electronics",
               url: "https://www.konga.com/content/samsungsis",
-              brand: "Samsung"
+              logoSrc: "/logos/samsung.png"
             },
             {
-              name: "Apple",
-              category: "Premium Electronics",
-              url: "https://www.konga.com/content/apple",
-              brand: "Apple"
-            },
-            {
-              name: "HP Store",
+              name: "HP",
               category: "Computing & Laptops",
-              url: "https://www.konga.com/content/hpstore",
-              brand: "HP"
+              url: "https://www.konga.com/content/hp-store",
+              logoSrc: "/logos/hp.png"
             },
             {
-              name: "Orca Mall",
+              name: "ASUS",
+              category: "Computing & Laptops",
+              url: "https://www.konga.com/content/asus-store",
+              logoSrc: "/logos/asus.png"
+            },
+            {
+              name: "Orca",
               category: "Furniture & Living",
               url: "https://www.konga.com/content/orca-mall",
-              brand: "Orca Mall"
+              logoSrc: "/logos/orca.png"
             },
             {
-              name: "Mikano International",
+              name: "Mikano",
               category: "Power & Industrial",
               url: "https://www.konga.com/content/mikano",
-              brand: "Mikano"
+              logoSrc: "/logos/mikano.png"
             },
             {
               name: "CeraVe",
               category: "Skincare & Beauty",
-              url: "/work/user-interface/cerave-cerawards",
-              brand: "CeraVe"
+              url: "https://www.konga.com/content/cerave",
+              logoSrc: "/logos/cerave.png"
             },
             {
-              name: "Midea Group",
-              category: "Home Appliances",
-              url: "https://www.konga.com/content/samsungsis",
-              brand: "Midea"
+              name: "La Roche Posay",
+              category: "Skincare & Beauty",
+              url: "https://www.konga.com/content/la-roche-posay",
+              logoSrc: "/logos/larocheposay.png"
             },
             {
-              name: "Intel",
-              category: "Hardware & Processors",
-              url: "https://www.konga.com/content/hpstore",
-              brand: "Intel"
+              name: "LG",
+              category: "Consumer Electronics",
+              url: "https://www.konga.com/content/lgstore",
+              logoSrc: "/logos/lg.png"
             },
-          ].map(({ name, category, url, brand }) => (
+          ].map(({ name, category, url, logoSrc }) => (
             <div
               key={name}
               className="group flex flex-col justify-between p-6 rounded-xl border border-[#262626] bg-[#141414] transition-all duration-300 hover:border-[#383838] hover:bg-[#1a1a1a] hover:-translate-y-1 hover:shadow-xl hover:shadow-black/60"
             >
               <div>
-                {/* Logo Header Container with uniform height (h-12) */}
-                <div className="h-12 w-full flex items-center justify-between mb-4">
-                  <div className="flex items-center">
-                    {brand === "Apple" && (
-                      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" className="text-white">
-                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.32c.62-.75 1.04-1.8 0.92-2.85-.9.04-2 .6-2.65 1.36-.58.68-1.09 1.77-.95 2.81 1.01.08 2.06-.57 2.68-1.32z"/>
-                      </svg>
-                    )}
-                    {brand === "Samsung" && (
-                      <span className="font-inter font-black text-xl text-[#3b82f6] tracking-wider uppercase">SAMSUNG</span>
-                    )}
-                    {brand === "HP" && (
-                      <span className="font-inter font-black italic text-2xl text-[#0096d6] tracking-tighter">hp</span>
-                    )}
-                    {brand === "CeraVe" && (
-                      <span className="font-inter font-black text-xl text-[#005994] tracking-tight">CeraVe</span>
-                    )}
-                    {brand === "Orca Mall" && (
-                      <span className="font-inter font-black text-xl text-[#f59e0b] tracking-widest uppercase">ORCA</span>
-                    )}
-                    {brand === "Mikano" && (
-                      <span className="font-inter font-black text-xl text-[#ef4444] tracking-widest uppercase">MIKANO</span>
-                    )}
-                    {brand === "Midea" && (
-                      <span className="font-inter font-black text-xl text-[#008ac9] tracking-tight">Midea</span>
-                    )}
-                    {brand === "Intel" && (
-                      <span className="font-inter font-black text-2xl text-[#0068b5] tracking-tight">intel</span>
-                    )}
-                  </div>
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#6a6a6a] px-2.5 py-1 rounded bg-[#1c1c1c] border border-[#2a2a2a]">
-                    Shop-in-Shop
-                  </span>
+                {/* Logo Header Container */}
+                <div className="h-20 w-full flex items-center justify-center rounded-lg bg-[#8c8c8c] mb-4 p-4 shadow-inner">
+                  <img src={logoSrc} alt={`${name} logo`} className="h-full w-auto object-contain max-w-[120px]" />
                 </div>
 
                 <h3 className="font-inter text-sm font-semibold text-white group-hover:text-[#ED017F] transition-colors mb-1">
                   {name}
                 </h3>
+
                 <p className="font-helvetica text-xs text-[#6a6a6a] mb-5">
                   {category}
                 </p>
@@ -313,96 +311,99 @@ export default function KongaWorkstationProject() {
 
       <hr className="mx-6 mb-16 border-[#1f1f1f] md:mx-14 lg:mx-20" />
 
-      {/* ══ group.konga.com ══ */}
+      {/* ══ Product Card Optimization ══ */}
       <div className="px-6 pb-6 md:px-14 lg:px-20">
-        <SectionHeading>group.konga.com — Corporate Website</SectionHeading>
+        <SectionHeading>Product Card Optimization: The Pre-Order Flow</SectionHeading>
         <Body>
           <p>
-            The Konga Group corporate website is the public-facing home for the holding company,
-            communicating what the group is, what it owns, and what it stands for to partners,
-            investors, and prospective talent.
+            <strong className="text-white">The Challenge:</strong> The existing pre-order cards lacked the necessary transparency for high-value transactions. Truncated titles left users guessing about specific models, while a singular price point failed to differentiate between a deposit and the full retail cost. Furthermore, a generic &quot;Add to Cart&quot; button misrepresented the action.
           </p>
           <p>
-            I owned the design end-to-end: information architecture, visual direction, component
-            design, and the final build. The brief called for a platform that felt authoritative and
-            modern without losing the warmth Konga is known for in the Nigerian market.
+            <strong className="text-white">The Solution:</strong> I redesigned the component to prioritize data transparency and reduce cognitive load. I introduced an expanded title layout for clarity, added a secondary price token to clearly display the full cost versus the upfront deposit, and changed the CTA to a decisive &quot;Preorder Now.&quot; I also cleaned up visual clutter by removing zero-state reviews and redundant badges, ensuring the user&apos;s focus remains on the core decision-making details.
           </p>
         </Body>
       </div>
 
       <div className="mb-12 px-6 md:px-14 lg:px-20">
-        <img src="/kgroupfig1.png" alt="group.konga.com full page design" className="w-full h-auto" />
+        <img src="/preorder-solution.png" alt="Pre-order flow solution" className="w-full h-auto rounded-xl border border-[#222]" />
       </div>
-
-      <div className="px-6 pb-6 md:px-14 lg:px-20">
-        <Body>
-          <p>
-            The site needed to work cleanly across both desktop and mobile. Corporate visitors on
-            laptops and job seekers browsing on phones. Responsive layout was a hard requirement,
-            not an afterthought.
-          </p>
-        </Body>
-      </div>
-
-      <Placeholder label="Image — group.konga.com mobile view" />
-      <Placeholder label="Image — group.konga.com key sections / component detail" />
 
       <hr className="mx-6 mb-16 border-[#1f1f1f] md:mx-14 lg:mx-20" />
 
-      {/* ══ Career Dashboard ══ */}
+      {/* ══ Optimizing the Homepage for Retention ══ */}
       <div className="px-6 pb-6 md:px-14 lg:px-20">
-        <SectionHeading>Career Dashboard — Internal Tool</SectionHeading>
+        <SectionHeading>Optimizing the Homepage for Retention</SectionHeading>
         <Body>
           <p>
-            Alongside the public properties, I designed and built an internal career management
-            dashboard for the Konga Group HR and admin team. The tool handles job postings, applicant
-            tracking, and internal review workflows.
+            The homepage is the most valuable real estate on the platform. For this phase of the Konga rework, my primary objective was to increase user retention and establish a definitive visual hierarchy across all devices. Recognizing that small UI tweaks often lead to significant behavioral shifts, I implemented a series of strategic adjustments focused on user flow and product discovery:
           </p>
+          <ul className="list-disc pl-5 space-y-4">
+            <li>
+              <strong className="text-white">Mobile View Optimization:</strong> Previously, the mobile carousel displayed only 1.2 products at a time, creating a stagnant scrolling experience. I redesigned this layout to a 2.5 product view. By showing two full items and a deliberate &quot;peek&quot; of the third, the interface instantly signals off-screen content, naturally encouraging horizontal scrolling and increasing engagement.
+            </li>
+            <li>
+              <strong className="text-white">Visual Consistency &amp; Hierarchy:</strong> To reduce cognitive load and improve scannability, I introduced a unified header system utilizing the brand&apos;s deep magenta. Whether a user is browsing &quot;Today&apos;s Deals&quot; or &quot;Official Stores,&quot; the visual language is now uniform and predictable.
+            </li>
+            <li>
+              <strong className="text-white">Strategic OEM Partner Visibility:</strong> I built a dedicated section for OEM-targeted stores. This provided premium, structured visibility to key brand partners—such as Cerave and Midea Group—without disrupting the organic user flow or cluttering the primary feed.
+            </li>
+            <li>
+              <strong className="text-white">Frictionless Navigation:</strong> Long-scrolling e-commerce pages can become tedious, especially on mobile. To solve this, I redesigned the &quot;Back to Top&quot; component to be more visually prominent, ensuring users can instantly return to the main navigation without friction.
+            </li>
+          </ul>
+        </Body>
+      </div>
+
+      <div className="mb-12 px-6 md:px-14 lg:px-20">
+        <video 
+          src="/konga-rework.mp4" 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          className="w-full h-auto rounded-xl border border-[#222]" 
+        />
+      </div>
+
+      <hr className="mx-6 mb-16 border-[#1f1f1f] md:mx-14 lg:mx-20" />
+
+      {/* ══ Recognition & Certification ══ */}
+      <div className="px-6 pb-6 md:px-14 lg:px-20">
+        <SectionHeading>Recognition & Certification</SectionHeading>
+        <Body>
           <p>
-            Screens for this project are kept private out of respect for internal tooling. Happy to
-            walk through the design decisions in a conversation. Get in touch if you&apos;d like to know
-            more.
+            My contributions to scaling the Konga ecosystem and optimizing these core workflows were recognized internally. Below is the certification awarded for exceptional work and dedication to the platform&apos;s growth.
           </p>
         </Body>
       </div>
 
-      {/* Private notice instead of placeholder */}
       <div className="mb-12 px-6 md:px-14 lg:px-20">
-        <div className="flex items-center gap-4 rounded-lg border border-[#2e2e2e] bg-[#141414] px-6 py-5">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="shrink-0 text-[#5c5c5c]">
-            <rect x="3" y="7" width="10" height="8" rx="1.5" stroke="currentColor" strokeWidth="1.2"/>
-            <path d="M5 7V5a3 3 0 016 0v2" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
-          </svg>
-          <p className="font-helvetica text-[13px] text-[#5c5c5c]">
-            Screens withheld (internal dashboard).{" "}
-            <Link href="/" className="text-[#c0c0c0] underline underline-offset-2 hover:text-[#ED017F] transition-colors">
-              Get in touch
-            </Link>{" "}
-            to see more.
+        <img src="/kongacertificate.png" alt="Konga Certification for Exceptional Work" className="w-full h-auto rounded-xl border border-[#222]" />
+      </div>
+
+      <hr className="mx-6 mb-16 border-[#1f1f1f] md:mx-14 lg:mx-20" />
+
+      {/* ── Konga Proposed Features ── */}
+      <div className="px-6 pb-6 md:px-14 lg:px-20">
+        <SectionHeading>Konga Proposed Features</SectionHeading>
+        <Body>
+          <p>
+            To further bridge the gap between traditional Nigerian commerce and the digital experience, I proposed and designed a &quot;Negotiate&quot; feature. This concept allows users to make offers on specific items, bringing the familiar haggling experience of local markets into Konga&apos;s e-commerce ecosystem, with the goal of increasing engagement and potential conversions on high-ticket items.
           </p>
+        </Body>
+      </div>
+
+      <div className="mb-12 px-6 md:px-14 lg:px-20">
+        <div className="w-full overflow-hidden rounded-xl border border-[#222] bg-[#141414]">
+          <iframe 
+            width="100%" 
+            height="750" 
+            src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2F3L9Lo10FyTIEug7DmtOWnB%2FKonga-Mobile-App-Redesign%3Fnode-id%3D565-32605%26viewport%3D88%252C-173%252C0.33%26t%3DDFmJtlxe5p3vqxzd-1%26scaling%3Dscale-down-width%26content-scaling%3Dfixed%26page-id%3D565%253A32604" 
+            allowFullScreen
+            style={{ border: 'none' }}
+          ></iframe>
         </div>
       </div>
-
-      <hr className="mx-6 mb-16 border-[#1f1f1f] md:mx-14 lg:mx-20" />
-
-      {/* ── Design system note ── */}
-      <div className="px-6 pb-6 md:px-14 lg:px-20">
-        <SectionHeading>Design Language</SectionHeading>
-        <Body>
-          <p>
-            Across all three properties, the challenge was consistency without uniformity. Each
-            product has a different audience and purpose, but they all needed to feel like they came
-            from the same family.
-          </p>
-          <p>
-            I maintained a shared component library across the builds: typography scale, colour
-            tokens, button states, and layout grids that could adapt to each context without
-            fragmenting the visual identity.
-          </p>
-        </Body>
-      </div>
-
-      <Placeholder label="Image — Design system / shared components across properties" />
 
       {/* ── Footer ── */}
       <div className="px-6 pb-20 md:px-14 lg:px-20">

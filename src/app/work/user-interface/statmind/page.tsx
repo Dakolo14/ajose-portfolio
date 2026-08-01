@@ -220,6 +220,27 @@ export default function StatMindProject() {
         </figure>
       </div>
 
+      {/* ── Interactive Prototype ── */}
+      <div className="px-6 pb-6 md:px-14 lg:px-20">
+        <h2 className="font-inter text-[1.35rem] font-light text-white mb-4 tracking-tight md:text-[1.6rem]">
+          Interactive Prototype: Onboarding Flow
+        </h2>
+        <p className="font-helvetica text-[14px] leading-relaxed text-[#a3a3a3] mb-8">
+          Explore the onboarding flow below. This interactive prototype allows users to select their favorite teams, ensuring they get enough personalized information right from the start to make confident decisions on the platform.
+        </p>
+        <div className="w-full overflow-hidden rounded-xl border border-[#5A6BFF]/40 bg-[#0B0F17]">
+          <iframe 
+            width="100%" 
+            height="750" 
+            src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FIOGKFyQiKmcauwkCA3Tq3u%2FStatMind%3Fpage-id%3D0%253A1%26node-id%3D1585-1067%26viewport%3D-412%252C440%252C0.1%26t%3D9tNDiHgbhOacyxl0-1%26scaling%3Dscale-down-width%26content-scaling%3Dfixed%26starting-point-node-id%3D1585%253A1067%26show-proto-sidebar%3D1" 
+            allowFullScreen
+            style={{ border: 'none' }}
+          ></iframe>
+        </div>
+      </div>
+      
+      <hr className="mx-6 mb-16 border-[#1f1f1f] md:mx-14 lg:mx-20" />
+
       {/* ── Footer ── */}
       <div className="px-6 pb-20 md:px-14 lg:px-20">
         <hr className="mb-10 border-[#1f1f1f]" />

@@ -187,6 +187,197 @@ export default function CeraveCerawardsProject() {
         </div>
       </div>
 
+      {/* ── Interactive Prototype ── */}
+      <div className="px-6 pb-6 md:px-14 lg:px-20">
+        <h2 className="font-inter text-[1.35rem] font-light text-white mb-4 tracking-tight md:text-[1.6rem]">
+          Interactive Prototype
+        </h2>
+        <p className="font-helvetica text-[14px] leading-relaxed text-[#a3a3a3] mb-8">
+          Explore the fully functional prototype of the CeraVe CerAwards campaign below. Feel free to interact with the voting mechanics, category exploration, and overall user flow to experience the campaign exactly as a user would.
+        </p>
+        <div className="w-full overflow-hidden rounded-xl border border-[#005C9A]/40 bg-[#0B0F17]">
+          <iframe 
+            width="100%" 
+            height="750" 
+            src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FwM3PieEHzCAea0qyOs774M%2FCeramoVe-Campaign%3Fnode-id%3D5-2%26viewport%3D162%252C347%252C0.04%26t%3DH4nSgxdTHf43jix5-1%26scaling%3Dscale-down-width%26content-scaling%3Dfixed%26starting-point-node-id%3D61%253A1066%26page-id%3D0%253A1" 
+            allowFullScreen
+            style={{ border: 'none' }}
+          ></iframe>
+        </div>
+      </div>
+      
+      <hr className="mx-6 mb-16 border-[#1f1f1f] md:mx-14 lg:mx-20" />
+
+      {/* ── DESIGN SYSTEM & VISUAL TOKEN ARCHITECTURE ── */}
+      <div className="px-6 pb-16 md:px-14 lg:px-20">
+        <h2 className="font-inter text-[1.35rem] font-light text-white mb-4 tracking-tight md:text-[1.6rem]">
+          Design System & Visual Token Architecture
+        </h2>
+        
+        {/* System Alert Note Callout */}
+        <div className="mb-10 rounded-xl border border-[#005C9A]/40 bg-[#0B0F17] p-5 shadow-sm">
+          <div className="flex items-start gap-3">
+            <span className="shrink-0 text-[#005C9A]">ℹ️</span>
+            <div>
+              <h4 className="font-helvetica text-[14px] font-semibold text-white mb-1">Design System Overview</h4>
+              <p className="font-helvetica text-[14px] leading-relaxed text-[#a3a3a3]">
+                This design system outlines the visual language, typography, and core components used across the Cera-Awards campaign platform. It translates Cerave&apos;s dermatologist-recommended brand identity into a digital interface, prioritizing clinical cleanliness, high accessibility, and engaging interactions for the voting experience.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Color Palette Section */}
+        <div className="mb-14 space-y-8">
+          {/* Primary Canvas */}
+          <div>
+            <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#a3a3a3] mb-3">Primary Palette</p>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+              {[
+                { name: "Dermatologist White", hex: "#FFFFFF", bg: "#FFFFFF", text: "#111827", border: "#e5e5e5", usage: "Main background for cards, modals, and the global application." },
+                { name: "Clinical Slate", hex: "#F4F6F8", bg: "#F4F6F8", text: "#111827", border: "#e5e5e5", usage: "Secondary background for active states, hover effects, and dividers." },
+                { name: "Obsidian Navy", hex: "#0F172A", bg: "#0F172A", text: "#FFFFFF", border: "#0F172A", usage: "Primary text color and top navigation bars." },
+              ].map((color, i) => (
+                <div key={i} className="flex overflow-hidden rounded-xl border border-[#222] bg-[#141414]">
+                  <div className="w-16 shrink-0" style={{ backgroundColor: color.bg, borderRight: `1px solid ${color.border}` }}></div>
+                  <div className="p-4">
+                    <p className="font-helvetica text-[13px] font-medium text-white">{color.name}</p>
+                    <p className="font-mono text-[11px] mt-0.5 text-[#a3a3a3]">{color.hex}</p>
+                    <p className="font-helvetica text-[11px] mt-2 leading-relaxed text-[#888]">{color.usage}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Accents & Highlights */}
+          <div>
+            <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#a3a3a3] mb-3">Accents & Highlights</p>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+              {[
+                { name: "Cerave Medical Blue", hex: "#005C9A", bg: "#005C9A", text: "#FFFFFF", border: "#005C9A", usage: "Primary CTAs, active navigation links & active voting states." },
+                { name: "Success Emerald", hex: "#10B981", bg: "#10B981", text: "#FFFFFF", border: "#10B981", usage: "Successful vote casting, form validation & positive toast notifications." },
+                { name: "Campaign Gold", hex: "#F59E0B", bg: "#F59E0B", text: "#FFFFFF", border: "#F59E0B", usage: "Highlighting award categories, trophy icons & top-ranking nominees." },
+              ].map((color, i) => (
+                <div key={i} className="flex overflow-hidden rounded-xl border border-[#222] bg-[#141414]">
+                  <div className="w-16 shrink-0" style={{ backgroundColor: color.bg, borderRight: `1px solid ${color.border}` }}></div>
+                  <div className="p-4">
+                    <p className="font-helvetica text-[13px] font-medium text-white">{color.name}</p>
+                    <p className="font-mono text-[11px] mt-0.5 text-[#a3a3a3]">{color.hex}</p>
+                    <p className="font-helvetica text-[11px] mt-2 leading-relaxed text-[#888]">{color.usage}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Typography Architecture Section */}
+        <div className="mb-14">
+          <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#a3a3a3] mb-3">Typography Architecture</p>
+          <div className="rounded-xl border border-[#222] bg-[#141414] p-6 sm:p-8">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+              <div>
+                <p className="font-mono text-[11px] text-[#005C9A] mb-1">Geist (Optimized via next/font)</p>
+                <h3 className="font-helvetica text-[24px] font-light text-white leading-tight mb-2">
+                  Clean, engineered, highly legible geometric sans-serif tailored for modern digital displays.
+                </h3>
+                <p className="font-helvetica text-[13px] text-[#a3a3a3] mt-4"><strong>Weights:</strong> Regular (400), Medium (500), Semi-Bold (600), Bold (700)</p>
+              </div>
+              <div className="space-y-4">
+                <div>
+                  <p className="font-helvetica text-[12px] text-[#a3a3a3] uppercase tracking-widest mb-1">Small / Micro</p>
+                  <p className="font-helvetica text-[12px] text-white">Labels, vote counts, uppercase meta info</p>
+                </div>
+                <div>
+                  <p className="font-helvetica text-[12px] text-[#a3a3a3] uppercase tracking-widest mb-1">Body Reading</p>
+                  <p className="font-helvetica text-[15px] text-white">Standard reading content and nominee biographies</p>
+                </div>
+                <div>
+                  <p className="font-helvetica text-[12px] text-[#a3a3a3] uppercase tracking-widest mb-1">Headings</p>
+                  <p className="font-helvetica text-[24px] font-medium text-white">Page titles, hero sections & award categories</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* UI Components Section */}
+        <div className="mb-14">
+          <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#a3a3a3] mb-3">UI Components & Styling Tokens</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="rounded-xl border border-[#222] bg-[#141414] p-5">
+              <h4 className="font-helvetica text-[14px] font-medium text-white mb-2">1. Clinical Frost</h4>
+              <p className="font-helvetica text-[13px] leading-relaxed text-[#a3a3a3] mb-3">Floating panels and modals utilize subtle frosted glass without overwhelming the user.</p>
+              <div className="flex gap-2">
+                <span className="bg-[#222] text-[#c0c0c0] px-2 py-1 rounded text-[11px] font-mono">bg-white/90</span>
+              </div>
+            </div>
+            
+            <div className="rounded-xl border border-[#222] bg-[#141414] p-5">
+              <h4 className="font-helvetica text-[14px] font-medium text-white mb-2">2. Approachable Radii</h4>
+              <p className="font-helvetica text-[13px] leading-relaxed text-[#a3a3a3] mb-3">A mix of pill-shaped buttons and soft-rounded containers to make the brand feel friendly.</p>
+              <div className="flex flex-wrap gap-2">
+                <span className="bg-[#222] text-[#c0c0c0] px-2 py-1 rounded text-[11px] font-mono">rounded-full</span>
+                <span className="bg-[#222] text-[#c0c0c0] px-2 py-1 rounded text-[11px] font-mono">rounded-2xl</span>
+              </div>
+            </div>
+            
+            <div className="rounded-xl border border-[#222] bg-[#141414] p-5">
+              <h4 className="font-helvetica text-[14px] font-medium text-white mb-2">3. Accessible Shadows</h4>
+              <p className="font-helvetica text-[13px] leading-relaxed text-[#a3a3a3] mb-3">Soft, dispersed, cool-tinted shadows to prevent harsh contrast and maintain the light aesthetic.</p>
+              <div className="flex flex-wrap gap-2">
+                <span className="bg-[#222] text-[#c0c0c0] px-2 py-1 rounded text-[11px] font-mono">shadow-sm</span>
+                <span className="bg-[#222] text-[#c0c0c0] px-2 py-1 rounded text-[11px] font-mono">shadow-lg</span>
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-[#222] bg-[#141414] p-5">
+              <h4 className="font-helvetica text-[14px] font-medium text-white mb-2">4. Micro-animations</h4>
+              <p className="font-helvetica text-[13px] leading-relaxed text-[#a3a3a3] mb-3">Interactive elements feel responsive, confirming user actions instantly to build trust.</p>
+              <div className="flex flex-wrap gap-2">
+                <span className="bg-[#222] text-[#c0c0c0] px-2 py-1 rounded text-[11px] font-mono">active:scale-95</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Accessibility & Interaction Engine */}
+        <div className="mb-14">
+          <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#a3a3a3] mb-3">Accessibility & Interaction Engine</p>
+          <div className="rounded-xl border border-[#222] bg-[#141414] p-5">
+            <h4 className="font-helvetica text-[14px] font-medium text-white mb-2">Dynamic Contrast & Scalability</h4>
+            <ul className="list-disc pl-5 font-helvetica text-[13px] leading-relaxed text-[#a3a3a3] space-y-2">
+              <li><strong>Focus States:</strong> High-visibility focus rings (<code className="font-mono bg-[#222] text-[#c0c0c0] px-1 rounded">focus-visible:ring-[#005C9A]</code>) implemented globally via Radix UI primitives.</li>
+              <li><strong>ARIA Compliance:</strong> All interactive elements (<code className="font-mono bg-[#222] text-[#c0c0c0] px-1 rounded">react-accordion</code>, <code className="font-mono bg-[#222] text-[#c0c0c0] px-1 rounded">react-dialog</code>) are inherently accessible for screen readers, ensuring everyone can participate.</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* System Component Architecture */}
+        <div>
+          <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#a3a3a3] mb-3">System Component Architecture</p>
+          <div className="overflow-hidden rounded-lg border border-[#222]">
+            <div className="flex items-center gap-3 border-b border-[#222] bg-[#141414] px-5 py-3">
+              <span className="font-mono text-[12px] text-[#6a6a6a]">architecture.mermaid</span>
+            </div>
+            <pre className="overflow-x-auto bg-[#0d0d0d] p-6 text-[13px] leading-[1.75] text-[#c9d1d9] font-mono">
+              <code>{`graph TD
+    A[Cerave Design System] --> B(Typography: Geist)
+    A --> C(Color Palette)
+    A --> D(UI Components)
+    
+    C --> C1(#005C9A Cerave Blue)
+    C --> C2(#FFFFFF Dermatologist White)
+    C --> C3(#F59E0B Campaign Gold)
+    
+    D --> D1(Radix UI Primitives)
+    D --> D2(Tailwind v4 Utilities)`}</code>
+            </pre>
+          </div>
+        </div>
+      </div>
+
       <hr className="mx-6 border-[#1f1f1f] mb-16 md:mx-14 lg:mx-20" />
 
       {/* ── The Brief ── */}

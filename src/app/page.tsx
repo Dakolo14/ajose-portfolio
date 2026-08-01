@@ -120,12 +120,6 @@ export default function Home() {
               <div className="font-helvetica text-sm text-white">
                 Currently <span className="text-[#FF37A2]">@ Konga Group</span>, Contract <span className="text-[#005994]">@ CeraVe</span>
               </div>
-              <div className="flex items-center gap-2 text-xs text-[#bdbdbd] mt-1 font-helvetica cursor-default">
-                <span>📍</span>
-                <span>Lagos, Nigeria</span>
-                <span>•</span>
-                <span className="font-mono">{currentTime}</span>
-              </div>
             </div>
           </div>
           {/* Team/Experience section */}
@@ -285,6 +279,16 @@ export default function Home() {
               ))}
             </div>
           )}
+
+          {/* Certificate Section */}
+          <section className="mt-20 mb-12 animate-slideInUp" style={{ animationDelay: '0.2s' }}>
+            <div className="flex items-center justify-between border-b border-[#222] pb-2 mb-6">
+              <h2 className="font-inter text-sm font-medium text-white">Recognition & Certifications</h2>
+            </div>
+            <div className="w-full">
+              <img src="/kongacertificate.png" alt="Konga Certification" className="w-full h-auto rounded-xl border border-[#222] hover:border-[#444] transition-colors" />
+            </div>
+          </section>
         </main>
         <div className="px-4 sm:px-8 md:px-12 lg:px-18"><Footer /></div>
         <BackToTop />

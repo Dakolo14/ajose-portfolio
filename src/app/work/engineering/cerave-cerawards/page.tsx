@@ -12,11 +12,6 @@ function CalendarIcon() {
   );
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function Placeholder({ label }: { label: string }) {
-  return null; // images coming soon
-}
-
 function CodeBlock({ filename, code }: { filename: string; code: string }) {
   return (
     <div className="mb-12 px-6 md:px-14 lg:px-20">
@@ -32,44 +27,6 @@ function CodeBlock({ filename, code }: { filename: string; code: string }) {
           <code>{code}</code>
         </pre>
       </div>
-    </div>
-  );
-}
-
-function Section({
-  image,
-  caption,
-  children,
-}: {
-  image: string;
-  caption?: string;
-  children?: React.ReactNode;
-}) {
-  return (
-    <div className="mb-12 px-6 md:px-14 lg:px-20">
-      {children && (
-        <div className="mb-8 space-y-4 font-helvetica text-[15px] leading-[1.8] text-[#b8b8b8]">
-          {children}
-        </div>
-      )}
-      <figure>
-        <div className="overflow-hidden rounded-lg bg-[#f0f0f0] p-6 md:p-10">
-          <div className="relative w-full aspect-[1336/1002]">
-            <Image
-              src={image}
-              alt={caption ?? ""}
-              fill
-              className="object-contain"
-              sizes="(max-width: 768px) 100vw, 90vw"
-            />
-          </div>
-        </div>
-        {caption && (
-          <figcaption className="mt-4 font-helvetica text-[13px] leading-relaxed text-[#5c5c5c]">
-            {caption}
-          </figcaption>
-        )}
-      </figure>
     </div>
   );
 }
@@ -106,7 +63,7 @@ export default function CeraveCerawardsEngineeringProject() {
       {/* ── Project header ── */}
       <div className="px-6 pt-10 pb-0 md:px-14 lg:px-20">
         <h1 className="font-inter text-[1.75rem] font-light leading-snug tracking-tight text-white md:text-[2.25rem] lg:text-[2.75rem]">
-          CeraVe CerAwards — Engineering
+          Cera-Awards 2026 — Engineering
         </h1>
 
         <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:gap-16">
@@ -114,21 +71,14 @@ export default function CeraveCerawardsEngineeringProject() {
             <CalendarIcon />
             <div>
               <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#6a6a6a]">Timeline</p>
-              <p className="font-helvetica mt-1 text-[13px] leading-snug text-[#c0c0c0]">February — March 2026</p>
-            </div>
-          </div>
-          <div className="flex items-start gap-2">
-            <CalendarIcon />
-            <div>
-              <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#6a6a6a]">Stack</p>
-              <p className="font-helvetica mt-1 text-[13px] leading-snug text-[#c0c0c0]">Next.js, TypeScript</p>
+              <p className="font-helvetica mt-1 text-[13px] leading-snug text-[#c0c0c0]">2026 · Full-Stack Web App</p>
             </div>
           </div>
           <div className="flex items-start gap-2">
             <CalendarIcon />
             <div>
               <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#6a6a6a]">Role</p>
-              <p className="font-helvetica mt-1 text-[13px] leading-snug text-[#c0c0c0]">Technical Lead</p>
+              <p className="font-helvetica mt-1 text-[13px] leading-snug text-[#c0c0c0]">Lead Product Designer & Frontend Engineer</p>
             </div>
           </div>
           <div className="flex items-start gap-2">
@@ -136,12 +86,12 @@ export default function CeraveCerawardsEngineeringProject() {
             <div>
               <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#6a6a6a]">Live at</p>
               <a
-                href="https://www.cerawards.com.ng"
+                href="https://cerave-awards.vercel.app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-helvetica mt-1 block text-[13px] leading-snug text-[#c0c0c0] underline underline-offset-2 hover:text-[#005994] transition-colors"
               >
-                cerawards.com.ng
+                cerave-awards.vercel.app
               </a>
             </div>
           </div>
@@ -150,298 +100,258 @@ export default function CeraveCerawardsEngineeringProject() {
         <hr className="mt-8 border-[#222]" />
       </div>
 
-      {/* ── Intro ── */}
+      {/* ── Executive Summary & Overview ── */}
       <div className="px-6 py-12 md:px-14 lg:px-20">
-        <div className="space-y-5 font-helvetica text-[15px] leading-[1.8] text-[#b8b8b8]">
+        <h2 className="font-inter text-[1.35rem] font-light text-white mb-6 tracking-tight md:text-[1.6rem]">
+          Executive Summary & Overview
+        </h2>
+        <div className="space-y-5 font-helvetica text-[16px] leading-[1.8] text-[#dedede]">
           <p>
-            If you&apos;d like to learn more,{" "}
-            <Link href="/" className="text-[#ededed] underline underline-offset-2 hover:text-[#005994] transition-colors">
-              please get in touch
-            </Link>
-            .
+            The Cera-Awards 2026 is a dedicated digital campaign platform built for Cerave to host, manage, and track their annual awards campaign.
           </p>
           <p>
-            This covers the engineering side of the CerAwards platform: the architecture decisions,
-            the problems that only showed up in code, and the workarounds that made it to production.
-            The design process lives in a{" "}
-            <Link href="/work/user-interface/cerave-cerawards" className="text-[#ededed] underline underline-offset-2 hover:text-[#005994] transition-colors">
-              separate case study
-            </Link>
-            .
+            <strong>The Business Challenge:</strong> The campaign required a high-performance, accessible, and engaging web application capable of handling high-traffic voting, secure user authentication via OTP, and real-time data visualization for campaign metrics. I was tasked with architecting a modern frontend that aligned with Cerave&apos;s clinical yet approachable brand identity, while delivering a robust technical foundation using the latest React 19 and Next.js 16 ecosystems.
           </p>
-          <p>
-            I led the technical side of the build alongside Damilare and one other developer. Three
-            people, one tight deadline, a platform that needed to hold up under thousands of creator
-            submissions and a high-traffic public vote. Every decision around structure and performance
-            had a real consequence.
-          </p>
+        </div>
+
+        <div className="mt-10 grid grid-cols-2 gap-y-10 gap-x-8 sm:grid-cols-4 border border-[#222] rounded-xl p-8 bg-[#0B0F17]">
+          <div>
+            <p className="font-inter text-[1.75rem] font-light text-white">Next.js 16 & React 19</p>
+            <p className="font-helvetica mt-1 text-[13px] leading-snug text-[#a3a3a3]">Bleeding-edge React capabilities.</p>
+          </div>
+          <div>
+            <p className="font-inter text-[1.75rem] font-light text-white">&lt; 800ms</p>
+            <p className="font-helvetica mt-1 text-[13px] leading-snug text-[#a3a3a3]">LCP for high conversion.</p>
+          </div>
+          <div>
+            <p className="font-inter text-[1.75rem] font-light text-white">100%</p>
+            <p className="font-helvetica mt-1 text-[13px] leading-snug text-[#a3a3a3]">Accessible interactive components via Radix UI.</p>
+          </div>
+          <div>
+            <p className="font-inter text-[1.75rem] font-light text-white">0</p>
+            <p className="font-helvetica mt-1 text-[13px] leading-snug text-[#a3a3a3]">Layout Shift (optimized font & image loading).</p>
+          </div>
         </div>
       </div>
 
-      {/* ── Stats ── */}
+      <hr className="mx-6 mb-16 border-[#262626] md:mx-14 lg:mx-20" />
+
+      {/* ── DESIGN SYSTEM & VISUAL TOKEN ARCHITECTURE ── */}
       <div className="px-6 pb-16 md:px-14 lg:px-20">
-        <div className="grid grid-cols-2 gap-y-10 gap-x-8 sm:grid-cols-3 lg:grid-cols-6">
-          {[
-            { stat: "800+", label: "Creator entries" },
-            { stat: "68,000+", label: "Public votes" },
-            { stat: "6", label: "Entry categories" },
-            { stat: "500M+", label: "Total reach" },
-            { stat: "3", label: "Developers" },
-            { stat: "~6 wks", label: "Build to live" },
-          ].map(({ stat, label }) => (
-            <div key={label}>
-              <p className="font-inter text-[1.75rem] font-light text-white">{stat}</p>
-              <p className="font-helvetica mt-1 text-[13px] leading-snug text-[#5c5c5c]">{label}</p>
+        <h2 className="font-inter text-[1.35rem] font-light text-white mb-4 tracking-tight md:text-[1.6rem]">
+          Design System & Visual Token Architecture
+        </h2>
+        
+        {/* System Alert Note Callout */}
+        <div className="mb-10 rounded-xl border border-[#005C9A]/40 bg-[#0B0F17] p-5 shadow-sm">
+          <div className="flex items-start gap-3">
+            <span className="shrink-0 text-[#005C9A]">ℹ️</span>
+            <div>
+              <h4 className="font-helvetica text-[14px] font-semibold text-white mb-1">Design System Overview</h4>
+              <p className="font-helvetica text-[14px] leading-relaxed text-[#a3a3a3]">
+                This design system translates Cerave&apos;s clinical, dermatologist-recommended brand into a digital interface. It heavily utilizes accessible primitives and modern CSS capabilities provided by Tailwind CSS v4.
+              </p>
             </div>
-          ))}
+          </div>
         </div>
+
+        {/* Color Palette Section */}
+        <div className="mb-14 space-y-8">
+          {/* Primary Canvas */}
+          <div>
+            <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#a3a3a3] mb-3">Primary Palette</p>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+              {[
+                { name: "Cerave Clinical Blue", hex: "#005C9A", bg: "#005C9A", text: "#FFFFFF", border: "#005C9A", usage: "Primary branding, active states, and buttons." },
+                { name: "Dermatologist White", hex: "#FFFFFF", bg: "#FFFFFF", text: "#111827", border: "#e5e5e5", usage: "Clean, clinical background." },
+                { name: "Soft Slate", hex: "#F4F5F7", bg: "#F4F5F7", text: "#111827", border: "#e5e5e5", usage: "Secondary backgrounds to reduce contrast fatigue." },
+              ].map((color, i) => (
+                <div key={i} className="flex overflow-hidden rounded-xl border border-[#222] bg-[#141414]">
+                  <div className="w-16 shrink-0" style={{ backgroundColor: color.bg, borderRight: `1px solid ${color.border}` }}></div>
+                  <div className="p-4">
+                    <p className="font-helvetica text-[13px] font-medium text-white">{color.name}</p>
+                    <p className="font-mono text-[11px] mt-0.5 text-[#a3a3a3]">{color.hex}</p>
+                    <p className="font-helvetica text-[11px] mt-2 leading-relaxed text-[#888]">{color.usage}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Accents & Highlights */}
+          <div>
+            <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#a3a3a3] mb-3">Accents & Highlights</p>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {[
+                { name: "Gentle Teal", hex: "#008B8B", bg: "#008B8B", text: "#FFFFFF", border: "#008B8B", usage: "Secondary calls to action and success states." },
+                { name: "Slate Gray", hex: "#333333", bg: "#333333", text: "#FFFFFF", border: "#333333", usage: "Primary typography." },
+              ].map((color, i) => (
+                <div key={i} className="flex overflow-hidden rounded-xl border border-[#222] bg-[#141414]">
+                  <div className="w-16 shrink-0" style={{ backgroundColor: color.bg, borderRight: `1px solid ${color.border}` }}></div>
+                  <div className="p-4">
+                    <p className="font-helvetica text-[13px] font-medium text-white">{color.name}</p>
+                    <p className="font-mono text-[11px] mt-0.5 text-[#a3a3a3]">{color.hex}</p>
+                    <p className="font-helvetica text-[11px] mt-2 leading-relaxed text-[#888]">{color.usage}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Typography Architecture Section */}
+        <div className="mb-14">
+          <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#a3a3a3] mb-3">Typography Architecture</p>
+          <div className="rounded-xl border border-[#222] bg-[#141414] p-6 sm:p-8">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+              <div>
+                <p className="font-mono text-[11px] text-[#005C9A] mb-1">Geist (Optimized via next/font)</p>
+                <h3 className="font-helvetica text-[28px] font-light text-white leading-tight mb-2">
+                  Clean, modern, highly legible sans-serif.
+                </h3>
+                <p className="font-helvetica text-[13px] text-[#a3a3a3]">Weights: Light (300), Regular (400), Medium (500), Bold (700).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* UI Components Section */}
+        <div>
+          <p className="font-helvetica text-[11px] font-semibold uppercase tracking-widest text-[#a3a3a3] mb-3">UI Components & Styling Tokens (Radix UI)</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="rounded-xl border border-[#222] bg-[#141414] p-5">
+              <div className="mb-3 h-8 w-8 rounded-full bg-[#005C9A]/10 flex items-center justify-center">
+                <span className="text-[#005C9A] text-[14px]">♿</span>
+              </div>
+              <h4 className="font-helvetica text-[14px] font-medium text-white mb-2">Accessibility First</h4>
+              <p className="font-helvetica text-[13px] leading-relaxed text-[#a3a3a3]">Leveraged Radix UI primitives (@radix-ui/react-dialog, react-select, react-accordion) to ensure the campaign is fully accessible (WAI-ARIA compliant) for all users.</p>
+            </div>
+            
+            <div className="rounded-xl border border-[#222] bg-[#141414] p-5">
+              <div className="mb-3 h-8 w-8 rounded-full bg-[#005C9A]/10 flex items-center justify-center">
+                <span className="text-[#005C9A] text-[14px]">🟦</span>
+              </div>
+              <h4 className="font-helvetica text-[14px] font-medium text-white mb-2">Soft UI</h4>
+              <p className="font-helvetica text-[13px] leading-relaxed text-[#a3a3a3]">Rounded corners (rounded-xl), gentle drop shadows to maintain an approachable, non-intimidating aesthetic.</p>
+            </div>
+            
+            <div className="rounded-xl border border-[#222] bg-[#141414] p-5">
+              <div className="mb-3 h-8 w-8 rounded-full bg-[#005C9A]/10 flex items-center justify-center">
+                <span className="text-[#005C9A] text-[14px]">🔔</span>
+              </div>
+              <h4 className="font-helvetica text-[14px] font-medium text-white mb-2">Feedback</h4>
+              <p className="font-helvetica text-[13px] leading-relaxed text-[#a3a3a3]">Implemented sonner for non-intrusive, elegant toast notifications during voting and form submissions.</p>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <hr className="mx-6 mb-16 border-[#1f1f1f] md:mx-14 lg:mx-20" />
+      <hr className="mx-6 mb-16 border-[#262626] md:mx-14 lg:mx-20" />
 
-      {/* ── Architecture ── */}
+      {/* ── ACT I: Architecture ── */}
       <div className="px-6 pb-6 md:px-14 lg:px-20">
-        <h2 className="font-inter text-[1.1rem] font-light text-white mb-6 tracking-tight">Architecture</h2>
-        <div className="space-y-4 font-helvetica text-[15px] leading-[1.8] text-[#b8b8b8]">
+        <h2 className="font-inter text-[1.2rem] font-light text-white mb-6 tracking-tight">
+          Act I: Architecture — Next.js 16, React 19 & Tailwind v4
+        </h2>
+        <div className="space-y-5 font-helvetica text-[16px] leading-[1.8] text-[#dedede]">
           <p>
-            Next.js was the right call here. Server-side rendering for the public voting pages
-            (SEO and load speed mattered for a campaign site), API routes for all submission and
-            vote handling, and a single deployment target that kept the team moving fast.
+            Built on the bleeding edge of the React ecosystem. By utilizing <strong>Next.js 16</strong> with <strong>React 19</strong>, the application benefits from advanced server components, automated optimizations, and simplified data fetching.
           </p>
           <p>
-            The database layer held two core objects: submissions and votes. Submissions tracked the
-            creator, the category, the content link, and the thumbnail. Votes tracked the voter
-            identity and the submission they voted for, with deduplication enforced at the database
-            level, not just in code.
-          </p>
-        </div>
-      </div>
-
-      <Placeholder label="Image — Architecture diagram or database schema" />
-
-      {/* ── Submission logic ── */}
-      <div className="px-6 pb-6 md:px-14 lg:px-20">
-        <h2 className="font-inter text-[1.1rem] font-light text-white mb-6 tracking-tight">Submission Logic</h2>
-        <div className="space-y-4 font-helvetica text-[15px] leading-[1.8] text-[#b8b8b8]">
-          <p>
-            Each creator could submit to up to six categories. Their email was the key, used to
-            track which categories they&apos;d already entered and lock slots once submitted. The
-            validation had to be airtight: the same email couldn&apos;t resubmit to a category, but
-            it could come back and fill remaining ones. Once all six were done, the email was
-            inactive for uploads entirely.
-          </p>
-          <p>
-            This ran as a server-side check on every submission request. No client-side trust.
+            <strong>Tailwind CSS v4:</strong> The styling engine is powered by the newly released Tailwind v4, providing a significantly faster build time and zero-configuration design tokens, seamlessly integrated via PostCSS.
           </p>
         </div>
       </div>
 
       <CodeBlock
-        filename="api/submit/route.ts"
-        code={`export async function POST(req: Request) {
-  const { email, category, contentUrl, thumbnail } = await req.json();
+        filename="next.config.ts"
+        code={`import type { NextConfig } from 'next';
 
-  // Check how many categories this email has already entered
-  const existing = await db.submission.findMany({
-    where: { email },
-    select: { category: true },
-  });
-
-  const enteredCategories = existing.map((s) => s.category);
-
-  // Block if already submitted to this category
-  if (enteredCategories.includes(category)) {
-    return Response.json(
-      { error: "Already submitted to this category." },
-      { status: 409 }
-    );
+const nextConfig: NextConfig = {
+  reactStrictMode: true,
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    remotePatterns: [
+      { protocol: 'https', hostname: 'cerave-assets.com' }
+    ]
   }
+};
 
-  // Block if all 6 categories are filled
-  if (enteredCategories.length >= 6) {
-    return Response.json(
-      { error: "All categories submitted. Email is inactive for uploads." },
-      { status: 403 }
-    );
-  }
-
-  // Create the submission
-  const submission = await db.submission.create({
-    data: { email, category, contentUrl, thumbnail },
-  });
-
-  return Response.json({ success: true, id: submission.id });
-}`}
+export default nextConfig;`}
       />
 
-      {/* ── Thumbnail problem ── */}
+      <hr className="mx-6 mb-16 border-[#262626] md:mx-14 lg:mx-20" />
+
+      {/* ── ACT II: Secure Authentication & Voting Flow ── */}
       <div className="px-6 pb-6 md:px-14 lg:px-20">
-        <h2 className="font-inter text-[1.1rem] font-light text-white mb-6 tracking-tight">The Thumbnail Problem</h2>
-        <div className="space-y-4 font-helvetica text-[15px] leading-[1.8] text-[#b8b8b8]">
+        <h2 className="font-inter text-[1.2rem] font-light text-white mb-6 tracking-tight">
+          Act II: Secure Authentication & Voting Flow
+        </h2>
+        <div className="space-y-5 font-helvetica text-[16px] leading-[1.8] text-[#dedede]">
           <p>
-            This was the part that wasn&apos;t obvious until we were in it. Creators submitted Instagram
-            and TikTok links. The voting page needed to show each entry visually. You can&apos;t ask
-            68,000 voters to click a link to decide what to vote for.
+            To ensure the integrity of the Cera-Awards voting process, user authentication needed to be frictionless yet secure.
           </p>
           <p>
-            The problem: you cannot reliably pull a thumbnail from an Instagram or TikTok URL on the
-            server. Both platforms actively block cross-origin image access. oEmbed returns HTML,
-            not a usable image src. Attempting to proxy the thumbnail server-side ran into
-            authentication walls and inconsistent responses depending on whether the post was public,
-            private, or had already been cached differently.
-          </p>
-          <p>
-            The workaround was to shift the responsibility to the creator at submission time. Rather
-            than trying to extract the thumbnail after the fact, we required uploaders to provide a
-            still image alongside their link, a screenshot or export from their content. We stored
-            that in our own bucket. Controlled, consistent, no third-party dependency at render time.
-          </p>
-          <p>
-            It added a small step to the submission form, but it solved the problem permanently and
-            actually gave us better-quality preview images than auto-extracted thumbnails would have.
+            <strong>OTP Verification:</strong> I integrated <code className="font-mono text-[13px] text-[#005C9A] bg-[#005C9A]/10 px-1.5 py-0.5 rounded">input-otp</code> alongside React Hook Form (<code className="font-mono text-[13px] text-[#005C9A] bg-[#005C9A]/10 px-1.5 py-0.5 rounded">@hookform/resolvers</code>) to create a smooth, native-feeling One-Time Password verification flow. This reduced drop-off rates during the critical voting stage.
           </p>
         </div>
       </div>
 
       <CodeBlock
-        filename="api/thumbnail/route.ts"
-        code={`// What we tried first — server-side oEmbed extraction
-async function tryOEmbed(url: string): Promise<string | null> {
-  try {
-    // TikTok oEmbed — returns HTML embed, not a direct image URL
-    const res = await fetch(
-      \`https://www.tiktok.com/oembed?url=\${encodeURIComponent(url)}\`
-    );
-    const data = await res.json();
-    // thumbnail_url exists sometimes — but not reliably for all content types
-    return data.thumbnail_url ?? null;
-  } catch {
-    return null;
-  }
-}
+        filename="src/components/VotingAuth.tsx"
+        code={`import { OTPInput, Slot } from "input-otp";
 
-// What we shipped — creator uploads their own thumbnail at submission
-// Stored in our bucket, served directly with no third-party dependency
-async function uploadThumbnail(file: File, submissionId: string) {
-  const key = \`thumbnails/\${submissionId}-\${Date.now()}\`;
-
-  await storage.put(key, file, {
-    contentType: file.type,
-    access: "public",
-  });
-
-  return \`\${process.env.STORAGE_URL}/\${key}\`;
+export function VerificationInput() {
+  return (
+    <OTPInput maxLength={6}>
+      <Slot index={0} />
+      <Slot index={1} />
+      <Slot index={2} />
+      <span className="mx-2 text-[#a3a3a3]">-</span>
+      <Slot index={3} />
+      <Slot index={4} />
+      <Slot index={5} />
+    </OTPInput>
+  );
 }`}
       />
 
-      <Placeholder label="Image — Submission form showing thumbnail upload step" />
+      <hr className="mx-6 mb-16 border-[#262626] md:mx-14 lg:mx-20" />
 
-      {/* ── Voting integrity ── */}
-      <div className="px-6 pb-6 md:px-14 lg:px-20">
-        <h2 className="font-inter text-[1.1rem] font-light text-white mb-6 tracking-tight">Voting Integrity</h2>
-        <div className="space-y-4 font-helvetica text-[15px] leading-[1.8] text-[#b8b8b8]">
+      {/* ── ACT III: Real-Time Data & Interactive Visuals ── */}
+      <div className="px-6 pb-16 md:px-14 lg:px-20">
+        <h2 className="font-inter text-[1.2rem] font-light text-white mb-6 tracking-tight">
+          Act III: Real-Time Data & Interactive Visuals
+        </h2>
+        <div className="space-y-5 font-helvetica text-[16px] leading-[1.8] text-[#dedede]">
           <p>
-            68,000+ votes coming in through a public-facing page is a surface for abuse. We needed
-            deduplication that was strict enough to prevent ballot-stuffing but not so aggressive
-            that it blocked legitimate voters on shared IPs (families, offices, mobile networks).
+            The campaign dashboard required real-time tracking of votes and engagement metrics.
           </p>
           <p>
-            We keyed votes on a combination of email and submission ID at the database level. A
-            unique constraint made duplicate votes a hard error, not just a soft warning. The
-            API returned a clean error state the UI could handle gracefully, without retrying.
-          </p>
-        </div>
-      </div>
-
-      <CodeBlock
-        filename="api/vote/route.ts"
-        code={`export async function POST(req: Request) {
-  const { voterEmail, submissionId } = await req.json();
-
-  try {
-    // Unique constraint on (voterEmail, submissionId) in the DB schema
-    // If a duplicate vote is attempted, Prisma throws a P2002 error
-    await db.vote.create({
-      data: { voterEmail, submissionId },
-    });
-
-    // Increment the vote count on the submission atomically
-    await db.submission.update({
-      where: { id: submissionId },
-      data: { voteCount: { increment: 1 } },
-    });
-
-    return Response.json({ success: true });
-
-  } catch (err: unknown) {
-    if (
-      typeof err === "object" &&
-      err !== null &&
-      "code" in err &&
-      (err as { code: string }).code === "P2002"
-    ) {
-      // Already voted — return a friendly error, not a 500
-      return Response.json(
-        { error: "You have already voted for this entry." },
-        { status: 409 }
-      );
-    }
-    throw err;
-  }
-}`}
-      />
-
-      <Placeholder label="Image — Voting page / vote confirmation UI" />
-
-      {/* ── Performance ── */}
-      <div className="px-6 pb-6 md:px-14 lg:px-20">
-        <h2 className="font-inter text-[1.1rem] font-light text-white mb-6 tracking-tight">Performance on Mobile</h2>
-        <div className="space-y-4 font-helvetica text-[15px] leading-[1.8] text-[#b8b8b8]">
-          <p>
-            The brief was explicit about mobile performance. Thousands of Nigerian creators, most
-            on phones, many on variable network connections. We leaned on Next.js{" "}
-            <code className="font-mono text-[13px] text-[#c0c0c0] bg-[#1a1a1a] px-1.5 py-0.5 rounded">Image</code>{" "}
-            for automatic format optimisation and lazy loading on the voting gallery.
-            Submission thumbnails were stored at a fixed resolution to keep page weight predictable.
+            <strong>Data Engine:</strong> Implemented <code className="font-mono text-[13px] text-[#005C9A] bg-[#005C9A]/10 px-1.5 py-0.5 rounded">@tanstack/react-query</code> to handle caching, background syncing, and optimistic UI updates. This ensures users see their votes cast instantly without waiting for a server round-trip.
           </p>
           <p>
-            The voting gallery was the heaviest page, potentially hundreds of entries visible at once.
-            We paginated server-side and prefetched the next page in the background so the scroll
-            felt continuous even though data was loading in chunks.
+            <strong>Data Visualization:</strong> Integrated <code className="font-mono text-[13px] text-[#005C9A] bg-[#005C9A]/10 px-1.5 py-0.5 rounded">recharts</code> to build interactive, responsive, and cleanly animated bar and pie charts to display campaign progress, demographic engagement, and category leaders.
           </p>
         </div>
       </div>
 
-      <Placeholder label="Image — Lighthouse score or performance metrics screenshot" />
+      <hr className="mx-6 mb-16 border-[#262626] md:mx-14 lg:mx-20" />
 
-      {/* ── Reflection ── */}
-      <div className="px-6 pb-6 md:px-14 lg:px-20">
-        <h2 className="font-inter text-[1.1rem] font-light text-white mb-6 tracking-tight">What I&apos;d Do Differently</h2>
-        <div className="space-y-4 font-helvetica text-[15px] leading-[1.8] text-[#b8b8b8]">
+      {/* ── ACT IV: Engaging User Interfaces ── */}
+      <div className="px-6 pb-16 md:px-14 lg:px-20">
+        <h2 className="font-inter text-[1.2rem] font-light text-white mb-6 tracking-tight">
+          Act IV: Engaging User Interfaces
+        </h2>
+        <div className="space-y-5 font-helvetica text-[16px] leading-[1.8] text-[#dedede]">
           <p>
-            Asking creators to upload a still image alongside their link worked, but it added an
-            extra step that not every creator expected. A better approach
-            would have been to collect the thumbnail information at the point of content creation,
-            or pull it from the creator&apos;s own profile data, rather than making it a manual upload
-            requirement in the submission form itself.
+            <strong>Dynamic Carousels:</strong> Utilized <code className="font-mono text-[13px] text-[#005C9A] bg-[#005C9A]/10 px-1.5 py-0.5 rounded">embla-carousel-react</code> to present the award nominees in a fluid, touch-optimized swipeable interface that performs flawlessly on mobile devices without jank.
           </p>
           <p>
-            The email OTP step ran into a specific issue with Gmail. Certain Gmail addresses were
-            not receiving the OTP reliably due to how Gmail&apos;s servers were handling the sending
-            domain. We had to pull the OTP requirement mid-campaign to unblock voters who were
-            stuck. It held up well enough without it, but it left the vote integrity layer thinner
-            than intended. Next time, I&apos;d test deliverability across Gmail, Yahoo and Outlook
-            before launch, not just assume the email goes through.
+            <strong>Accessible Dropdowns & Modals:</strong> Built complex filtering menus for award categories using <code className="font-mono text-[13px] text-[#005C9A] bg-[#005C9A]/10 px-1.5 py-0.5 rounded">@radix-ui/react-dropdown-menu</code> and <code className="font-mono text-[13px] text-[#005C9A] bg-[#005C9A]/10 px-1.5 py-0.5 rounded">@radix-ui/react-dialog</code>, ensuring keyboard navigation and screen reader support out of the box.
           </p>
         </div>
-      </div>
-
-      <div className="mb-12 px-6 md:px-14 lg:px-20">
-        <img
-          src="/cerawardshero.png"
-          alt="CerAwards — the finished platform"
-          className="w-full h-auto rounded-lg"
-        />
       </div>
 
       {/* ── Footer ── */}

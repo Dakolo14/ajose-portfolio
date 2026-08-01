@@ -14,16 +14,6 @@ export interface FeaturedProject {
 export const featuredProjects: FeaturedProject[] = [
   // Design Projects
   {
-    title: "CeraVe CerAwards Campaign",
-    subtitle: "Campaign Design & Experience",
-    description: "Interactive awards campaign with gamification & public voting elements.",
-    href: "/work/user-interface/cerave-cerawards",
-    accentColor: CERAVE_BLUE,
-    thumbnail: "/cerawards.png",
-    active: true,
-    category: "design",
-  },
-  {
     title: "Konga WorkStation",
     subtitle: "User Interface Design & Brand Strategy",
     description: "Enterprise workspace and Shop-in-Shop brand partner ecosystem for Konga.",
@@ -34,12 +24,22 @@ export const featuredProjects: FeaturedProject[] = [
     category: "design",
   },
   {
+    title: "CeraVe CerAwards Campaign",
+    subtitle: "Campaign Design & Experience",
+    description: "Interactive awards campaign with gamification & public voting elements.",
+    href: "/work/user-interface/cerave-cerawards",
+    accentColor: CERAVE_BLUE,
+    thumbnail: "/cerawards.png",
+    active: true,
+    category: "design",
+  },
+  {
     title: "Verselift",
     subtitle: "Product Design & Strategy",
     description: "Next-gen SaaS platform designed for operational management and revenue growth.",
     href: "/work/user-interface/verselift",
     accentColor: "#3b82f6",
-    thumbnail: "/statmind.png", // active thumbnail placeholder
+    thumbnail: "/verseliftthumb.png",
     active: true,
     category: "design",
   },
@@ -61,6 +61,7 @@ export const featuredProjects: FeaturedProject[] = [
     description: "Hotel-grade booking engine with real-time availability search, multi-currency engine (NGN, USD, GBP), WhatsApp concierge integration, and isolated owner management portal.",
     href: "/work/engineering/bella-homes",
     accentColor: "#D4AF37",
+    thumbnail: "/BellaHomes Thumbnail.png",
     active: true,
     category: "engineering",
   },
