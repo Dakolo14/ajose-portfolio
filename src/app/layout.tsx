@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Ajose Damilare | Expert Web Designer & Developer",
     description: "Looking for the best web designer and developer? Ajose Damilare builds affordable, high-converting digital products designed to scale revenue.",
-    url: "https://www.ajosedamilare.com",
+    url: "https://ajose-portfolio.vercel.app",
     siteName: "Ajose Damilare Portfolio",
     images: [
       {
@@ -78,8 +78,8 @@ const structuredData = {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Ajose Damilare",
-  "url": "https://www.ajosedamilare.com",
-  "image": "https://www.ajosedamilare.com/profile-img.jpg",
+  "url": "https://ajose-portfolio.vercel.app",
+  "image": "https://ajose-portfolio.vercel.app/profile-img.jpg",
   "sameAs": [
     "https://www.linkedin.com/in/ajose-damilare-643189169/",
     "https://x.com/PrettyboyAJ14"

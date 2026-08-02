@@ -23,7 +23,7 @@ export default function Header() {
   ];
 
   const handleCopy = () => {
-    navigator.clipboard.writeText("https://ajosedamilare.com");
+    navigator.clipboard.writeText("https://ajose-portfolio.vercel.app");
     setCopied(true);
     setTimeout(() => setCopied(false), 1200);
   };
