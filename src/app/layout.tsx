@@ -26,6 +26,29 @@ export const metadata: Metadata = {
   verification: {
     google: "RpdMl-47Eio6iL8qhkc2uusr8nrG7g3b4uEm3jtGo8c",
   },
+  openGraph: {
+    title: "Ajose Damilare | Web Designer & Developer",
+    description: "Expert Web Designer & Developer creating affordable, high-converting websites and digital products.",
+    url: "https://www.ajosedamilare.com",
+    siteName: "Ajose Damilare Portfolio",
+    images: [
+      {
+        url: "/preview.png", 
+        width: 1200,
+        height: 630,
+        alt: "Ajose Damilare Portfolio",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ajose Damilare | Web Designer & Developer",
+    description: "Expert Web Designer & Developer creating affordable, high-converting websites and digital products.",
+    images: ["/preview.png"],
+    creator: "@PrettyboyAJ14",
+  },
   icons: {
     icon: [
       { url: '/favicon/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
