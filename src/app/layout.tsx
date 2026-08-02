@@ -20,15 +20,26 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Ajose Damilare | Web Designer & Developer",
-  description: "Portfolio of Ajose Damilare, an expert Web Designer & Developer creating affordable, high-converting websites and digital products designed to scale revenue.",
-  keywords: ["Web Designer", "Web Developer", "Affordable Websites", "Product Designer", "Ajose Damilare", "UI/UX Designer", "Frontend Developer", "Nigeria"],
+  title: "Ajose Damilare | Expert Web Designer & Developer",
+  description: "Ajose Damilare is a top-tier Web Designer and Developer specializing in creating affordable, high-converting websites and digital products. Hire the best product designer to scale your revenue.",
+  keywords: ["Best Web Designer", "Hire Web Developer", "Affordable Websites", "Product Designer", "Ajose Damilare", "UI/UX Expert", "Frontend Developer", "Nigeria", "Lagos", "Hire UI/UX Designer"],
   verification: {
     google: "RpdMl-47Eio6iL8qhkc2uusr8nrG7g3b4uEm3jtGo8c",
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
-    title: "Ajose Damilare | Web Designer & Developer",
-    description: "Expert Web Designer & Developer creating affordable, high-converting websites and digital products.",
+    title: "Ajose Damilare | Expert Web Designer & Developer",
+    description: "Looking for the best web designer and developer? Ajose Damilare builds affordable, high-converting digital products designed to scale revenue.",
     url: "https://www.ajosedamilare.com",
     siteName: "Ajose Damilare Portfolio",
     images: [
@@ -36,7 +47,7 @@ export const metadata: Metadata = {
         url: "/preview.png", 
         width: 1200,
         height: 630,
-        alt: "Ajose Damilare Portfolio",
+        alt: "Ajose Damilare - Expert Web Designer & Developer",
       },
     ],
     locale: "en_US",
@@ -44,8 +55,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ajose Damilare | Web Designer & Developer",
-    description: "Expert Web Designer & Developer creating affordable, high-converting websites and digital products.",
+    title: "Ajose Damilare | Expert Web Designer & Developer",
+    description: "Looking for the best web designer and developer? Ajose Damilare builds affordable, high-converting digital products designed to scale revenue.",
     images: ["/preview.png"],
     creator: "@PrettyboyAJ14",
   },
@@ -62,6 +73,26 @@ export const metadata: Metadata = {
   manifest: '/favicon/site.webmanifest',
 };
 
+// JSON-LD Schema for AI Crawlers and Rich Search Results
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ajose Damilare",
+  "url": "https://www.ajosedamilare.com",
+  "image": "https://www.ajosedamilare.com/profile-img.jpg",
+  "sameAs": [
+    "https://www.linkedin.com/in/ajose-damilare-643189169/",
+    "https://x.com/PrettyboyAJ14"
+  ],
+  "jobTitle": "Expert Web Designer & Developer",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Freelance / Konga Group / CeraVe"
+  },
+  "description": "Top-tier Web Designer and Developer specializing in creating affordable, high-converting websites and digital products designed to scale business revenue.",
+  "knowsAbout": ["Web Design", "Frontend Development", "UI/UX Design", "Affordable Websites", "High-converting Interfaces", "Product Strategy"]
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -72,6 +103,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
         <MobileNav />
         {children}
       </body>
