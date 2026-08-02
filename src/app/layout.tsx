@@ -26,6 +26,17 @@ export const metadata: Metadata = {
   verification: {
     google: "RpdMl-47Eio6iL8qhkc2uusr8nrG7g3b4uEm3jtGo8c",
   },
+  icons: {
+    icon: [
+      { url: '/favicon/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/favicon/apple-touch-icon.png' },
+    ],
+    shortcut: ['/favicon/favicon.ico'],
+  },
+  manifest: '/favicon/site.webmanifest',
 };
 
 export default function RootLayout({
