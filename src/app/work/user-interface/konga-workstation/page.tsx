@@ -378,7 +378,7 @@ export default function KongaWorkstationProject() {
       </div>
 
       <div className="mb-12 px-6 md:px-14 lg:px-20">
-        <img src="/kongacertificate.png" alt="Konga Certification for Exceptional Work" className="w-full h-auto rounded-xl border border-[#222]" />
+        <img src="/kongacertificate.jpeg" alt="Konga Certification for Exceptional Work" className="w-full h-auto rounded-xl border border-[#222]" />
       </div>
 
       <hr className="mx-6 mb-16 border-[#1f1f1f] md:mx-14 lg:mx-20" />

@@ -59,11 +59,11 @@ export default function Sidebar() {
           iconType="project"
           href="/work/user-interface/verselift"
         />
-        <SidebarLink
+        {/* <SidebarLink
           text="StatMind"
           iconType="project"
           href="/work/user-interface/statmind"
-        />
+        /> */}
         <SidebarLink
           text="Tradon App"
           iconType="project"
@@ -83,17 +83,17 @@ export default function Sidebar() {
           iconType="project"
           href="/work/engineering/cerave-cerawards"
         />
-        <SidebarLink
+        {/* <SidebarLink
           text="KongaFM Web & Admin"
           iconType="project"
           href="/work/engineering/konga-fm"
-        />
+        /> */}
         <SidebarLink
           text="Konga Group"
           iconType="project"
           href="/work/engineering/konga-group"
         />
-        <SidebarLink
+        {/* <SidebarLink
           text="Konga Rework"
           iconType="project"
           href="/work/engineering/konga-rework"
@@ -102,11 +102,11 @@ export default function Sidebar() {
           text="KYC Interactive Form"
           iconType="project"
           href="/work/engineering/kyc-interactive-form"
-        />
+        /> */}
         <div className="mt-4 mb-2 text-[#bdbdbd] uppercase tracking-widest text-[10px] font-semibold">
           Contact
         </div>
-        <SidebarLink text="Resume" iconType="file" href="#" comingSoon />
+        <SidebarLink text="Resume" iconType="file" href="/Pro Resume Ajose Damilare.pdf" external />
         <SidebarLink text="Email" iconType="at" href="mailto:ajosedare4u@gmail.com" external />
         <SidebarLink text="LinkedIn" iconType="linkedin" href="https://www.linkedin.com/in/ajose-damilare-643189169/?skipRedirect=true" external />
         <SidebarLink text="Tiktok" iconType="tiktok" href="https://www.tiktok.com/@aj.design15?lang=en" external />

@@ -20,8 +20,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Ajose Damilare | Portfolio",
-  description: "Portfolio of Ajose Damilare, Product Designer focused on product thinking and craft.",
+  title: "Ajose Damilare | Web Designer & Developer",
+  description: "Portfolio of Ajose Damilare, an expert Web Designer & Developer creating affordable, high-converting websites and digital products designed to scale revenue.",
+  keywords: ["Web Designer", "Web Developer", "Affordable Websites", "Product Designer", "Ajose Damilare", "UI/UX Designer", "Frontend Developer", "Nigeria"],
+  verification: {
+    google: "RpdMl-47Eio6iL8qhkc2uusr8nrG7g3b4uEm3jtGo8c",
+  },
 };
 
 export default function RootLayout({

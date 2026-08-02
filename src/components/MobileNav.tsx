@@ -193,17 +193,17 @@ export default function MobileNav() {
           <SidebarLink text="CeraVe CerAwards Campaign" iconType="project" href="/work/user-interface/cerave-cerawards" onClick={() => setOpen(false)} />
           <SidebarLink text="Konga WorkStation" iconType="project" href="/work/user-interface/konga-workstation" onClick={() => setOpen(false)} />
           <SidebarLink text="Verselift" iconType="project" href="/work/user-interface/verselift" onClick={() => setOpen(false)} />
-          <SidebarLink text="StatMind" iconType="project" href="/work/user-interface/statmind" onClick={() => setOpen(false)} />
+          {/* <SidebarLink text="StatMind" iconType="project" href="/work/user-interface/statmind" onClick={() => setOpen(false)} /> */}
           <SidebarLink text="Tradon App" iconType="project" href="/work/user-interface/tradon-app" onClick={() => setOpen(false)} />
           <div className="mb-2 text-[#bdbdbd] pl-4 uppercase tracking-widest text-[10px] font-semibold mt-4">Engineering</div>
           <SidebarLink text="Bella Homes Ltd" iconType="project" href="/work/engineering/bella-homes" onClick={() => setOpen(false)} />
           <SidebarLink text="CeraVe CerAwards Campaign" iconType="project" href="/work/engineering/cerave-cerawards" onClick={() => setOpen(false)} />
-          <SidebarLink text="KongaFM Web & Admin" iconType="project" href="/work/engineering/konga-fm" onClick={() => setOpen(false)} />
+          {/* <SidebarLink text="KongaFM Web & Admin" iconType="project" href="/work/engineering/konga-fm" onClick={() => setOpen(false)} /> */}
           <SidebarLink text="Konga Group" iconType="project" href="/work/engineering/konga-group" onClick={() => setOpen(false)} />
-          <SidebarLink text="Konga Rework" iconType="project" href="/work/engineering/konga-rework" onClick={() => setOpen(false)} />
-          <SidebarLink text="KYC Interactive Form" iconType="project" href="/work/engineering/kyc-interactive-form" onClick={() => setOpen(false)} />
+          {/* <SidebarLink text="Konga Rework" iconType="project" href="/work/engineering/konga-rework" onClick={() => setOpen(false)} />
+          <SidebarLink text="KYC Interactive Form" iconType="project" href="/work/engineering/kyc-interactive-form" onClick={() => setOpen(false)} /> */}
           <div className="mb-2 text-[#bdbdbd] pl-4 uppercase tracking-widest text-[10px] font-semibold mt-4">Contact</div>
-          <SidebarLink text="Resume" iconType="file" href="#" disabled onClick={() => setOpen(false)} />
+          <SidebarLink text="Resume" iconType="file" href="/Pro Resume Ajose Damilare.pdf" external onClick={() => setOpen(false)} />
           <SidebarLink text="Email" iconType="at" href="mailto:ajosedare4u@gmail.com" external onClick={() => setOpen(false)} />
           <SidebarLink text="LinkedIn" iconType="linkedin" href="https://www.linkedin.com/in/ajose-damilare-643189169/?skipRedirect=true" external onClick={() => setOpen(false)} />
           <SidebarLink text="Tiktok" iconType="tiktok" href="https://www.tiktok.com/@aj.design15?lang=en" external onClick={() => setOpen(false)} />

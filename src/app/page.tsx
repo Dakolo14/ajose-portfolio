@@ -39,12 +39,6 @@ const webApps = [
     url: "https://group.konga.com/",
     domain: "group.konga.com",
   },
-  {
-    title: "Konga Shop-in-Shop Hub",
-    description: "E-commerce flagship store hubs for Samsung, Apple, HP, CeraVe & OEM partners.",
-    url: "https://www.konga.com/content/samsungsis",
-    domain: "konga.com/content",
-  },
 ];
 
 export default function Home() {
@@ -286,7 +280,7 @@ export default function Home() {
               <h2 className="font-inter text-sm font-medium text-white">Recognition & Certifications</h2>
             </div>
             <div className="w-full">
-              <img src="/kongacertificate.png" alt="Konga Certification" className="w-full h-auto rounded-xl border border-[#222] hover:border-[#444] transition-colors" />
+              <img src="/kongacertificate.jpeg" alt="Konga Certification" className="w-full h-auto rounded-xl border border-[#222] hover:border-[#444] transition-colors" />
             </div>
           </section>
         </main>

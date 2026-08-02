@@ -43,7 +43,7 @@ export const featuredProjects: FeaturedProject[] = [
     active: true,
     category: "design",
   },
-  {
+  /* {
     title: "StatMind",
     subtitle: "Product Design & Strategy",
     description: "Analytics platform with intelligent insights and real-time dashboards.",
@@ -52,7 +52,7 @@ export const featuredProjects: FeaturedProject[] = [
     thumbnail: "/statmind.png",
     active: true,
     category: "design",
-  },
+  }, */
 
   // Engineering Projects
   {
@@ -75,7 +75,7 @@ export const featuredProjects: FeaturedProject[] = [
     active: true,
     category: "engineering",
   },
-  {
+  /* {
     title: "Konga FM Platform & Admin",
     subtitle: "Frontend & CMS Engineering",
     description: "Built the main web application and internal admin dashboard for Konga's media streaming platform.",
@@ -83,7 +83,7 @@ export const featuredProjects: FeaturedProject[] = [
     accentColor: "#ED017F",
     active: true,
     category: "engineering",
-  },
+  }, */
   {
     title: "Konga Group Engineering",
     subtitle: "Frontend Architecture & Systems",
@@ -94,7 +94,7 @@ export const featuredProjects: FeaturedProject[] = [
     active: true,
     category: "engineering",
   },
-  {
+  /* {
     title: "Konga Platform Rework",
     subtitle: "Performance & Architecture",
     description: "Complete platform restructuring, performance tuning, and scalable UI architecture.",
@@ -111,7 +111,7 @@ export const featuredProjects: FeaturedProject[] = [
     accentColor: "#22c55e",
     active: true,
     category: "engineering",
-  },
+  }, */
 
   // Drafts
   {
