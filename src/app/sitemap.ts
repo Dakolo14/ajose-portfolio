@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.ajosedamilare.com'; // Replace with your actual domain
+  // We'll use the Vercel domain for now until a custom domain is added
+  const baseUrl = 'https://ajose-portfolio.vercel.app';
 
   // You can dynamically generate this list based on your featuredProjects data if you want, 
   // but since we just commented some out, hardcoding the active ones is safest for SEO.

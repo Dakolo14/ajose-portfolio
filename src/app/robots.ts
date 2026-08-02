@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://www.ajosedamilare.com/sitemap.xml', // Replace with your actual domain
+    sitemap: 'https://ajose-portfolio.vercel.app/sitemap.xml', // Replace with custom domain later
   };
 }
