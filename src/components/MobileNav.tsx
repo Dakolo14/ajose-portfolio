@@ -191,7 +191,7 @@ export default function MobileNav() {
           <SidebarLink text="Work" iconType={undefined} href="/work" onClick={() => setOpen(false)} />
           <div className="mb-2 text-[#bdbdbd] pl-4 uppercase tracking-widest text-[10px] font-semibold mt-4">User Interface</div>
           <SidebarLink text="CeraVe CerAwards Campaign" iconType="project" href="/work/user-interface/cerave-cerawards" onClick={() => setOpen(false)} />
-          <SidebarLink text="Konga WorkStation" iconType="project" href="/work/user-interface/konga-workstation" onClick={() => setOpen(false)} />
+          <SidebarLink text="Konga WorkStation (Magento)" iconType="project" href="/work/user-interface/konga-workstation" onClick={() => setOpen(false)} />
           <SidebarLink text="Verselift" iconType="project" href="/work/user-interface/verselift" onClick={() => setOpen(false)} />
           {/* <SidebarLink text="StatMind" iconType="project" href="/work/user-interface/statmind" onClick={() => setOpen(false)} /> */}
           <SidebarLink text="Tradon App" iconType="project" href="/work/user-interface/tradon-app" onClick={() => setOpen(false)} />

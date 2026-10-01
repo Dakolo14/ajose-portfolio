@@ -45,7 +45,7 @@ export default function Sidebar() {
           User Interface
         </div>
         <SidebarLink
-          text="Konga WorkStation"
+          text="Konga WorkStation (Magento)"
           iconType="project"
           href="/work/user-interface/konga-workstation"
         />

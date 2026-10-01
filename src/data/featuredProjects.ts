@@ -14,7 +14,7 @@ export interface FeaturedProject {
 export const featuredProjects: FeaturedProject[] = [
   // Design Projects
   {
-    title: "Konga WorkStation",
+    title: "Konga WorkStation (Magento)",
     subtitle: "User Interface Design & Brand Strategy",
     description: "Enterprise workspace and Shop-in-Shop brand partner ecosystem for Konga.",
     href: "/work/user-interface/konga-workstation",

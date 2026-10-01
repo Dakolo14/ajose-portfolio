@@ -74,7 +74,7 @@ export default function KongaWorkstationProject() {
       {/* ── Header ── */}
       <div className="px-6 pt-4 pb-0 md:px-14 lg:px-20">
         <h1 className="font-inter text-[1.75rem] font-light leading-snug tracking-tight text-white md:text-[2.25rem] lg:text-[2.75rem]">
-          Konga WorkStation
+          Konga WorkStation (Magento)
         </h1>
         <p className="font-helvetica mt-3 text-[15px] text-[#6a6a6a]">
           3 years designing and building digital products for Konga Group
@@ -128,7 +128,7 @@ export default function KongaWorkstationProject() {
             Konga Group is one of Nigeria&apos;s largest e-commerce and retail groups. Over three years as
             their in-house Product Designer and Developer, I&apos;ve owned the design and build of their
             corporate digital presence, from the group website to a dedicated media property and
-            internal tooling.
+            internal tooling. A core part of my role involved deep integration with <strong className="text-white">Magento</strong>, utilizing its robust e-commerce capabilities to architect and power large-scale campaigns, dynamic product catalogs, and custom brand storefronts across the entire ecosystem.
           </p>
           <p>
             Each project sat at the intersection of brand, product, and engineering. Designed in
@@ -190,7 +190,7 @@ export default function KongaWorkstationProject() {
             As part of my work at Konga Group, I led the design and digital storefront development for <strong className="text-white">Shop-in-Shop</strong> pages across major global and regional OEM partners.
           </p>
           <p>
-            Working directly with brand managers and growth leads, I strategized visual merchandising, layout architectures, and promotional UX aimed at maximizing brand visibility, customer engagement, and revenue performance across the Konga e-commerce ecosystem.
+            Working directly with brand managers and growth leads, I utilized <strong className="text-white">Magento</strong> to seamlessly integrate their dedicated Shop-in-Shop experiences into the Konga platform. I strategized visual merchandising, layout architectures, and promotional UX aimed at maximizing brand visibility, customer engagement, and revenue performance across the e-commerce ecosystem.
           </p>
         </Body>
 
@@ -306,6 +306,51 @@ export default function KongaWorkstationProject() {
               Ensured strict compliance with international brand guidelines while maintaining fast load times, responsive UI, and seamless checkout flows.
             </p>
           </div>
+        </div>
+      </div>
+
+      <hr className="mx-6 mb-16 border-[#1f1f1f] md:mx-14 lg:mx-20" />
+
+      {/* ══ Magento-Based Campaigns ══ */}
+      <div className="px-6 pb-16 md:px-14 lg:px-20">
+        <SectionHeading>Magento-Based Campaigns</SectionHeading>
+        <Body>
+          <p>
+            Leveraging <strong className="text-white">Magento</strong> as our core e-commerce engine, I designed, developed, and deployed high-converting campaign landing pages for Konga&apos;s most critical seasonal and promotional events. Each campaign required custom dynamic catalog routing, tailored UX flows, and robust performance optimization to handle massive traffic spikes.
+          </p>
+        </Body>
+
+        <div className="mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+          {[
+            { name: "Jara", url: "https://www.konga.com/content/jara2026" },
+            { name: "Black Valentine", url: "https://www.konga.com/content/black-valentine" },
+            { name: "Ramadan", url: "https://www.konga.com/content/ramadan2026" },
+            { name: "Berekete", url: "https://www.konga.com/content/konga-berekete" },
+            { name: "Konga Beauty", url: "https://www.konga.com/content/kongabeauty" },
+            { name: "Easter Homecoming", url: "https://www.konga.com/content/easterhomecoming" },
+            { name: "Tech Month", url: "https://www.konga.com/content/techmonth" },
+            { name: "Mid Year Shopping Festival", url: "https://www.konga.com/content/mid-year-festival" },
+            { name: "Konga At 14", url: "https://www.konga.com/content/konga-at-14" },
+            { name: "Back to School", url: "https://www.konga.com/content/back-to-school" },
+            { name: "Feel At Home", url: "https://www.konga.com/content/feel-at-home" },
+            { name: "Freedom Sales", url: "https://www.konga.com/content/freedom-sales" },
+            { name: "Yakata Campaign (Black Friday)", url: "https://www.konga.com/content/yakata2026" },
+          ].map((campaign) => (
+            <a
+              href={campaign.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              key={campaign.name}
+              className="group flex items-center justify-between p-4 rounded-xl border border-[#262626] bg-[#141414] transition-all duration-300 hover:border-[#383838] hover:bg-[#1a1a1a]"
+            >
+              <h3 className="font-inter text-[13px] font-medium text-[#c0c0c0] group-hover:text-white transition-colors line-clamp-1 mr-2">
+                {campaign.name}
+              </h3>
+              <span className="text-[#4a4a4a] group-hover:text-[#ED017F] transition-all duration-300 text-sm group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
+                ↗
+              </span>
+            </a>
+          ))}
         </div>
       </div>
 
